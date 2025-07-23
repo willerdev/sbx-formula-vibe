@@ -19,9 +19,11 @@ export const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in">
           <h1 className="font-space-grotesk font-black text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight">
-            <span className="text-gradient-primary">Master The</span>
+            <span className="text-gradient-primary">Dominate the</span>
             <br />
-            <span className="text-foreground">Trading Game</span>
+            <span className="text-foreground">Deriv Market with</span>
+            <br />
+            <span className="text-gradient-primary">Synthetic Indices</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto font-medium">
@@ -34,7 +36,7 @@ export const Hero = () => {
               Start Trading Now
             </Button>
             <Button variant="premium" size="lg">
-              Discover Our Formula
+              Discover Our SBX Formula
             </Button>
           </div>
 

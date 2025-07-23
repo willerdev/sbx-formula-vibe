@@ -41,33 +41,18 @@ export const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium">
-                About
-              </a>
-              <a href="#account" className="text-foreground hover:text-primary transition-colors font-medium">
-                Account Management
-              </a>
               <a href="#signals" className="text-foreground hover:text-primary transition-colors font-medium">
                 Signals
               </a>
               <a href="#mentorship" className="text-foreground hover:text-primary transition-colors font-medium">
                 Mentorship
               </a>
-              <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium">
-                Services
-              </a>
-              <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium">
-                FAQ
-              </a>
-              <a href="#register" className="text-foreground hover:text-primary transition-colors font-medium">
-                Register
-              </a>
             </nav>
 
             {/* Desktop Login Button */}
             <div className="hidden md:flex items-center gap-4">
-              <Button variant="hero" size="sm">
-                Login
+              <Button variant="hero" size="sm" asChild>
+                <a href="/signup">Login</a>
               </Button>
             </div>
 
@@ -87,30 +72,15 @@ export const Header = () => {
           {isMenuOpen && (
             <div className="md:hidden py-4 border-t border-border">
               <nav className="flex flex-col space-y-4">
-                <a href="#about" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
-                  About
-                </a>
-                <a href="#account" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
-                  Account Management
-                </a>
                 <a href="#signals" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
                   Signals
                 </a>
                 <a href="#mentorship" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
                   Mentorship
                 </a>
-                <a href="#services" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
-                  Services
-                </a>
-                <a href="#faq" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
-                  FAQ
-                </a>
-                <a href="#register" className="text-foreground hover:text-primary transition-colors font-medium px-4 py-2">
-                  Register
-                </a>
                 <div className="px-4 pt-2">
-                  <Button variant="hero" size="sm" className="w-full">
-                    Login
+                  <Button variant="hero" size="sm" className="w-full" asChild>
+                    <a href="/signup">Login</a>
                   </Button>
                 </div>
               </nav>
