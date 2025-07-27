@@ -11,7 +11,7 @@ export const Header = () => {
       <div className="bg-secondary/30 text-muted-foreground text-sm py-2 px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Mail className="w-4 h-4" />
-          <span>support@sbxformula.com</span>
+          <span>support@saviibanks.com</span>
         </div>
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-3">
@@ -20,7 +20,7 @@ export const Header = () => {
             <Twitter className="w-4 h-4 hover:text-primary cursor-pointer transition-colors" />
             <Linkedin className="w-4 h-4 hover:text-primary cursor-pointer transition-colors" />
           </div>
-          <span className="text-xs">Our website is sbxformula.com. Beware of fakes!</span>
+          <span className="text-xs">Official website: saviibanks.com. Beware of fakes!</span>
         </div>
       </div>
 
@@ -33,9 +33,9 @@ export const Header = () => {
               <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center font-bold text-primary-foreground">
                 SBX
               </div>
-              <div className="font-space-grotesk font-bold text-xl">
-                <span className="text-gradient-primary">SBX</span>
-                <span className="text-foreground"> FORMULA</span>
+              <div className="font-poppins font-bold text-xl">
+                <span className="text-primary">SAVII BANKS</span>
+                <span className="text-muted-foreground"> FX GROUP</span>
               </div>
             </div>
 

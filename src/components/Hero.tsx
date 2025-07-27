@@ -39,21 +39,20 @@ export const Hero = () => {
           {/* Right side - Content */}
           <div className="space-y-8">
             <div>
-              <div className="text-primary text-lg font-semibold mb-2">About SBX Formula</div>
-              <h1 className="font-space-grotesk font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
-                <span className="text-foreground">Deriv Signals And</span>
+              <div className="text-primary text-lg font-semibold mb-2">About Savii Banks Fx Group</div>
+              <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
+                <span className="text-foreground">Dominate the Deriv Market</span>
                 <br />
-                <span className="text-gradient-primary">Professional Mentorship</span>
+                <span className="text-gradient-primary">with Synthetic Indices</span>
                 <br />
-                <span className="text-foreground">Services</span>
+                <span className="text-foreground">Trading Excellence</span>
               </h1>
               
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                SBX Formula Group is the Best Deriv volatility Group around... JUMP INDICES, 
-                BOOM AND CRASH, STEP INDEX, VOLATILITY INDICES, V75 Best signal Group 2024, 
-                best Price Action Analysis, we trade all Volatility indices: we trade V75, 
-                V100, V50, V25, V10, V25s, V50s, V10s,V100s, Boom and Crash like Boom 500, 
-                Booom 1000, Crash 500, Crash 1000, Step Index, Range Break Indices, Jump Indices.
+                Savii Banks Fx Group is the premier Deriv volatility trading community. Our proven SBX Formula 
+                strategy delivers consistent results across all synthetic indices including V75, V100, V50, V25, 
+                Boom and Crash indices, Step indices, and Jump indices. Join our professional mentorship program 
+                and master the art of synthetic indices trading with our 98.99% accuracy signals.
               </p>
             </div>
 

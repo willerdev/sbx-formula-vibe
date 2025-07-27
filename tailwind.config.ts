@@ -21,6 +21,7 @@ export default {
 			fontFamily: {
 				'inter': ['Inter', 'system-ui', 'sans-serif'],
 				'space-grotesk': ['Space Grotesk', 'system-ui', 'sans-serif'],
+				'poppins': ['Poppins', 'system-ui', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

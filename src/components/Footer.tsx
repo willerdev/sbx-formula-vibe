@@ -9,10 +9,10 @@ export const Footer = () => {
           {/* Logo and Social Links */}
           <div className="space-y-6">
             <div>
-              <h3 className="font-space-grotesk font-bold text-2xl text-gradient-primary">
-                SBX FORMULA
+              <h3 className="font-poppins font-bold text-2xl">
+                <span className="text-primary">SAVII BANKS</span> <span className="text-muted-foreground">FX GROUP</span>
               </h3>
-              <p className="text-sm text-muted-foreground mt-2">FX GROUP</p>
+              <p className="text-sm text-muted-foreground mt-2">SBX Formula Strategy</p>
             </div>
             
             <div className="space-y-4">
@@ -90,7 +90,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-primary/20 mt-12 pt-8 text-center">
           <p className="text-muted-foreground">
-            Copyright 2021 - 2025 © SBX Formula. Created by SBX.Tech
+            Copyright 2021 - 2025 © Savii Banks Fx Group. Powered by SBX Formula Strategy
           </p>
         </div>
       </div>

@@ -23,9 +23,9 @@ export const WhyChooseSection = () => {
           
           {/* Left side - Features */}
           <div>
-            <div className="text-primary text-lg font-semibold mb-2">Why Choose SBX Formula</div>
-            <h2 className="font-space-grotesk font-bold text-4xl md:text-5xl mb-12 text-foreground">
-              Reason For Choosing Us
+            <div className="text-primary text-lg font-semibold mb-2">Why Choose Savii Banks Fx Group</div>
+            <h2 className="font-poppins font-bold text-4xl md:text-5xl mb-12 text-foreground">
+              Why Our SBX Formula Works
             </h2>
             
             <div className="space-y-8">
@@ -56,9 +56,9 @@ export const WhyChooseSection = () => {
                 
                 <div className="space-y-6">
                   <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-                    MY NAME IS
+                    I AM
                     <br />
-                    <span className="text-gradient-primary">SBX FORMULA,</span>
+                    <span className="text-gradient-primary">SAVII BANKS,</span>
                   </h3>
                   
                   <h3 className="text-2xl md:text-3xl font-bold leading-tight">
