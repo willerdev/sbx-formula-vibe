@@ -57,9 +57,13 @@ export const Hero = () => {
               </div>
               
               {/* SBX Logo */}
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/30 flex items-center justify-center">
+              <div className="flex flex-col items-center mb-6">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/30 flex items-center justify-center mb-4">
                   <div className="text-2xl font-bold text-primary">SBX</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary mb-1">SAVII BANKS</div>
+                  <div className="text-lg font-medium text-white">FX GROUP</div>
                 </div>
               </div>
 

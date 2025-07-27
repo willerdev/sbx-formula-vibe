@@ -18,24 +18,24 @@ export const ServicesSection = () => {
       icon: <Bell className="w-8 h-8" />,
       title: "Premium Signals",
       description: "Receive real-time trading signals with 98.99% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
-      features: ["Real-time alerts", "98.99% accuracy", "Risk management", "SBX Formula strategy"],
-      price: "$197/month",
+      features: ["Real-time alerts", "98.99% accuracy", "Risk management", "Premium signals access"],
+      price: "$30/month",
       popular: true
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "1-on-1 Mentorship",
-      description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
-      features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management"],
-      price: "$497/month",
-      popular: false
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
       title: "Online Mentorship",
       description: "Learn the SBX Formula in our group mentorship program. Master price action trading for Deriv synthetic indices.",
-      features: ["Group sessions", "SBX Formula training", "Risk management", "Trading psychology"],
-      price: "$97/month",
+      features: ["Group sessions", "SBX Formula training", "Risk management", "Premium signals access"],
+      price: "$120/month",
+      popular: false
+    },
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "1-on-1 Mentorship",
+      description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
+      features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management", "Premium signals access"],
+      price: "$240/month",
       popular: false
     }
   ];
@@ -100,15 +100,6 @@ export const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-4 p-6 rounded-2xl gradient-card border-gradient">
-            <Shield className="w-8 h-8 text-accent" />
-            <div className="text-left">
-              <h3 className="font-semibold text-foreground mb-1">30-Day Money Back Guarantee</h3>
-              <p className="text-muted-foreground text-sm">Try any service risk-free for 30 days</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

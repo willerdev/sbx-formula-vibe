@@ -28,12 +28,6 @@ export const WhyChooseSection = () => {
               Mastering Deriv with Pure Price Action
             </h2>
             
-            <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
-              At Savii Banks Fx Group, we specialize in mastering Deriv Synthetic Indices using pure price action—no indicators, no noise. Just clean charts, sharp entries, and a powerful SBX formula designed for consistent growth.
-              <br /><br />
-              We believe trading is about discipline, focus, and mastering how price truly behaves. With the right mindset and precision strategies, success isn't just possible — it's scalable.
-            </p>
-            
             <div className="space-y-8">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-4">
@@ -60,28 +54,30 @@ export const WhyChooseSection = () => {
               <div className="relative">
                 <div className="text-8xl text-primary/20 font-serif leading-none mb-4">"</div>
                 
-                <div className="space-y-6">
-                  <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
-                    I AM
-                    <br />
-                    <span className="text-gradient-primary">SAVII BANKS,</span>
-                  </h3>
-                  
-                  <h3 className="text-2xl md:text-3xl font-bold leading-tight">
-                    <span className="text-foreground">I TRADE WHAT </span>
-                    <span className="text-gradient-accent">I SEE</span>
-                    <br />
-                    <span className="text-foreground">NOT WHAT </span>
-                    <span className="text-gradient-accent">I FEEL</span>
-                  </h3>
-                </div>
+                 <div className="space-y-6">
+                   <h3 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                     I AM
+                     <br />
+                     <span className="text-gradient-primary">SAVII BANKS,</span>
+                   </h3>
+                   
+                   <h3 className="text-2xl md:text-3xl font-bold leading-tight">
+                     <span className="text-foreground">I TRADE WHAT </span>
+                     <span className="text-gradient-accent">I SEE</span>
+                     <br />
+                     <span className="text-foreground">NOT WHAT </span>
+                     <span className="text-gradient-accent">I FEEL</span>
+                   </h3>
+                 </div>
 
-                <div className="mt-8 pt-6 border-t border-primary/20">
-                  <div className="text-primary font-semibold text-lg italic">
-                    Looking for the Best? 
-                    <span className="text-gradient-primary font-bold"> Join Us</span>
-                  </div>
-                </div>
+                 <div className="mt-8 pt-6 border-t border-primary/20">
+                   <p className="text-lg text-muted-foreground mb-4 leading-relaxed">
+                     At Savii Banks Fx Group, we specialize in mastering Deriv Synthetic Indices using pure price action—no indicators, no noise. Just clean charts, sharp entries, and a powerful SBX formula designed for consistent growth.
+                   </p>
+                   <p className="text-lg text-muted-foreground leading-relaxed">
+                     We believe trading is about discipline, focus, and mastering how price truly behaves. With the right mindset and precision strategies, success isn't just possible — it's scalable.
+                   </p>
+                 </div>
               </div>
             </div>
           </div>

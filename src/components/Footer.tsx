@@ -12,7 +12,7 @@ export const Footer = () => {
               <h3 className="font-poppins font-bold text-2xl">
                 <span className="text-primary">SAVII BANKS</span> <span className="text-muted-foreground">FX GROUP</span>
               </h3>
-              <p className="text-sm text-muted-foreground mt-2">SBX Formula Strategy</p>
+              <p className="text-sm text-muted-foreground mt-2">SBX Formula</p>
             </div>
             
             <div className="space-y-4">
@@ -64,9 +64,7 @@ export const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                 <div className="text-muted-foreground">
-                  <p>7 Buckingham Court, Alt Road, off</p>
-                  <p>Chevron Drive, Lekki Lagos State,</p>
-                  <p>Nigeria</p>
+                  <p>Kigali KK 200St</p>
                 </div>
               </div>
               
@@ -79,8 +77,8 @@ export const Footer = () => {
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
-                <a href="tel:+2347031606932" className="text-muted-foreground hover:text-primary transition-colors">
-                  +234 703 160 6932
+                <a href="tel:+250788974179" className="text-muted-foreground hover:text-primary transition-colors">
+                  +250 788 974 179
                 </a>
               </div>
             </div>
@@ -90,7 +88,7 @@ export const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-primary/20 mt-12 pt-8 text-center">
           <p className="text-muted-foreground">
-            Copyright 2021 - 2025 © Savii Banks Fx Group. Powered by SBX Formula Strategy
+            Copyright 2021 - 2025 © Savii Banks Fx Group.
           </p>
         </div>
       </div>
