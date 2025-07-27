@@ -17,49 +17,25 @@ export const ServicesSection = () => {
     {
       icon: <Bell className="w-8 h-8" />,
       title: "Premium Signals",
-      description: "Receive real-time trading signals with 95% accuracy rate. Our AI-powered system analyzes market trends 24/7.",
-      features: ["Real-time alerts", "95% accuracy", "24/7 monitoring", "Multi-asset coverage"],
+      description: "Receive real-time trading signals with 98.99% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
+      features: ["Real-time alerts", "98.99% accuracy", "Risk management", "SBX Formula strategy"],
       price: "$197/month",
       popular: true
     },
     {
       icon: <Users className="w-8 h-8" />,
       title: "1-on-1 Mentorship",
-      description: "Get personalized trading guidance from our expert mentors. Transform your trading skills with proven strategies.",
-      features: ["Personal mentor", "Weekly sessions", "Custom strategy", "Progress tracking"],
+      description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
+      features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management"],
       price: "$497/month",
       popular: false
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
-      title: "Trading Academy",
-      description: "Master the fundamentals with our comprehensive trading course. From beginner to advanced levels.",
-      features: ["Video lessons", "Live webinars", "Trading tools", "Certificate"],
+      title: "Online Mentorship",
+      description: "Learn the SBX Formula in our group mentorship program. Master price action trading for Deriv synthetic indices.",
+      features: ["Group sessions", "SBX Formula training", "Risk management", "Trading psychology"],
       price: "$97/month",
-      popular: false
-    },
-    {
-      icon: <Target className="w-8 h-8" />,
-      title: "Risk Management",
-      description: "Advanced risk management tools and strategies to protect your capital and maximize profits.",
-      features: ["Risk calculator", "Portfolio analysis", "Stop-loss automation", "Profit optimization"],
-      price: "$147/month",
-      popular: false
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8" />,
-      title: "Market Analysis",
-      description: "Daily market insights and analysis from our team of professional traders and analysts.",
-      features: ["Daily reports", "Technical analysis", "Market outlook", "Economic calendar"],
-      price: "$67/month",
-      popular: false
-    },
-    {
-      icon: <LineChart className="w-8 h-8" />,
-      title: "Copy Trading",
-      description: "Automatically copy trades from our top-performing traders. Perfect for passive income generation.",
-      features: ["Auto-copy trades", "Top performers", "Risk settings", "Performance tracking"],
-      price: "$297/month",
       popular: false
     }
   ];

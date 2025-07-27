@@ -14,73 +14,23 @@ export const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
-          {/* Left side - Quote and Image */}
-          <div className="relative">
-            <div className="bg-secondary/30 backdrop-blur-sm rounded-3xl p-8 border border-primary/20">
-              <div className="flex items-start mb-6">
-                <div className="text-6xl text-primary/60 font-serif leading-none mr-4">"</div>
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
-                    Synthetic indices is 90% knowledge, once you hack it, you're made for life.
-                  </h2>
-                  <div className="text-lg text-primary font-semibold">- SBX Formula</div>
-                </div>
-              </div>
-              
-              {/* Profile Image Placeholder */}
-              <div className="flex justify-center mt-8">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/30 flex items-center justify-center">
-                  <div className="text-4xl font-bold text-primary">SBX</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right side - Content */}
+          {/* Left side - Content */}
           <div className="space-y-8">
             <div>
-              <div className="text-primary text-lg font-semibold mb-2">About Savii Banks Fx Group</div>
               <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
-                <span className="text-foreground">Dominate the Deriv Market</span>
+                <span className="text-foreground">Welcome to the Home of</span>
                 <br />
-                <span className="text-gradient-primary">with Synthetic Indices</span>
-                <br />
-                <span className="text-foreground">Trading Excellence</span>
+                <span className="text-gradient-primary">Precision Trading</span>
               </h1>
               
+              <h2 className="text-xl md:text-2xl text-muted-foreground mb-6 leading-relaxed">
+                Join the elite 1% who trade with clarity, confidence, and consistency.
+              </h2>
+              
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Savii Banks Fx Group is the premier Deriv volatility trading community. Our proven SBX Formula 
-                strategy delivers consistent results across all synthetic indices including V75, V100, V50, V25, 
-                Boom and Crash indices, Step indices, and Jump indices. Join our professional mentorship program 
-                and master the art of synthetic indices trading with our 98.99% accuracy signals.
+                At SBX, we don't just trade — we execute with purpose. Powered by pure price action, we dominate 
+                Deriv's synthetic indices with focus, discipline, and results. No indicators. No noise. Just clean strategy.
               </p>
-            </div>
-
-            {/* Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-center space-x-4 p-4 rounded-xl bg-secondary/20 border border-primary/10">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                    <Shield className="w-6 h-6" />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">Mentorship Package</h3>
-                  <p className="text-sm text-muted-foreground">Join the Mentorship Programme</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4 p-4 rounded-xl bg-secondary/20 border border-primary/10">
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <TrendingUp className="w-6 h-6" />
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground">98.99% Success</h3>
-                  <p className="text-sm text-muted-foreground">Accurate Deriv Market Signals.</p>
-                </div>
-              </div>
             </div>
 
             {/* CTA Buttons */}
@@ -93,8 +43,46 @@ export const Hero = () => {
               </Button>
             </div>
           </div>
+
+          {/* Right side - Quote and SBX Info */}
+          <div className="relative">
+            <div className="bg-secondary/30 backdrop-blur-sm rounded-3xl p-8 border border-primary/20">
+              <div className="flex items-start mb-6">
+                <div className="text-6xl text-primary/60 font-serif leading-none mr-4">"</div>
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                    Once you understand how price truly moves, the market becomes your playground.
+                  </h2>
+                </div>
+              </div>
+              
+              {/* SBX Logo */}
+              <div className="flex justify-center mb-6">
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-4 border-primary/30 flex items-center justify-center">
+                  <div className="text-2xl font-bold text-primary">SBX</div>
+                </div>
+              </div>
+
+              {/* Indices Traded */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-foreground">Indices We Trade:</h3>
+                <div className="flex flex-wrap gap-2 text-sm">
+                  {[
+                    "Volatility 25 (1s)", "Volatility 50 (1s)", "Volatility 75 (1s)", "Volatility 150 (1s)",
+                    "Volatility 25", "Volatility 50", "Volatility 75", "Jump 50", "Jump 100"
+                  ].map((index, i) => (
+                    <span key={i} className="px-3 py-1 bg-primary/10 text-primary rounded-full">
+                      {index}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 };
+
+// Remove the old code - keeping only the closing bracket

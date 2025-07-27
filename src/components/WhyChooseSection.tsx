@@ -23,10 +23,16 @@ export const WhyChooseSection = () => {
           
           {/* Left side - Features */}
           <div>
-            <div className="text-primary text-lg font-semibold mb-2">Why Choose Savii Banks Fx Group</div>
-            <h2 className="font-poppins font-bold text-4xl md:text-5xl mb-12 text-foreground">
-              Why Our SBX Formula Works
+            <div className="text-primary text-lg font-semibold mb-2">About Savii Banks Fx Group</div>
+            <h2 className="font-poppins font-bold text-4xl md:text-5xl mb-8 text-foreground">
+              Mastering Deriv with Pure Price Action
             </h2>
+            
+            <p className="text-lg text-muted-foreground mb-12 leading-relaxed">
+              At Savii Banks Fx Group, we specialize in mastering Deriv Synthetic Indices using pure price action—no indicators, no noise. Just clean charts, sharp entries, and a powerful SBX formula designed for consistent growth.
+              <br /><br />
+              We believe trading is about discipline, focus, and mastering how price truly behaves. With the right mindset and precision strategies, success isn't just possible — it's scalable.
+            </p>
             
             <div className="space-y-8">
               {features.map((feature, index) => (
