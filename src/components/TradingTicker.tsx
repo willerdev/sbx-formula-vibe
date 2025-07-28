@@ -21,7 +21,7 @@ export const TradingTicker = () => {
   ]);
 
   return (
-    <div className="bg-secondary/20 border-y border-border py-3 overflow-hidden">
+    <div className="w-full bg-secondary/20 border-y border-border py-3 overflow-hidden animate-slide-in-right">
       <div className="relative">
         <div className="flex animate-[scroll_30s_linear_infinite] whitespace-nowrap">
           {/* First set */}

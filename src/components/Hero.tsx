@@ -3,7 +3,7 @@ import { TrendingUp, Shield, Zap, Target } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden animate-fade-in">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-secondary/20 to-background">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(255,183,3,0.1),transparent_70%)]" />
@@ -11,7 +11,7 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-20 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           
           {/* Left side - Content */}
