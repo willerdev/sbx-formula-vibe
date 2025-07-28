@@ -46,22 +46,22 @@ export const WhyChooseSection = () => {
           </div>
 
           {/* Right side - Quote */}
-          <div className="relative lg:sticky lg:top-8">
-            <div className="bg-secondary/30 backdrop-blur-sm rounded-3xl p-8 lg:p-12 border border-primary/20 relative overflow-hidden animate-slide-in-right">
+          <div className="relative">
+            <div className="bg-secondary/30 backdrop-blur-sm rounded-3xl p-6 lg:p-8 border border-primary/20 relative overflow-hidden animate-slide-in-right">
               {/* Background pattern */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
               
               <div className="relative">
-                <div className="text-6xl lg:text-8xl text-primary/20 font-serif leading-none mb-6">"</div>
+                <div className="text-4xl lg:text-6xl text-primary/20 font-serif leading-none mb-2">"</div>
                 
-                 <div className="space-y-6 mb-8">
-                   <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground leading-tight">
+                 <div className="space-y-4 mb-6">
+                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
                      I AM
                      <br />
                      <span className="text-gradient-primary">SAVII BANKS,</span>
                    </h3>
                    
-                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight">
+                   <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
                      <span className="text-foreground">I TRADE WHAT </span>
                      <span className="text-gradient-accent">I SEE</span>
                      <br />
@@ -70,11 +70,11 @@ export const WhyChooseSection = () => {
                    </h3>
                  </div>
 
-                 <div className="pt-6 border-t border-primary/20">
-                   <p className="text-base lg:text-lg text-muted-foreground mb-4 leading-relaxed">
+                 <div className="pt-4 border-t border-primary/20">
+                   <p className="text-sm lg:text-base text-muted-foreground mb-3 leading-relaxed">
                      At Savii Banks Fx Group, we specialize in mastering Deriv Synthetic Indices using pure price action—no indicators, no noise. Just clean charts, sharp entries, and a powerful SBX formula designed for consistent growth.
                    </p>
-                   <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                   <p className="text-sm lg:text-base text-muted-foreground leading-relaxed">
                      We believe trading is about discipline, focus, and mastering how price truly behaves. With the right mindset and precision strategies, success isn't just possible — it's scalable.
                    </p>
                  </div>
