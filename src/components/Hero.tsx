@@ -16,18 +16,18 @@ export const Hero = () => {
           
           {/* Left side - Content */}
           <div className="space-y-8">
-            <div>
-              <h1 className="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
-                <span className="text-foreground">Welcome to the Home of</span>
-                <br />
-                <span className="text-gradient-primary">Precision Trading</span>
+            <div className="animate-fade-in">
+              <h1 className="font-poppins font-extrabold text-5xl md:text-6xl lg:text-7xl mb-8 leading-[1.1]">
+                <span className="text-foreground block mb-2">Welcome to the</span>
+                <span className="text-foreground block mb-2">Home of</span>
+                <span className="text-gradient-primary block">Precision Trading</span>
               </h1>
               
-              <h2 className="text-xl md:text-2xl text-muted-foreground mb-6 leading-relaxed">
+              <h2 className="text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-8 leading-relaxed font-medium">
                 Join the elite 1% who trade with clarity, confidence, and consistency.
               </h2>
               
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed max-w-2xl">
                 At SBX, we don't just trade — we execute with purpose. Powered by pure price action, we dominate 
                 Deriv's synthetic indices with focus, discipline, and results. No indicators. No noise. Just clean strategy.
               </p>

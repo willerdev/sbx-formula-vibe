@@ -35,7 +35,7 @@ export const Header = () => {
               </div>
               <div className="font-poppins font-bold text-xl">
                 <span className="text-primary">SAVII BANKS</span>
-                <span className="text-muted-foreground"> FX GROUP</span>
+                <span className="text-white"> FX GROUP</span>
               </div>
             </div>
 
