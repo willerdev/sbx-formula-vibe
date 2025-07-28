@@ -52,8 +52,6 @@ export const WhyChooseSection = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5" />
               
               <div className="relative">
-                <div className="text-4xl lg:text-6xl text-primary/20 font-serif leading-none mb-2">"</div>
-                
                  <div className="space-y-4 mb-6">
                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
                      I AM
