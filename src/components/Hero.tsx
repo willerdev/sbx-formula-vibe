@@ -25,10 +25,9 @@ export const Hero = () => {
           <div className="space-y-6 animate-fade-in">
             <div className="space-y-4">
               <h1 className="font-poppins font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight">
-                <span className="text-foreground block mb-1 animate-fade-in">Welcome to the</span>
-                <span className="text-foreground block mb-1 animate-fade-in" style={{animationDelay: '0.2s'}}>Home of</span>
-                <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent block animate-fade-in" style={{animationDelay: '0.4s'}}>
-                  Precision Trading
+                <span className="text-foreground block mb-2 animate-fade-in">Your gateway to</span>
+                <span className="text-foreground block animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  precise, smart trading
                 </span>
               </h1>
               
@@ -79,11 +78,13 @@ export const Hero = () => {
                     </div>
                     <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <div className="text-center space-y-1">
-                    <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  <div className="text-center space-y-2">
+                    <div className="text-2xl lg:text-3xl font-bold text-foreground">
                       SAVII BANKS
                     </div>
-                    <div className="text-base lg:text-lg font-medium text-muted-foreground">FX GROUP</div>
+                    <div className="text-sm lg:text-base font-normal text-muted-foreground/80">
+                      FX GROUP
+                    </div>
                   </div>
                 </div>
 
