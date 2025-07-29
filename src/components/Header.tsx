@@ -8,32 +8,33 @@ export const Header = () => {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-secondary/30 text-muted-foreground text-sm py-2 px-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Mail className="w-4 h-4" />
-          <span>support@saviibanks.com</span>
+      <div className="bg-secondary/30 text-muted-foreground text-xs sm:text-sm py-2 px-3 sm:px-4 flex items-center justify-between overflow-hidden">
+        <div className="flex items-center gap-1 sm:gap-2 min-w-0">
+          <Mail className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
+          <span className="truncate">support@saviibanks.com</span>
         </div>
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-3">
-            <Instagram className="w-4 h-4 hover:text-primary cursor-pointer transition-colors" />
-            <Youtube className="w-4 h-4 hover:text-primary cursor-pointer transition-colors" />
-            <Twitter className="w-4 h-4 hover:text-primary cursor-pointer transition-colors" />
-            <Linkedin className="w-4 h-4 hover:text-primary cursor-pointer transition-colors" />
+        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+          <div className="hidden lg:flex items-center gap-2 sm:gap-3">
+            <Instagram className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
+            <Youtube className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
+            <Twitter className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
+            <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
           </div>
-          <span className="text-xs">Official website: saviibanks.com. Beware of fakes!</span>
+          <span className="text-xs hidden sm:inline truncate">Official website: saviibanks.com. Beware of fakes!</span>
+          <span className="text-xs sm:hidden truncate">saviibanks.com</span>
         </div>
       </div>
 
       {/* Main header */}
       <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-16">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
-            <div className="flex items-center gap-3">
-              <div className="gradient-primary w-10 h-10 rounded-lg flex items-center justify-center font-bold text-primary-foreground">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="gradient-primary w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center font-bold text-primary-foreground text-sm sm:text-base">
                 SBX
               </div>
-              <div className="font-poppins font-bold text-xl">
+              <div className="font-poppins font-bold text-lg sm:text-xl">
                 <div className="text-primary">SAVII BANKS</div>
                 <div className="text-muted-foreground text-xs">FX GROUP</div>
               </div>
