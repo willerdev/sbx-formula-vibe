@@ -25,9 +25,9 @@ export const Hero = () => {
           <div className="space-y-6 animate-fade-in">
             <div className="space-y-4">
               <h1 className="font-poppins font-extrabold text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight">
-                <span className="text-foreground block mb-2 animate-fade-in">Your gateway to</span>
-                <span className="text-foreground block animate-fade-in" style={{animationDelay: '0.2s'}}>
-                  precise, smart trading
+                <span className="text-foreground block mb-2 animate-fade-in">Master the art of</span>
+                <span className="bg-gradient-to-r from-primary via-yellow-400 to-primary bg-clip-text text-transparent block animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  elite trading excellence
                 </span>
               </h1>
               

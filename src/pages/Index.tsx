@@ -36,7 +36,7 @@ const Index = () => {
           <CommunitySection />
         </section>
         
-        <section className="w-full bg-foreground text-background animate-fade-in">
+        <section className="w-full bg-gradient-to-b from-secondary/20 to-secondary/30 animate-fade-in">
           <Footer />
         </section>
       </main>
