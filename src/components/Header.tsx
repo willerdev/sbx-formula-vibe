@@ -34,8 +34,8 @@ export const Header = () => {
                 SBX
               </div>
               <div className="font-poppins font-bold text-xl">
-                <span className="text-primary">SAVII BANKS</span>
-                <span className="text-white"> FX GROUP</span>
+                <div className="text-primary">SAVII BANKS</div>
+                <div className="text-muted-foreground text-xs">FX GROUP</div>
               </div>
             </div>
 
