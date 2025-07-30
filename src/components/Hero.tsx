@@ -27,7 +27,7 @@ export const Hero = () => {
               <h1 className="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight">
                 <span className="text-foreground block mb-1 sm:mb-2 animate-fade-in">Master the art of</span>
                 <span className="bg-gradient-to-r from-primary via-yellow-400 to-primary bg-clip-text text-transparent block animate-fade-in" style={{animationDelay: '0.2s'}}>
-                  elite trading excellence
+                  Unlock Synthetic Indices Excellence
                 </span>
               </h1>
               
