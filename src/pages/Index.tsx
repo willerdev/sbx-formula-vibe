@@ -6,6 +6,7 @@ import { WhyChooseSection } from "@/components/WhyChooseSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { CommunitySection } from "@/components/CommunitySection";
 import { Footer } from "@/components/Footer";
+import HelpChat from "@/components/HelpChat";
 
 const Index = () => {
   return (
@@ -40,6 +41,7 @@ const Index = () => {
           <Footer />
         </section>
       </main>
+      <HelpChat />
     </div>
   );
 };
