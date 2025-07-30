@@ -59,12 +59,14 @@ export const WhyChooseSection = () => {
                      <span className="text-gradient-primary">SAVII BANKS,</span>
                    </h3>
                    
-                    <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
-                      <span className="text-foreground">I PLAN MY TRADES AND </span>
-                      <span className="text-gradient-accent">TRADE MY PLANS</span>
-                      <br />
-                      <span className="text-gradient-primary">EVERY TIME</span>
-                    </h3>
+                     <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
+                       <span className="text-foreground">I PLAN </span>
+                       <span className="text-gradient-accent">MY TRADES</span>
+                       <span className="text-foreground"> AND TRADE </span>
+                       <span className="text-gradient-accent">MY PLANS</span>
+                       <br />
+                       <span className="text-gradient-primary">EVERY TIME</span>
+                     </h3>
                  </div>
 
                  <div className="pt-4 border-t border-primary/20">
