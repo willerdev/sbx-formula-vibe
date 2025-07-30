@@ -63,7 +63,7 @@ export const WhyChooseSection = () => {
                       <span className="text-foreground">I PLAN MY TRADES AND </span>
                       <span className="text-gradient-accent">TRADE MY PLANS</span>
                       <br />
-                      <span className="text-gradient-accent">—EVERY TIME</span>
+                      <span className="text-gradient-primary">EVERY TIME</span>
                     </h3>
                  </div>
 
