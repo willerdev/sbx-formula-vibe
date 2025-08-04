@@ -4,6 +4,7 @@ import { TradingTicker } from "@/components/TradingTicker";
 import { ServicesSection } from "@/components/ServicesSection";
 import { WhyChooseSection } from "@/components/WhyChooseSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { StatsSection } from "@/components/StatsSection";
 import { CommunitySection } from "@/components/CommunitySection";
 import { Footer } from "@/components/Footer";
 import HelpChat from "@/components/HelpChat";
@@ -31,6 +32,10 @@ const Index = () => {
         
         <section className="w-full bg-secondary/5 animate-fade-in">
           <TestimonialsSection />
+        </section>
+        
+        <section className="w-full animate-fade-in">
+          <StatsSection />
         </section>
         
         <section className="w-full bg-gradient-to-t from-primary/10 to-background animate-slide-in-right">

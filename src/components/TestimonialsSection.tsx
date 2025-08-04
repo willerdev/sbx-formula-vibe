@@ -4,19 +4,19 @@ import { Star, Quote } from "lucide-react";
 export const TestimonialsSection = () => {
   const testimonials = [
     {
-      name: "Marcus Johnson",
+      name: "Manzi Johnson",
       text: "Great signals on Volatility 75(1s)! The accuracy is incredible and I've been consistently profitable since joining SBX Formula.",
       rating: 5,
       profit: "+2,450%"
     },
     {
-      name: "Sarah Chen",
+      name: "Umutoni Sarah",
       text: "Mentorship helped me stay profitable on Deriv. The one-on-one guidance transformed my trading mindset completely.",
       rating: 5,
       profit: "+1,890%"
     },
     {
-      name: "David Rodriguez",
+      name: "Niyonshuti David",
       text: "The synthetic indices strategies are pure gold. I went from losing trader to consistent profits in just 3 months with SBX Formula.",
       rating: 5,
       profit: "+3,120%"
