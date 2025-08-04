@@ -80,7 +80,7 @@ export const PastSignalsSection = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             <span className="text-foreground">Past </span>
-            <span className="text-gradient-accent">Signals</span>
+            <span className="text-yellow-500">Signals</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             Real results from real traders using SBX Formula strategies on Deriv synthetic indices.
