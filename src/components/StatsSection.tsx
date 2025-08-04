@@ -1,19 +1,19 @@
 export const StatsSection = () => {
   const stats = [
     {
-      number: "300k+",
+      number: "2000+",
       label: "Current Members"
     },
     {
-      number: "116k+", 
+      number: "1200+", 
       label: "Chat Members"
     },
     {
-      number: "17k+",
+      number: "1500+",
       label: "Signals Received"
     },
     {
-      number: "15.5k+",
+      number: "1350+",
       label: "Won Signals"
     }
   ];
