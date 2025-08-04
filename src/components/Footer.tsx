@@ -12,7 +12,6 @@ export const Footer = () => {
               <h3 className="font-poppins font-bold text-2xl">
                 <span className="text-primary">SAVII BANKS</span> <span className="text-muted-foreground">FX GROUP</span>
               </h3>
-              <p className="text-sm text-muted-foreground mt-2">SBX Formula</p>
             </div>
             
             <div className="space-y-4">
