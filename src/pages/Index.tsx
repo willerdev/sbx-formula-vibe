@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { TradingTicker } from "@/components/TradingTicker";
 import { ServicesSection } from "@/components/ServicesSection";
 import { WhyChooseSection } from "@/components/WhyChooseSection";
+import { PastSignalsSection } from "@/components/PastSignalsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { StatsSection } from "@/components/StatsSection";
 import { CommunitySection } from "@/components/CommunitySection";
@@ -28,6 +29,10 @@ const Index = () => {
         
         <section className="w-full bg-gradient-to-r from-primary/5 via-background to-accent/5 animate-slide-in-right border-y border-border/10">
           <WhyChooseSection />
+        </section>
+        
+        <section className="w-full bg-background animate-fade-in">
+          <PastSignalsSection />
         </section>
         
         <section className="w-full bg-secondary/5 animate-fade-in">
