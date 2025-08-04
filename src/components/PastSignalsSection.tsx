@@ -88,9 +88,19 @@ export const PastSignalsSection = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {signals.map((signal, index) => (
+          {/* First two signals as images */}
+          <div className="bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg overflow-hidden hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+            <img 
+              src="/lovable-uploads/6b57f6b0-e233-4f42-8122-b0952c2f1774.png" 
+              alt="Trading signals screenshot showing Volatility 50 (1s) Index results"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+          
+          {/* Skip the first two text signals and show the rest */}
+          {signals.slice(2).map((signal, index) => (
             <div
-              key={index}
+              key={index + 2}
               className="bg-card/80 backdrop-blur-sm border border-border/20 rounded-lg p-4 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
             >
               <div className="space-y-3">
