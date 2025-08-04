@@ -2,21 +2,21 @@ export const PastSignalsSection = () => {
   const signals = [
     {
       pair: "Volatility 50 (1s) Index",
-      action: "buy 0.005",
-      result: "+39.47",
+      action: "sell 0.01",
+      result: "+108.80",
       profit: true,
-      entry: "531401.14",
-      exit: "539294.30",
-      date: "2022.12.21 01:06:32"
+      entry: "213906.31",
+      exit: "203026.06",
+      date: "2024.01.15 14:30:25"
     },
     {
       pair: "Volatility 50 (1s) Index", 
-      action: "buy 0.009",
-      result: "+173.29",
+      action: "sell 0.01",
+      result: "+109.13",
       profit: true,
-      entry: "530085.27",
-      exit: "549340.03",
-      date: "2022.12.21 08:16:07"
+      entry: "213939.14",
+      exit: "203026.06",
+      date: "2024.01.15 14:32:18"
     },
     {
       pair: "Volatility 25 Index",
@@ -99,7 +99,7 @@ export const PastSignalsSection = () => {
                     {signal.pair}
                   </span>
                   <span className={`text-sm font-bold ${
-                    signal.profit ? 'text-green-500' : 'text-red-500'
+                    signal.profit ? 'text-yellow-500' : 'text-red-500'
                   }`}>
                     {signal.result}
                   </span>
@@ -133,7 +133,7 @@ export const PastSignalsSection = () => {
 
         <div className="text-center mt-12">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
-            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
             <span className="text-sm font-medium">Live signals available daily</span>
           </div>
         </div>
