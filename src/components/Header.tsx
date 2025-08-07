@@ -30,12 +30,18 @@ export const Header = () => {
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
-            <div className="flex items-center gap-3 sm:gap-4">
-              <img 
-                src="/lovable-uploads/3856dbbc-7e0f-4eaa-b08c-dbc1198e4ade.png" 
-                alt="Savii Banks FX Group Logo" 
-                className="w-16 h-16 sm:w-20 sm:h-20 object-contain brightness-110 contrast-110"
-              />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 backdrop-blur-sm rounded-lg border border-primary/20 p-1 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/3856dbbc-7e0f-4eaa-b08c-dbc1198e4ade.png" 
+                  alt="Savii Banks FX Group Logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="font-poppins font-bold text-lg sm:text-xl">
+                <div className="text-primary">SAVII BANKS</div>
+                <div className="text-muted-foreground text-xs">FX GROUP</div>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
