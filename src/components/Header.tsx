@@ -34,7 +34,7 @@ export const Header = () => {
               <img 
                 src="/lovable-uploads/3856dbbc-7e0f-4eaa-b08c-dbc1198e4ade.png" 
                 alt="Savii Banks FX Group Logo" 
-                className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                className="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-lg"
               />
               <div className="font-poppins font-bold text-lg sm:text-xl">
                 <div className="text-primary">SAVII BANKS</div>
