@@ -27,8 +27,8 @@ export const Header = () => {
 
       {/* Main header */}
       <header className="w-full bg-background backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
-        <div className="w-full max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          <div className="flex items-center justify-between h-16 sm:h-18">
+        <div className="w-full px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-24">
+          <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="w-14 h-14 sm:w-18 sm:h-18 bg-background flex items-center justify-center rounded-lg border border-border/50">
@@ -38,25 +38,25 @@ export const Header = () => {
                   className="w-full h-full object-contain rounded-lg"
                 />
               </div>
-              <div className="font-poppins font-bold text-lg sm:text-xl">
+              <div className="font-poppins font-bold text-xl sm:text-2xl">
                 <div className="text-primary">SAVII BANKS</div>
-                <div className="text-muted-foreground text-xs">FX GROUP</div>
+                <div className="text-muted-foreground text-sm">FX GROUP</div>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#signals" className="text-foreground hover:text-primary transition-colors font-medium">
+            <nav className="hidden md:flex items-center space-x-10 lg:space-x-12">
+              <a href="#signals" className="text-foreground hover:text-primary transition-colors font-medium text-base lg:text-lg">
                 Signals
               </a>
-              <a href="#mentorship" className="text-foreground hover:text-primary transition-colors font-medium">
+              <a href="#mentorship" className="text-foreground hover:text-primary transition-colors font-medium text-base lg:text-lg">
                 Mentorship
               </a>
             </nav>
 
             {/* Desktop Login Button */}
             <div className="hidden md:flex items-center gap-4">
-              <Button variant="hero" size="sm" asChild>
+              <Button variant="hero" size="lg" className="px-8 py-3 text-base font-semibold" asChild>
                 <a href="/signup">Login</a>
               </Button>
             </div>

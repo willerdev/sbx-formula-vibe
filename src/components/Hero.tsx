@@ -18,24 +18,24 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 xl:px-12 pt-16 sm:pt-20 pb-12 sm:pb-16">
+      <div className="relative w-full px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-24 pt-16 sm:pt-20 pb-12 sm:pb-16">
         <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[80vh]">
           
           {/* Left side - Content */}
           <div className="space-y-4 sm:space-y-6 animate-fade-in">
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="font-poppins font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.1] tracking-tight">
+              <h1 className="font-poppins font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight">
                 
                 <span className="bg-gradient-to-r from-primary via-yellow-400 to-primary bg-clip-text text-transparent block animate-fade-in" style={{animationDelay: '0.2s'}}>
                   Unlock Synthetic Indices Excellence
                 </span>
               </h1>
               
-              <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed font-medium animate-fade-in px-2 sm:px-0" style={{animationDelay: '0.6s'}}>
+              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-medium animate-fade-in px-2 sm:px-0" style={{animationDelay: '0.6s'}}>
                 Join the elite 1% who trade with clarity, confidence, and consistency.
               </h2>
               
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl animate-fade-in px-2 sm:px-0" style={{animationDelay: '0.8s'}}>
+              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl animate-fade-in px-2 sm:px-0" style={{animationDelay: '0.8s'}}>
                 At SBX, we don't just trade — we execute with purpose. Powered by pure price action, we dominate 
                 Deriv's synthetic indices with focus, discipline, and results.
               </p>
@@ -43,11 +43,11 @@ export const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in px-2 sm:px-0" style={{animationDelay: '1s'}}>
-              <Button variant="hero" size="lg" className="group relative overflow-hidden w-full sm:w-auto text-sm sm:text-base">
+              <Button variant="hero" size="lg" className="group relative overflow-hidden w-full sm:w-auto text-base sm:text-lg px-8 py-4">
                 <span className="relative z-10">Start Trading Now</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
-              <Button variant="premium" size="lg" className="group hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-sm sm:text-base">
+              <Button variant="premium" size="lg" className="group hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-base sm:text-lg px-8 py-4">
                 Discover Our SBX Formula
               </Button>
             </div>
