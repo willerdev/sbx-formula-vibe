@@ -26,12 +26,12 @@ export const Header = () => {
       </div>
 
       {/* Main header */}
-      <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
-        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+      <header className="w-full bg-background backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
+        <div className="w-full max-w-none mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Logo */}
-            <div className="flex items-center gap-2 sm:gap-3">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-14 h-14 sm:w-18 sm:h-18 bg-background flex items-center justify-center rounded-lg border border-border/50">
                 <img 
                   src="/lovable-uploads/502cf9d6-18f6-4fe4-9cf7-d6c8c7812f62.png" 
                   alt="Savii Banks FX Group Logo" 
