@@ -31,11 +31,13 @@ export const Header = () => {
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <div className="flex items-center gap-2 sm:gap-3">
-              <img 
-                src="/lovable-uploads/3856dbbc-7e0f-4eaa-b08c-dbc1198e4ade.png" 
-                alt="Savii Banks FX Group Logo" 
-                className="w-10 h-10 sm:w-12 sm:h-12 object-contain drop-shadow-lg"
-              />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 backdrop-blur-sm rounded-lg border border-primary/20 p-1 flex items-center justify-center">
+                <img 
+                  src="/lovable-uploads/3856dbbc-7e0f-4eaa-b08c-dbc1198e4ade.png" 
+                  alt="Savii Banks FX Group Logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
               <div className="font-poppins font-bold text-lg sm:text-xl">
                 <div className="text-primary">SAVII BANKS</div>
                 <div className="text-muted-foreground text-xs">FX GROUP</div>
