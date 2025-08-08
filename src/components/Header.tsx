@@ -7,40 +7,22 @@ export const Header = () => {
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-secondary/30 text-muted-foreground text-xs sm:text-sm py-2 px-3 sm:px-4 flex items-center justify-between overflow-hidden">
-        <div className="flex items-center gap-1 sm:gap-2 min-w-0">
-          <Mail className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-          <span className="truncate">support@saviibanks.com</span>
-        </div>
-        <div className="flex items-center gap-2 sm:gap-4 min-w-0">
-          <div className="hidden lg:flex items-center gap-2 sm:gap-3">
-            <Instagram className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
-            <Youtube className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
-            <Twitter className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
-            <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 hover:text-primary cursor-pointer transition-colors" />
-          </div>
-          <span className="text-xs hidden sm:inline truncate">Official website: saviibanks.com. Beware of fakes!</span>
-          <span className="text-xs sm:hidden truncate">saviibanks.com</span>
-        </div>
-      </div>
-
       {/* Main header */}
       <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
-            <div className="flex items-center gap-1 sm:gap-2">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg border border-primary/30 backdrop-blur-sm">
+            <div className="flex items-center -space-x-1">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-primary/10 rounded-xl border border-primary/20 backdrop-blur-sm relative z-10">
                 <img 
                   src="/lovable-uploads/502cf9d6-18f6-4fe4-9cf7-d6c8c7812f62.png" 
                   alt="Savii Banks FX Group Logo" 
-                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain filter brightness-110 contrast-110"
+                  className="w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-110 contrast-110"
                 />
               </div>
-              <div className="font-poppins font-bold text-lg sm:text-xl">
-                <div className="text-primary">SAVII BANKS</div>
-                <div className="text-primary/70 text-xs font-medium">FX GROUP</div>
+              <div className="bg-primary/5 pl-4 pr-3 py-2 sm:py-3 rounded-r-xl border border-l-0 border-primary/20 backdrop-blur-sm">
+                <div className="font-poppins font-bold text-lg sm:text-xl text-primary">SAVII BANKS</div>
+                <div className="font-poppins font-semibold text-xs sm:text-sm text-primary/70 -mt-1">FX GROUP</div>
               </div>
             </div>
 
