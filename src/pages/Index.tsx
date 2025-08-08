@@ -14,8 +14,8 @@ const Index = () => {
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <Header />
-      <main className="w-full max-w-none">
-        <section className="w-full bg-black animate-fade-in">
+      <main className="w-full">
+        <section className="w-full bg-gradient-to-br from-background via-background to-primary/5 animate-fade-in">
           <Hero />
         </section>
         

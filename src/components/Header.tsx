@@ -26,37 +26,37 @@ export const Header = () => {
       </div>
 
       {/* Main header */}
-      <header className="w-full bg-black backdrop-blur-lg border-b border-gray-800 sticky top-0 z-50 transition-all duration-300">
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
-          <div className="flex items-center justify-between h-20 sm:h-24">
+      <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
-            <div className="flex items-center gap-4 sm:gap-6">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-black flex items-center justify-center rounded-xl border border-gray-700/50">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
                 <img 
                   src="/lovable-uploads/502cf9d6-18f6-4fe4-9cf7-d6c8c7812f62.png" 
                   alt="Savii Banks FX Group Logo" 
-                  className="w-full h-full object-contain rounded-xl"
+                  className="w-full h-full object-contain rounded-lg"
                 />
               </div>
-              <div className="font-poppins font-bold text-2xl sm:text-3xl">
-                <div className="text-white">SAVII BANKS</div>
-                <div className="text-gray-400 text-lg">FX GROUP</div>
+              <div className="font-poppins font-bold text-lg sm:text-xl">
+                <div className="text-primary">SAVII BANKS</div>
+                <div className="text-muted-foreground text-xs">FX GROUP</div>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-12 lg:space-x-16">
-              <a href="#signals" className="text-white hover:text-primary transition-colors font-medium text-lg lg:text-xl">
+            <nav className="hidden md:flex items-center space-x-8">
+              <a href="#signals" className="text-foreground hover:text-primary transition-colors font-medium">
                 Signals
               </a>
-              <a href="#mentorship" className="text-white hover:text-primary transition-colors font-medium text-lg lg:text-xl">
+              <a href="#mentorship" className="text-foreground hover:text-primary transition-colors font-medium">
                 Mentorship
               </a>
             </nav>
 
             {/* Desktop Login Button */}
             <div className="hidden md:flex items-center gap-4">
-              <Button variant="hero" size="lg" className="px-8 py-3 text-base font-semibold" asChild>
+              <Button variant="hero" size="sm" asChild>
                 <a href="/signup">Login</a>
               </Button>
             </div>
