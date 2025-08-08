@@ -13,16 +13,16 @@ export const Header = () => {
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
             <div className="flex items-center -space-x-1">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center bg-primary/10 rounded-xl border border-primary/20 backdrop-blur-sm relative z-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center relative z-10">
                 <img 
                   src="/lovable-uploads/502cf9d6-18f6-4fe4-9cf7-d6c8c7812f62.png" 
                   alt="Savii Banks FX Group Logo" 
                   className="w-10 h-10 sm:w-12 sm:h-12 object-contain filter brightness-110 contrast-110"
                 />
               </div>
-              <div className="bg-primary/5 pl-4 pr-3 py-2 sm:py-3 rounded-r-xl border border-l-0 border-primary/20 backdrop-blur-sm">
-                <div className="font-poppins font-bold text-lg sm:text-xl text-primary">SAVII BANKS</div>
-                <div className="font-poppins font-semibold text-xs sm:text-sm text-primary/70 -mt-1">FX GROUP</div>
+              <div className="pl-4 pr-3 py-2 sm:py-3">
+                <div className="font-poppins font-bold text-lg sm:text-xl text-primary text-center">SAVII BANKS</div>
+                <div className="font-poppins font-semibold text-xs sm:text-sm text-white -mt-1 text-center">FX GROUP</div>
               </div>
             </div>
 
