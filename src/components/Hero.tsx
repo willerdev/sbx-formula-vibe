@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       {/* Animated Background with Particles */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-background">
+      <div className="absolute inset-0 bg-black">
         {/* Animated gradient orbs */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,183,3,0.15),transparent_50%)] animate-pulse" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(34,197,94,0.12),transparent_60%)] animate-pulse" style={{animationDelay: '1s'}} />
@@ -18,37 +18,40 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative w-full px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-24 pt-16 sm:pt-20 pb-12 sm:pb-16">
-        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center min-h-[70vh] sm:min-h-[80vh]">
+      <div className="relative w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 pt-20 sm:pt-24 pb-16 sm:pb-20">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[75vh] sm:min-h-[85vh]">
           
           {/* Left side - Content */}
           <div className="space-y-4 sm:space-y-6 animate-fade-in">
             <div className="space-y-3 sm:space-y-4">
-              <h1 className="font-poppins font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[1.1] tracking-tight">
+              <h1 className="font-poppins font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl leading-[1.0] tracking-tight">
                 
-                <span className="bg-gradient-to-r from-primary via-yellow-400 to-primary bg-clip-text text-transparent block animate-fade-in" style={{animationDelay: '0.2s'}}>
-                  Unlock Synthetic Indices Excellence
+                <span className="text-white block animate-fade-in" style={{animationDelay: '0.2s'}}>
+                  Build & Grow
+                </span>
+                <span className="text-white block animate-fade-in" style={{animationDelay: '0.4s'}}>
+                  Your Profits
                 </span>
               </h1>
               
-              <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-medium animate-fade-in px-2 sm:px-0" style={{animationDelay: '0.6s'}}>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-gray-300 leading-relaxed font-medium animate-fade-in" style={{animationDelay: '0.6s'}}>
                 Join the elite 1% who trade with clarity, confidence, and consistency.
               </h2>
               
-              <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl animate-fade-in px-2 sm:px-0" style={{animationDelay: '0.8s'}}>
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-400 leading-relaxed max-w-3xl animate-fade-in" style={{animationDelay: '0.8s'}}>
                 At SBX, we don't just trade — we execute with purpose. Powered by pure price action, we dominate 
                 Deriv's synthetic indices with focus, discipline, and results.
               </p>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in px-2 sm:px-0" style={{animationDelay: '1s'}}>
-              <Button variant="hero" size="lg" className="group relative overflow-hidden w-full sm:w-auto text-base sm:text-lg px-8 py-4">
-                <span className="relative z-10">Start Trading Now</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in" style={{animationDelay: '1s'}}>
+              <Button className="group relative overflow-hidden w-full sm:w-auto text-xl sm:text-2xl px-12 py-6 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold">
+                <span className="relative z-10">Discover More</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-400/20 to-red-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
-              <Button variant="premium" size="lg" className="group hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-base sm:text-lg px-8 py-4">
-                Discover Our SBX Formula
+              <Button variant="outline" className="group hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-xl sm:text-2xl px-12 py-6 border-white text-white hover:bg-white hover:text-black rounded-full font-bold">
+                Learn More
               </Button>
             </div>
           </div>

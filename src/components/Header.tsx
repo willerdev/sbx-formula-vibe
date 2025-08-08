@@ -26,30 +26,30 @@ export const Header = () => {
       </div>
 
       {/* Main header */}
-      <header className="w-full bg-background backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
-        <div className="w-full px-6 md:px-8 lg:px-12 xl:px-20 2xl:px-24">
-          <div className="flex items-center justify-between h-16 sm:h-20">
+      <header className="w-full bg-black backdrop-blur-lg border-b border-gray-800 sticky top-0 z-50 transition-all duration-300">
+        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20">
+          <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="w-14 h-14 sm:w-18 sm:h-18 bg-background flex items-center justify-center rounded-lg border border-border/50">
+            <div className="flex items-center gap-4 sm:gap-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 bg-black flex items-center justify-center rounded-xl border border-gray-700/50">
                 <img 
                   src="/lovable-uploads/502cf9d6-18f6-4fe4-9cf7-d6c8c7812f62.png" 
                   alt="Savii Banks FX Group Logo" 
-                  className="w-full h-full object-contain rounded-lg"
+                  className="w-full h-full object-contain rounded-xl"
                 />
               </div>
-              <div className="font-poppins font-bold text-xl sm:text-2xl">
-                <div className="text-primary">SAVII BANKS</div>
-                <div className="text-muted-foreground text-sm">FX GROUP</div>
+              <div className="font-poppins font-bold text-2xl sm:text-3xl">
+                <div className="text-white">SAVII BANKS</div>
+                <div className="text-gray-400 text-lg">FX GROUP</div>
               </div>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-10 lg:space-x-12">
-              <a href="#signals" className="text-foreground hover:text-primary transition-colors font-medium text-base lg:text-lg">
+            <nav className="hidden md:flex items-center space-x-12 lg:space-x-16">
+              <a href="#signals" className="text-white hover:text-primary transition-colors font-medium text-lg lg:text-xl">
                 Signals
               </a>
-              <a href="#mentorship" className="text-foreground hover:text-primary transition-colors font-medium text-base lg:text-lg">
+              <a href="#mentorship" className="text-white hover:text-primary transition-colors font-medium text-lg lg:text-xl">
                 Mentorship
               </a>
             </nav>
