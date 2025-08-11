@@ -13,13 +13,11 @@ export const Header = () => {
           <div className="flex items-center justify-between h-16 py-2">
             {/* Logo */}
             <div className="flex items-center">
-              <div className="flex items-center justify-center">
-                <img 
-                  src="/lovable-uploads/da38fccb-9157-47cb-9d6b-00ce2bb4711b.png" 
-                  alt="Savii Banks FX Group Logo" 
-                  className="h-10 w-auto object-contain"
-                />
-              </div>
+              <img 
+                src="/lovable-uploads/420bd981-76d3-48a3-be88-4f3ab767a9c6.png" 
+                alt="Savii Banks FX Group Logo" 
+                className="h-12 w-auto object-contain"
+              />
             </div>
 
             {/* Desktop Navigation */}
