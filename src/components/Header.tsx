@@ -10,7 +10,7 @@ export const Header = () => {
       {/* Main header */}
       <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-16 sm:h-18">
+          <div className="flex items-center justify-between h-20 sm:h-24 py-2">
             {/* Logo */}
             <div className="flex items-center gap-0">
               <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
@@ -20,9 +20,9 @@ export const Header = () => {
                   className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
                 />
               </div>
-              <div className="flex flex-col ml-2">
+              <div className="flex flex-col ml-2 relative">
                 <div className="font-poppins font-bold text-xl sm:text-2xl text-white leading-tight">SAVII BANKS</div>
-                <div className="font-poppins font-semibold text-sm sm:text-base text-primary -mt-1">FX GROUP</div>
+                <div className="font-poppins font-semibold text-sm sm:text-base text-primary absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-1 whitespace-nowrap">FX GROUP</div>
               </div>
             </div>
 
