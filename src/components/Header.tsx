@@ -15,7 +15,7 @@ export const Header = () => {
             <div className="flex items-center gap-0">
               <div className="w-12 h-12 flex items-center justify-center">
                 <img 
-                  src="/lovable-uploads/895b4305-b1a8-42d2-9076-a517d95d9601.png" 
+                  src="/lovable-uploads/da38fccb-9157-47cb-9d6b-00ce2bb4711b.png" 
                   alt="Savii Banks FX Group Logo" 
                   className="w-10 h-10 object-contain"
                 />
