@@ -10,19 +10,19 @@ export const Header = () => {
       {/* Main header */}
       <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-all duration-300">
         <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+          <div className="flex items-center justify-between h-16 sm:h-18">
             {/* Logo */}
-            <div className="flex items-center gap-1 sm:gap-2">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center relative z-10">
+            <div className="flex items-center gap-0">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-background/95 backdrop-blur-lg rounded-lg border border-border/50">
                 <img 
                   src="/lovable-uploads/895b4305-b1a8-42d2-9076-a517d95d9601.png" 
                   alt="Savii Banks FX Group Logo" 
-                  className="w-14 h-14 sm:w-18 sm:h-18 object-contain"
+                  className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
                 />
               </div>
-              <div className="flex flex-col">
-                <div className="font-poppins font-bold text-lg sm:text-xl text-white">SAVII BANKS</div>
-                <div className="font-poppins font-semibold text-xs sm:text-sm text-primary -mt-1">FX GROUP</div>
+              <div className="flex flex-col ml-2">
+                <div className="font-poppins font-bold text-xl sm:text-2xl text-white leading-tight">SAVII BANKS</div>
+                <div className="font-poppins font-semibold text-sm sm:text-base text-primary -mt-1">FX GROUP</div>
               </div>
             </div>
 
