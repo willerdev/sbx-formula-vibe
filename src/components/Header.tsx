@@ -11,13 +11,13 @@ export const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo - Left */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center p-3">
+            <a href="/" className="flex items-center px-4 py-3">
               <img 
-                src="/lovable-uploads/0dee6bf3-cdaa-4119-b213-6b1bcca45e21.png" 
+                src="/lovable-uploads/233d3772-a665-44de-b080-6b0aa546c732.png" 
                 alt="Savii Banks FX Group Logo" 
-                className="h-[60px] w-auto object-contain drop-shadow-lg lg:h-[60px] md:h-[44px] transition-smooth"
+                className="h-[60px] w-auto object-contain lg:h-[60px] md:h-[50px] sm:h-[44px]"
                 style={{
-                  filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15)) drop-shadow(0 0 12px hsl(var(--primary) / 0.2))'
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
                 }}
               />
             </a>
