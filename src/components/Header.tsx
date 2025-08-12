@@ -13,8 +13,8 @@ export const Header = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center px-2 py-2">
               <img 
-                src="/lovable-uploads/8c2ff903-8287-44fe-b620-d1f2100928b1.png" 
-                alt="Savii Banks FX Group Logo"
+                src="/lovable-uploads/213ab040-62c9-4df7-b83d-1cf9c2dc72d8.png" 
+                alt="Savii Banks FX Group Logo" 
                 className="h-[100px] w-auto object-contain lg:h-[100px] md:h-[80px] sm:h-[60px] brightness-110 contrast-110"
                 style={{
                   filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3)) brightness(1.1) contrast(1.1)'
