@@ -15,7 +15,7 @@ export const Header = () => {
               <img 
                 src="/lovable-uploads/2fc4e8c6-9d85-4034-b411-337e29b4443d.png" 
                 alt="Savii Banks FX Group Logo" 
-                className="h-[140px] w-auto object-contain lg:h-[140px] md:h-[120px] sm:h-[100px] brightness-110 contrast-110"
+                className="h-[120px] w-auto object-contain lg:h-[120px] md:h-[100px] sm:h-[80px] brightness-110 contrast-110"
                 style={{
                   filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3)) brightness(1.1) contrast(1.1)'
                 }}
