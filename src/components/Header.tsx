@@ -8,14 +8,14 @@ export const Header = () => {
   return (
     <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-smooth">
       <div className="w-full px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-28">
           {/* Logo - Left */}
           <div className="flex items-center">
             <a href="/" className="flex items-center px-2 py-2">
               <img 
                 src="/lovable-uploads/2fc4e8c6-9d85-4034-b411-337e29b4443d.png" 
                 alt="Savii Banks FX Group Logo" 
-                className="h-[110px] w-auto object-contain lg:h-[110px] md:h-[90px] sm:h-[70px] brightness-110 contrast-110"
+                className="h-[100px] w-auto object-contain brightness-110 contrast-110"
                 style={{
                   filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3)) brightness(1.1) contrast(1.1)'
                 }}
