@@ -13,7 +13,7 @@ export const Header = () => {
           <div className="flex items-center">
             <a href="/" className="flex items-center px-2 py-2">
               <img 
-                src="/lovable-uploads/8602f6ae-2e55-4da1-93bb-d8e7c5b0d2ff.png" 
+                src="/lovable-uploads/213ab040-62c9-4df7-b83d-1cf9c2dc72d8.png" 
                 alt="Savii Banks FX Group Logo" 
                 className="h-[100px] w-auto object-contain lg:h-[100px] md:h-[80px] sm:h-[60px] brightness-110 contrast-110"
                 style={{
