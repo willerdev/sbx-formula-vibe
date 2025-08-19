@@ -15,7 +15,7 @@ export const Header = () => {
               <img 
                 src="/lovable-uploads/f5c45cc3-ee68-426b-b25c-762724962b16.png" 
                 alt="SBX Logo" 
-                className="h-[120px] w-auto object-contain lg:h-[120px] md:h-[100px] sm:h-[80px]"
+                className="h-[60px] w-auto object-contain lg:h-[60px] md:h-[50px] sm:h-[40px]"
                 style={{
                   filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3))'
                 }}
