@@ -11,15 +11,19 @@ export const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo - Left */}
           <div className="flex items-center">
-            <a href="/" className="flex items-center px-2 py-2">
+            <a href="/" className="flex items-center px-2 py-2 gap-3">
               <img 
-                src="/lovable-uploads/213ab040-62c9-4df7-b83d-1cf9c2dc72d8.png" 
-                alt="Savii Banks FX Group Logo" 
-                className="h-[100px] w-auto object-contain lg:h-[100px] md:h-[80px] sm:h-[60px] brightness-110 contrast-110"
+                src="/lovable-uploads/f5c45cc3-ee68-426b-b25c-762724962b16.png" 
+                alt="SBX Logo" 
+                className="h-[120px] w-auto object-contain lg:h-[120px] md:h-[100px] sm:h-[80px]"
                 style={{
-                  filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3)) brightness(1.1) contrast(1.1)'
+                  filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3))'
                 }}
               />
+              <div className="flex flex-col">
+                <span className="text-white font-bold text-xl lg:text-2xl">Savii Banks</span>
+                <span className="text-yellow-400 font-semibold text-sm lg:text-base">FX Group</span>
+              </div>
             </a>
           </div>
 
