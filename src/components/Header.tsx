@@ -15,14 +15,13 @@ export const Header = () => {
               <img 
                 src="/lovable-uploads/f5c45cc3-ee68-426b-b25c-762724962b16.png" 
                 alt="SBX Logo" 
-                className="h-[60px] w-auto object-contain lg:h-[60px] md:h-[50px] sm:h-[40px]"
+                className="h-[80px] w-auto object-contain lg:h-[80px] md:h-[70px] sm:h-[60px]"
                 style={{
                   filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3))'
                 }}
               />
               <div className="flex flex-col">
-                <span className="text-white font-bold text-xl lg:text-2xl">Savii Banks</span>
-                <span className="text-yellow-400 font-semibold text-sm lg:text-base">FX Group</span>
+                <span className="text-white font-bold text-xl lg:text-2xl">SAVII <span className="text-yellow-400">FX GROUP</span> BANKS</span>
               </div>
             </a>
           </div>
