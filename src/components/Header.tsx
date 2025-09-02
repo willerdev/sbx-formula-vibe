@@ -21,7 +21,8 @@ export const Header = () => {
                 }}
               />
               <div className="flex flex-col">
-                <span className="text-white font-bold text-xl lg:text-2xl">SAVII <span className="text-yellow-400">FX GROUP</span> BANKS</span>
+                <span className="text-white font-bold text-xl lg:text-2xl">SAVII BANKS</span>
+                <span className="text-yellow-400 font-semibold text-sm lg:text-base text-center">FX GROUP</span>
               </div>
             </a>
           </div>
