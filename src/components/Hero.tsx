@@ -79,10 +79,10 @@ export const Hero = () => {
                     <div className="absolute inset-0 rounded-full bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
                   <div className="text-center space-y-1 sm:space-y-2">
-                    <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
+                    <div className="text-lg sm:text-xl lg:text-2xl font-bold text-foreground">
                       SAVII BANKS
                     </div>
-                    <div className="text-xs sm:text-sm lg:text-base font-normal text-muted-foreground/80">
+                    <div className="text-xs sm:text-sm font-normal text-muted-foreground/80">
                       FX GROUP
                     </div>
                   </div>
