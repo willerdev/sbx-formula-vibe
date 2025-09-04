@@ -69,6 +69,10 @@ export const Header = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem onClick={() => navigate("/dashboard")}>
+                    <User className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => navigate("/profile")}>
                     <User className="w-4 h-4 mr-2" />
                     Profile
@@ -126,6 +130,17 @@ export const Header = () => {
                   <div className="space-y-2">
                     <Button 
                       className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-2 font-medium transition-fast"
+                      onClick={() => {
+                        navigate("/dashboard");
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      <User className="w-4 h-4 mr-2" />
+                      Dashboard
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      className="w-full py-2 font-medium transition-fast"
                       onClick={() => {
                         navigate("/profile");
                         setIsMenuOpen(false);
