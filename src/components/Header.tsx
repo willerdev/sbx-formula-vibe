@@ -1,9 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-smooth">
@@ -48,14 +58,35 @@ export const Header = () => {
             </div>
           </nav>
 
-          {/* Login Button - Right */}
+          {/* Auth Section - Right */}
           <div className="hidden lg:flex items-center">
-            <Button 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl"
-              asChild
-            >
-              <a href="/login">Login</a>
-            </Button>
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl">
+                    <User className="w-4 h-4 mr-2" />
+                    Account
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-48">
+                  <DropdownMenuItem onClick={() => navigate("/profile")}>
+                    <User className="w-4 h-4 mr-2" />
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={signOut}>
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Sign Out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl"
+                onClick={() => navigate("/auth")}
+              >
+                Login
+              </Button>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -91,12 +122,41 @@ export const Header = () => {
                 Register
               </a>
               <div className="px-4 pt-4">
-                <Button 
-                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-2 font-medium transition-fast"
-                  asChild
-                >
-                  <a href="/login">Login</a>
-                </Button>
+                {user ? (
+                  <div className="space-y-2">
+                    <Button 
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-2 font-medium transition-fast"
+                      onClick={() => {
+                        navigate("/profile");
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      <User className="w-4 h-4 mr-2" />
+                      Profile
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      className="w-full py-2 font-medium transition-fast"
+                      onClick={() => {
+                        signOut();
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      <LogOut className="w-4 h-4 mr-2" />
+                      Sign Out
+                    </Button>
+                  </div>
+                ) : (
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-2 font-medium transition-fast"
+                    onClick={() => {
+                      navigate("/auth");
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Login
+                  </Button>
+                )}
               </div>
             </nav>
           </div>
