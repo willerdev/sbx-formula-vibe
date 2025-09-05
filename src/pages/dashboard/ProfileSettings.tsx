@@ -8,6 +8,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useAuth } from "@/hooks/useAuth";
 import { User, Camera, Save } from "lucide-react";
 import { toast } from "sonner";
+import { profileUpdateSchema, sanitizeInput, type ProfileUpdateData } from "@/lib/validation";
+import { supabase } from "@/integrations/supabase/client";
 
 export const ProfileSettings = () => {
   const { user } = useAuth();
@@ -17,7 +19,7 @@ export const ProfileSettings = () => {
   const initials = displayName.slice(0, 2).toUpperCase();
 
   const [formData, setFormData] = useState({
-    displayName: displayName,
+    display_name: displayName,
     email: user?.email || "",
     phone: "",
     bio: "",
@@ -25,19 +27,60 @@ export const ProfileSettings = () => {
     website: ""
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate save
-    setTimeout(() => {
-      setIsLoading(false);
+    setErrors({});
+
+    try {
+      // Sanitize inputs
+      const sanitizedData = {
+        display_name: sanitizeInput(formData.display_name),
+        bio: formData.bio ? sanitizeInput(formData.bio) : undefined,
+        phone: formData.phone ? sanitizeInput(formData.phone) : undefined,
+        website: formData.website ? sanitizeInput(formData.website) : undefined,
+        location: formData.location ? sanitizeInput(formData.location) : undefined,
+      };
+
+      // Validate data
+      const validatedData = profileUpdateSchema.parse(sanitizedData);
+
+      // Update profile in database
+      const { error } = await supabase
+        .from('profiles')
+        .update(validatedData)
+        .eq('user_id', user?.id);
+
+      if (error) throw error;
+
       toast.success("Profile updated successfully!");
-    }, 1000);
+    } catch (error: any) {
+      if (error.issues) {
+        // Zod validation errors
+        const newErrors: Record<string, string> = {};
+        error.issues.forEach((issue: any) => {
+          newErrors[issue.path[0]] = issue.message;
+        });
+        setErrors(newErrors);
+      } else {
+        toast.error("Failed to update profile. Please try again.");
+      }
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({
+        ...prev,
+        [field]: ""
+      }));
+    }
   };
 
   return (
@@ -94,10 +137,14 @@ export const ProfileSettings = () => {
                     <Label htmlFor="displayName">Display Name</Label>
                     <Input
                       id="displayName"
-                      value={formData.displayName}
-                      onChange={(e) => handleInputChange("displayName", e.target.value)}
+                      value={formData.display_name}
+                      onChange={(e) => handleInputChange("display_name", e.target.value)}
                       placeholder="Enter your display name"
+                      className={errors.display_name ? "border-destructive" : ""}
                     />
+                    {errors.display_name && (
+                      <p className="text-sm text-destructive">{errors.display_name}</p>
+                    )}
                   </div>
                   
                   <div className="space-y-2">
@@ -106,9 +153,11 @@ export const ProfileSettings = () => {
                       id="email"
                       type="email"
                       value={formData.email}
-                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      disabled
                       placeholder="Enter your email"
+                      className="bg-muted"
                     />
+                    <p className="text-xs text-muted-foreground">Email cannot be changed</p>
                   </div>
                 </div>
 
@@ -120,7 +169,11 @@ export const ProfileSettings = () => {
                       value={formData.phone}
                       onChange={(e) => handleInputChange("phone", e.target.value)}
                       placeholder="Enter your phone number"
+                      className={errors.phone ? "border-destructive" : ""}
                     />
+                    {errors.phone && (
+                      <p className="text-sm text-destructive">{errors.phone}</p>
+                    )}
                   </div>
                   
                   <div className="space-y-2">
@@ -130,7 +183,11 @@ export const ProfileSettings = () => {
                       value={formData.location}
                       onChange={(e) => handleInputChange("location", e.target.value)}
                       placeholder="Enter your location"
+                      className={errors.location ? "border-destructive" : ""}
                     />
+                    {errors.location && (
+                      <p className="text-sm text-destructive">{errors.location}</p>
+                    )}
                   </div>
                 </div>
 
@@ -141,7 +198,11 @@ export const ProfileSettings = () => {
                     value={formData.website}
                     onChange={(e) => handleInputChange("website", e.target.value)}
                     placeholder="https://your-website.com"
+                    className={errors.website ? "border-destructive" : ""}
                   />
+                  {errors.website && (
+                    <p className="text-sm text-destructive">{errors.website}</p>
+                  )}
                 </div>
 
                 <div className="space-y-2">
@@ -152,7 +213,11 @@ export const ProfileSettings = () => {
                     onChange={(e) => handleInputChange("bio", e.target.value)}
                     placeholder="Tell us about yourself..."
                     rows={4}
+                    className={errors.bio ? "border-destructive" : ""}
                   />
+                  {errors.bio && (
+                    <p className="text-sm text-destructive">{errors.bio}</p>
+                  )}
                 </div>
 
                 <Button type="submit" disabled={isLoading} className="w-full md:w-auto">
