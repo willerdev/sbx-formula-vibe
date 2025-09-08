@@ -1,16 +1,12 @@
 import { 
   LayoutDashboard, 
   CreditCard, 
-  History, 
-  Settings, 
   Home, 
   Users, 
-  Facebook,
-  Banknote,
   TrendingUp,
   Bell,
-  Shield,
-  Headphones
+  Mail,
+  Phone
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -23,18 +19,30 @@ const menuItems = [
       { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
       { icon: TrendingUp, label: "Trading Signals", path: "/dashboard/signals" },
       { icon: CreditCard, label: "My Subscription", path: "/dashboard/subscription" },
-      { icon: History, label: "Transaction History", path: "/dashboard/transactions" },
-      { icon: Banknote, label: "Services", path: "/dashboard/services" },
       { icon: Bell, label: "Notifications", path: "/dashboard/notifications" }
     ]
   },
   {
     title: "ACCOUNT",
     items: [
-      { icon: Users, label: "Profile Settings", path: "/dashboard/profile" },
-      { icon: Settings, label: "Account Settings", path: "/dashboard/settings" },
-      { icon: Shield, label: "Security", path: "/dashboard/security" },
-      { icon: Headphones, label: "Support", path: "/dashboard/support" }
+      { icon: Users, label: "Manage Profile", path: "/dashboard/profile" }
+    ]
+  },
+  {
+    title: "SUPPORT",
+    items: [
+      { 
+        icon: Mail, 
+        label: "Email: dominic.rwego@gmail.com", 
+        path: "mailto:dominic.rwego@gmail.com",
+        external: true
+      },
+      { 
+        icon: Phone, 
+        label: "Phone: +250 788 974 179", 
+        path: "tel:+250788974179",
+        external: true
+      }
     ]
   },
   {
@@ -54,9 +62,9 @@ export const DashboardSidebar = () => {
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">SFX</span>
+            <span className="text-primary-foreground font-bold text-sm">SBX</span>
           </div>
-          <span className="font-semibold text-foreground">Signal FX</span>
+          <span className="font-semibold text-foreground">SAVII BANKS FX GROUP</span>
         </div>
       </div>
 
@@ -70,9 +78,22 @@ export const DashboardSidebar = () => {
             <div className="space-y-1">
               {section.items.map((item, itemIndex) => {
                 const isActive = location.pathname === item.path;
-                const isExternal = item.path === "/";
+                const isExternal = item.path === "/" || item.external;
                 
                 if (isExternal) {
+                  if (item.external) {
+                    return (
+                      <a key={itemIndex} href={item.path}>
+                        <Button
+                          variant="ghost"
+                          className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                        >
+                          <item.icon className="mr-3 h-4 w-4 flex-shrink-0" />
+                          <span className="truncate">{item.label}</span>
+                        </Button>
+                      </a>
+                    );
+                  }
                   return (
                     <NavLink key={itemIndex} to={item.path}>
                       <Button
