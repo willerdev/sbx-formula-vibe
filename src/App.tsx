@@ -31,7 +31,7 @@ const App = () => (
                 <Dashboard />
               </RequireAuth>
             }>
-              <Route index element={<DashboardHome user={null} />} />
+              <Route index element={<DashboardHome user={undefined} />} />
               <Route path="signals" element={<TradingSignals />} />
               <Route path="subscription" element={<Subscription />} />
               <Route path="profile" element={<ProfileSettings />} />
