@@ -23,7 +23,7 @@ const Auth = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) {
-        navigate("/");
+        navigate("/dashboard");
       }
     });
 
@@ -32,7 +32,7 @@ const Auth = () => {
       (event, session) => {
         setSession(session);
         if (session) {
-          navigate("/");
+          navigate("/dashboard");
         }
       }
     );
@@ -125,8 +125,12 @@ const Auth = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-background/95 to-primary/5 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">SAVII BANKS</h1>
-          <p className="text-primary font-semibold">FX GROUP</p>
+          <div className="flex items-center justify-center space-x-2 mb-2">
+            <div className="w-10 h-10 bg-primary rounded flex items-center justify-center">
+              <span className="text-primary-foreground font-bold text-lg">SBX</span>
+            </div>
+            <h1 className="text-2xl font-bold text-foreground">SAVII BANKS FX GROUP</h1>
+          </div>
         </div>
 
         <Card className="backdrop-blur-sm border-border/50">

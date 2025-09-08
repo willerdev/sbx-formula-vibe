@@ -57,7 +57,7 @@ export const DashboardSidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="w-64 bg-sidebar border-r border-sidebar-border flex flex-col h-full">
+    <div className="w-72 bg-sidebar border-r border-sidebar-border flex flex-col h-full">
       {/* Logo */}
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center space-x-2">
