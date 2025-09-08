@@ -18,8 +18,7 @@ const menuItems = [
     items: [
       { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
       { icon: TrendingUp, label: "Trading Signals", path: "/dashboard/signals" },
-      { icon: CreditCard, label: "My Subscription", path: "/dashboard/subscription" },
-      { icon: Bell, label: "Notifications", path: "/dashboard/notifications" }
+      { icon: CreditCard, label: "My Subscription", path: "/dashboard/subscription" }
     ]
   },
   {
