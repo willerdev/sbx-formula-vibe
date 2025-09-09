@@ -10,9 +10,15 @@ import { User, Camera, Save } from "lucide-react";
 import { toast } from "sonner";
 import { profileUpdateSchema, sanitizeInput, type ProfileUpdateData } from "@/lib/validation";
 import { supabase } from "@/integrations/supabase/client";
+import { useOutletContext } from "react-router-dom";
+
+interface OutletContext {
+  isMobile?: boolean;
+}
 
 export const ProfileSettings = () => {
   const { user } = useAuth();
+  const { isMobile = false } = useOutletContext<OutletContext>();
   const [isLoading, setIsLoading] = useState(false);
   
   const displayName = user?.user_metadata?.display_name || user?.email?.split('@')[0] || "User";
@@ -85,18 +91,20 @@ export const ProfileSettings = () => {
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* Header */}
+      {/* Header - Mobile responsive */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="p-6">
-          <h1 className="text-3xl font-bold text-foreground">Profile Settings</h1>
-          <p className="text-muted-foreground mt-2">
+        <div className={isMobile ? 'p-4' : 'p-6'}>
+          <h1 className={`font-bold text-foreground ${isMobile ? 'text-xl' : 'text-3xl'}`}>
+            Profile Settings
+          </h1>
+          <p className={`text-muted-foreground ${isMobile ? 'mt-1 text-sm' : 'mt-2'}`}>
             Manage your personal information and preferences
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className={`flex-1 overflow-y-auto ${isMobile ? 'p-4' : 'p-6'}`}>
         <div className="max-w-2xl space-y-6">
           {/* Profile Picture */}
           <Card className="gradient-card">

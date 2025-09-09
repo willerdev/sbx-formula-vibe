@@ -2,6 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Crown, Check, X, Calendar, CreditCard } from "lucide-react";
+import { useOutletContext } from "react-router-dom";
+
+interface OutletContext {
+  isMobile?: boolean;
+}
 
 const plans = [
   {
@@ -54,20 +59,24 @@ const plans = [
 ];
 
 export const Subscription = () => {
+  const { isMobile = false } = useOutletContext<OutletContext>();
+
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* Header */}
+      {/* Header - Mobile responsive */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="p-6">
-          <h1 className="text-3xl font-bold text-foreground">My Subscription</h1>
-          <p className="text-muted-foreground mt-2">
+        <div className={isMobile ? 'p-4' : 'p-6'}>
+          <h1 className={`font-bold text-foreground ${isMobile ? 'text-xl' : 'text-3xl'}`}>
+            My Subscription
+          </h1>
+          <p className={`text-muted-foreground ${isMobile ? 'mt-1 text-sm' : 'mt-2'}`}>
             Manage your subscription and upgrade your plan
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className={`flex-1 overflow-y-auto ${isMobile ? 'p-4' : 'p-6'}`}>
         {/* Current Subscription */}
         <Card className="gradient-card mb-8">
           <CardHeader>

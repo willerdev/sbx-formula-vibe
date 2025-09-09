@@ -19,17 +19,25 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       <div className="flex h-screen">
-        {/* Mobile Menu Trigger */}
+        {/* Mobile Header with Menu Trigger */}
         {isMobile && (
-          <div className="fixed top-4 left-4 z-50 lg:hidden">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="bg-background/80 backdrop-blur-sm border-border"
-            >
-              {sidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-            </Button>
+          <div className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border lg:hidden">
+            <div className="flex items-center justify-between p-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                className="h-10 w-10 p-0 hover:bg-primary/10"
+              >
+                {sidebarOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+              <div className="flex items-center space-x-2">
+                <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold text-xs">SBX</span>
+                </div>
+                <span className="font-semibold text-foreground text-sm">SAVII BANKS FX</span>
+              </div>
+            </div>
           </div>
         )}
 
@@ -49,8 +57,12 @@ const Dashboard = () => {
         )}
 
         {/* Main Content */}
-        <div className={`flex-1 flex flex-col overflow-hidden ${isMobile ? 'w-full' : ''}`}>
-          {isDashboardHome ? <DashboardHome user={user} /> : <Outlet />}
+        <div className={`flex-1 flex flex-col overflow-hidden ${isMobile ? 'w-full pt-16' : ''}`}>
+          {isDashboardHome ? <DashboardHome user={user} isMobile={isMobile} /> : (
+            <div className={isMobile ? 'pt-2' : ''}>
+              <Outlet context={{ isMobile }} />
+            </div>
+          )}
         </div>
       </div>
     </div>

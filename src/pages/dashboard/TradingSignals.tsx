@@ -2,6 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, TrendingDown, Clock, Target } from "lucide-react";
+import { useOutletContext } from "react-router-dom";
+
+interface OutletContext {
+  isMobile?: boolean;
+}
 
 const signals = [
   {
@@ -40,20 +45,24 @@ const signals = [
 ];
 
 export const TradingSignals = () => {
+  const { isMobile = false } = useOutletContext<OutletContext>();
+
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* Header */}
+      {/* Header - Mobile responsive */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className="p-6">
-          <h1 className="text-3xl font-bold text-foreground">Trading Signals</h1>
-          <p className="text-muted-foreground mt-2">
+        <div className={isMobile ? 'p-4' : 'p-6'}>
+          <h1 className={`font-bold text-foreground ${isMobile ? 'text-xl' : 'text-3xl'}`}>
+            Trading Signals
+          </h1>
+          <p className={`text-muted-foreground ${isMobile ? 'mt-1 text-sm' : 'mt-2'}`}>
             Real-time forex trading signals and analysis
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto p-6">
+      <div className={`flex-1 overflow-y-auto ${isMobile ? 'p-4' : 'p-6'}`}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
           <Card className="gradient-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
