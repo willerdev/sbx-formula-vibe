@@ -12,6 +12,12 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { NavLink, useLocation } from "react-router-dom";
 
+interface DashboardSidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+  isMobile?: boolean;
+}
+
 const menuItems = [
   {
     title: "MENU",
@@ -52,11 +58,25 @@ const menuItems = [
   }
 ];
 
-export const DashboardSidebar = () => {
+export const DashboardSidebar = ({ isOpen = true, onClose, isMobile = false }: DashboardSidebarProps) => {
   const location = useLocation();
 
+  const handleNavClick = () => {
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
+
   return (
-    <div className="w-72 bg-sidebar border-r border-sidebar-border flex flex-col h-full">
+    <div className={cn(
+      "bg-sidebar border-r border-sidebar-border flex flex-col h-full transition-transform duration-300 ease-in-out",
+      isMobile 
+        ? cn(
+            "fixed left-0 top-0 z-50 w-80",
+            isOpen ? "translate-x-0" : "-translate-x-full"
+          )
+        : "w-72 relative"
+    )}>
       {/* Logo */}
       <div className="p-6 border-b border-sidebar-border">
         <div className="flex items-center space-x-2">
@@ -79,47 +99,47 @@ export const DashboardSidebar = () => {
                 const isActive = location.pathname === item.path;
                 const isExternal = item.path === "/" || item.external;
                 
-                if (isExternal) {
-                  if (item.external) {
-                    return (
-                      <a key={itemIndex} href={item.path}>
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
-                        >
-                          <item.icon className="mr-3 h-4 w-4 flex-shrink-0" />
-                          <span className="truncate">{item.label}</span>
-                        </Button>
-                      </a>
-                    );
-                  }
-                  return (
-                    <NavLink key={itemIndex} to={item.path}>
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
-                      >
-                        <item.icon className="mr-3 h-4 w-4" />
-                        {item.label}
-                      </Button>
-                    </NavLink>
-                  );
-                }
+                 if (isExternal) {
+                   if (item.external) {
+                     return (
+                       <a key={itemIndex} href={item.path} onClick={handleNavClick}>
+                         <Button
+                           variant="ghost"
+                           className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground text-sm"
+                         >
+                           <item.icon className="mr-3 h-4 w-4 flex-shrink-0" />
+                           <span className="truncate">{item.label}</span>
+                         </Button>
+                       </a>
+                     );
+                   }
+                   return (
+                     <NavLink key={itemIndex} to={item.path} onClick={handleNavClick}>
+                       <Button
+                         variant="ghost"
+                         className="w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                       >
+                         <item.icon className="mr-3 h-4 w-4" />
+                         {item.label}
+                       </Button>
+                     </NavLink>
+                   );
+                 }
                 
-                return (
-                  <NavLink key={itemIndex} to={item.path}>
-                    <Button
-                      variant="ghost"
-                      className={cn(
-                        "w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200",
-                        isActive && "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
-                      )}
-                    >
-                      <item.icon className="mr-3 h-4 w-4" />
-                      {item.label}
-                    </Button>
-                  </NavLink>
-                );
+                 return (
+                   <NavLink key={itemIndex} to={item.path} onClick={handleNavClick}>
+                     <Button
+                       variant="ghost"
+                       className={cn(
+                         "w-full justify-start text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-all duration-200",
+                         isActive && "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm"
+                       )}
+                     >
+                       <item.icon className="mr-3 h-4 w-4" />
+                       {item.label}
+                     </Button>
+                   </NavLink>
+                 );
               })}
             </div>
           </div>
