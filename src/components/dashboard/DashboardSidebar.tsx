@@ -6,11 +6,16 @@ import {
   TrendingUp,
   Bell,
   Mail,
-  Phone
+  Phone,
+  LogOut,
+  User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { NavLink, useLocation } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
+import { Separator } from "@/components/ui/separator";
 
 interface DashboardSidebarProps {
   isOpen?: boolean;
@@ -60,12 +65,23 @@ const menuItems = [
 
 export const DashboardSidebar = ({ isOpen = true, onClose, isMobile = false }: DashboardSidebarProps) => {
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const handleNavClick = () => {
     if (isMobile && onClose) {
       onClose();
     }
   };
+
+  const handleSignOut = async () => {
+    await signOut();
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
+
+  const displayName = user?.user_metadata?.display_name || user?.email?.split('@')[0] || "User";
+  const userInitials = displayName.charAt(0).toUpperCase();
 
   return (
     <div className={cn(
@@ -78,13 +94,41 @@ export const DashboardSidebar = ({ isOpen = true, onClose, isMobile = false }: D
         : "w-72 relative"
     )}>
       {/* Logo */}
-      <div className="p-6 border-b border-sidebar-border">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
+      <div className="p-6 border-b border-sidebar-border bg-gradient-to-r from-primary/5 to-accent/5">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center shadow-lg">
             <span className="text-primary-foreground font-bold text-sm">SBX</span>
           </div>
-          <span className="font-semibold text-foreground">SAVII BANKS FX GROUP</span>
+          <div>
+            <span className="font-bold text-foreground text-lg">SAVII BANKS FX</span>
+            <p className="text-xs text-muted-foreground">Professional Trading</p>
+          </div>
         </div>
+      </div>
+
+      {/* User Profile Section */}
+      <div className="p-4 border-b border-sidebar-border bg-card/50">
+        <div className="flex items-center space-x-3">
+          <Avatar className="w-10 h-10 border-2 border-primary/20">
+            <AvatarImage src={user?.user_metadata?.avatar_url} />
+            <AvatarFallback className="bg-gradient-to-br from-primary to-accent text-primary-foreground font-semibold">
+              {userInitials}
+            </AvatarFallback>
+          </Avatar>
+          <div className="flex-1 min-w-0">
+            <p className="font-medium text-foreground text-sm truncate">{displayName}</p>
+            <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+          </div>
+        </div>
+        <Separator className="my-3" />
+        <Button
+          variant="ghost"
+          onClick={handleSignOut}
+          className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-destructive/10 hover:text-destructive transition-colors"
+        >
+          <LogOut className="mr-3 h-4 w-4" />
+          Sign Out
+        </Button>
       </div>
 
       {/* Navigation */}
