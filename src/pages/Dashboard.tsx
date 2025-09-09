@@ -2,7 +2,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { Outlet, useLocation } from "react-router-dom";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
 import { DashboardHome } from "./dashboard/DashboardHome";
-import HelpChat from "@/components/HelpChat";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -66,9 +65,6 @@ const Dashboard = () => {
           )}
         </div>
       </div>
-      
-      {/* Help Chat - Always visible */}
-      <HelpChat />
     </div>
   );
 };
