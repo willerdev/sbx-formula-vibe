@@ -1,53 +1,20 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X, User, LogOut } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   return (
     <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-smooth">
       <div className="w-full px-4 md:px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-20">
-          {/* Left Section - Account (if logged in) + Logo */}
+          {/* Left Section - Logo */}
           <div className="flex items-center gap-4">
-            {/* Account Dropdown - Left Corner */}
-            {user && (
-              <div className="hidden lg:flex">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-4 py-2 font-medium transition-fast shadow-lg hover:shadow-xl">
-                      <User className="w-4 h-4 mr-2" />
-                      Account
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-48">
-                    <DropdownMenuItem onClick={() => navigate("/dashboard")}>
-                      <User className="w-4 h-4 mr-2" />
-                      Dashboard
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={() => navigate("/dashboard/profile")}>
-                      <User className="w-4 h-4 mr-2" />
-                      Profile
-                    </DropdownMenuItem>
-                    <DropdownMenuItem onClick={signOut}>
-                      <LogOut className="w-4 h-4 mr-2" />
-                      Sign Out
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </div>
-            )}
             
             {/* Logo */}
             <a href="/" className="flex items-center px-2 py-2 gap-3">
@@ -101,34 +68,6 @@ export const Header = () => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-2">
-            {/* Mobile Account for logged in users */}
-            {user && (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="h-10 w-10 text-primary hover:bg-primary/10"
-                  >
-                    <User className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
-                  <DropdownMenuItem onClick={() => navigate("/dashboard")}>
-                    <User className="w-4 h-4 mr-2" />
-                    Dashboard
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => navigate("/dashboard/profile")}>
-                    <User className="w-4 h-4 mr-2" />
-                    Profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={signOut}>
-                    <LogOut className="w-4 h-4 mr-2" />
-                    Sign Out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
             
             <Button
               variant="ghost"
