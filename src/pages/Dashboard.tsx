@@ -1,6 +1,7 @@
 import { useAuth } from "@/hooks/useAuth";
 import { Outlet, useLocation } from "react-router-dom";
 import { DashboardSidebar } from "@/components/dashboard/DashboardSidebar";
+import { DashboardHeader } from "@/components/dashboard/DashboardHeader";
 import { DashboardHome } from "./dashboard/DashboardHome";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -58,6 +59,7 @@ const Dashboard = () => {
 
         {/* Main Content */}
         <div className={`flex-1 flex flex-col overflow-hidden ${isMobile ? 'w-full pt-16' : ''}`}>
+          {!isMobile && <DashboardHeader />}
           {isDashboardHome ? <DashboardHome user={user} isMobile={isMobile} /> : (
             <div className={isMobile ? 'pt-2' : ''}>
               <Outlet context={{ isMobile }} />
