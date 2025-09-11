@@ -58,10 +58,10 @@ const Dashboard = () => {
         )}
 
         {/* Main Content */}
-        <div className={`flex-1 flex flex-col overflow-hidden ${isMobile ? 'w-full pt-16' : ''}`}>
+        <div className={`flex-1 flex flex-col ${isMobile ? 'w-full pt-16' : ''}`}>
           {!isMobile && <DashboardHeader />}
           {isDashboardHome ? <DashboardHome user={user} isMobile={isMobile} /> : (
-            <div className={isMobile ? 'pt-2' : ''}>
+            <div className={`flex-1 overflow-y-auto ${isMobile ? 'pt-2' : ''}`}>
               <Outlet context={{ isMobile }} />
             </div>
           )}

@@ -54,9 +54,16 @@ export const Header = () => {
             </div>
           </nav>
 
-          {/* Right Section - Login (if not logged in) */}
+          {/* Right Section - Dashboard/Login */}
           <div className="hidden lg:flex items-center">
-            {!user && (
+            {user ? (
+              <Button 
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl"
+                onClick={() => navigate("/dashboard")}
+              >
+                Dashboard
+              </Button>
+            ) : (
               <Button 
                 className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl"
                 onClick={() => navigate("/auth")}
@@ -120,9 +127,19 @@ export const Header = () => {
                 Register
               </a>
               
-              {/* Mobile Login for non-logged in users */}
-              {!user && (
-                <div className="px-4 pt-4">
+              {/* Mobile Dashboard/Login */}
+              <div className="px-4 pt-4">
+                {user ? (
+                  <Button 
+                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-3 font-medium transition-fast"
+                    onClick={() => {
+                      navigate("/dashboard");
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Dashboard
+                  </Button>
+                ) : (
                   <Button 
                     className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-3 font-medium transition-fast"
                     onClick={() => {
@@ -132,8 +149,8 @@ export const Header = () => {
                   >
                     Login
                   </Button>
-                </div>
-              )}
+                )}
+              </div>
             </nav>
           </div>
         )}
