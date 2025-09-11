@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Crown, Check, X, Calendar, CreditCard } from "lucide-react";
+import { Crown, Check, Calendar, CreditCard, Bell, BookOpen, Users } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 
 interface OutletContext {
@@ -10,51 +10,50 @@ interface OutletContext {
 
 const plans = [
   {
-    name: "Basic",
-    price: "$29",
+    icon: <Bell className="w-8 h-8" />,
+    name: "Premium Signals",
+    price: "$30",
     period: "month",
+    description: "Receive real-time trading signals with 98.99% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
     features: [
-      "5 signals per day",
-      "Basic market analysis",
-      "Email notifications",
-      "Community access"
+      "Real-time alerts",
+      "98.99% accuracy", 
+      "Risk management",
+      "Premium signals access"
     ],
-    limitations: [
-      "No SMS alerts",
-      "No advanced analysis"
-    ],
-    current: false
-  },
-  {
-    name: "Premium",
-    price: "$79",
-    period: "month",
-    features: [
-      "15 signals per day",
-      "Advanced market analysis",
-      "Email & SMS notifications",
-      "Priority community access",
-      "Video analysis",
-      "Risk management tools"
-    ],
-    limitations: [],
     current: true,
     popular: true
   },
   {
-    name: "VIP",
-    price: "$149",
-    period: "month",
+    icon: <BookOpen className="w-8 h-8" />,
+    name: "Online Mentorship",
+    price: "$120",
+    period: "month", 
+    description: "Learn the SBX Formula in our group mentorship program. Master price action trading for Deriv synthetic indices.",
     features: [
-      "Unlimited signals",
-      "Real-time notifications",
-      "1-on-1 support",
-      "Custom analysis",
-      "Early access features",
-      "Portfolio management"
+      "Group sessions",
+      "SBX Formula training",
+      "Risk management",
+      "Premium signals access"
     ],
-    limitations: [],
-    current: false
+    current: false,
+    popular: false
+  },
+  {
+    icon: <Users className="w-8 h-8" />,
+    name: "1-on-1 Mentorship",
+    price: "$240",
+    period: "month",
+    description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
+    features: [
+      "Personal mentor",
+      "Market analysis", 
+      "Advanced SBX strategies",
+      "Risk management",
+      "Premium signals access"
+    ],
+    current: false,
+    popular: false
   }
 ];
 
@@ -88,8 +87,8 @@ export const Subscription = () => {
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <div className="text-2xl font-bold text-foreground">Premium Plan</div>
-                <div className="text-muted-foreground">$79/month</div>
+                <div className="text-2xl font-bold text-foreground">Premium Signals</div>
+                <div className="text-muted-foreground">$30/month</div>
               </div>
               <div>
                 <div className="text-sm text-muted-foreground">Next billing</div>
@@ -112,47 +111,54 @@ export const Subscription = () => {
         {/* Available Plans */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {plans.map((plan, index) => (
-            <Card key={index} className={`gradient-card relative ${
-              plan.current ? 'ring-2 ring-primary' : ''
-            }`}>
+            <Card key={index} className={`relative p-6 sm:p-8 gradient-card border-gradient transition-all duration-300 hover:scale-105 ${
+              plan.popular ? 'ring-2 ring-primary glow-primary' : ''
+            } ${plan.current ? 'ring-2 ring-green-500' : ''}`}>
               {plan.popular && (
-                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <span className="gradient-primary text-primary-foreground px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                    Most Popular
+                  </span>
                 </div>
               )}
               
-              <CardHeader className="text-center">
-                <CardTitle className="text-xl">{plan.name}</CardTitle>
-                <div className="text-3xl font-bold">
-                  {plan.price}
-                  <span className="text-base font-normal text-muted-foreground">/{plan.period}</span>
+              <div className="flex items-center mb-6">
+                <div className={`p-3 rounded-xl ${plan.popular ? 'gradient-primary text-primary-foreground' : 'bg-accent/10 text-accent'}`}>
+                  {plan.icon}
                 </div>
-              </CardHeader>
+              </div>
               
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm">
-                      <Check className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                      {feature}
-                    </div>
-                  ))}
-                  {plan.limitations.map((limitation, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <X className="h-4 w-4 text-red-500 mr-2 flex-shrink-0" />
-                      {limitation}
-                    </div>
-                  ))}
+              <h3 className="font-space-grotesk font-bold text-xl sm:text-2xl mb-4 text-foreground">
+                {plan.name}
+              </h3>
+              
+              <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
+                {plan.description}
+              </p>
+              
+              <ul className="space-y-3 mb-8">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
+                    <span className="text-sm sm:text-base text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              <div className="flex items-center justify-between mb-6">
+                <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
+                  {plan.price}/{plan.period}
                 </div>
-                
-                <Button 
-                  className="w-full" 
-                  variant={plan.current ? "outline" : "default"}
-                  disabled={plan.current}
-                >
-                  {plan.current ? "Current Plan" : `Upgrade to ${plan.name}`}
-                </Button>
-              </CardContent>
+              </div>
+              
+              <Button 
+                className="w-full" 
+                variant={plan.current ? "outline" : (plan.popular ? "hero" : "premium")}
+                disabled={plan.current}
+                size="sm"
+              >
+                {plan.current ? "Current Plan" : "Get Started"}
+              </Button>
             </Card>
           ))}
         </div>
@@ -165,9 +171,9 @@ export const Subscription = () => {
           <CardContent>
             <div className="space-y-3">
               {[
-                { date: "Feb 15, 2024", amount: "$79.00", status: "Paid", plan: "Premium" },
-                { date: "Jan 15, 2024", amount: "$79.00", status: "Paid", plan: "Premium" },
-                { date: "Dec 15, 2023", amount: "$29.00", status: "Paid", plan: "Basic" }
+                { date: "Feb 15, 2024", amount: "$30.00", status: "Paid", plan: "Premium Signals" },
+                { date: "Jan 15, 2024", amount: "$30.00", status: "Paid", plan: "Premium Signals" }, 
+                { date: "Dec 15, 2023", amount: "$30.00", status: "Paid", plan: "Premium Signals" }
               ].map((bill, index) => (
                 <div key={index} className="flex items-center justify-between p-3 border border-border rounded-lg">
                   <div>
