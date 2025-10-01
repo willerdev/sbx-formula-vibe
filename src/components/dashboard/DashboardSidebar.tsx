@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { NavLink, useLocation } from "react-router-dom";
+import logoTransparent from "@/assets/logo-transparent.png";
 
 interface DashboardSidebarProps {
   isOpen?: boolean;
@@ -80,12 +81,11 @@ export const DashboardSidebar = ({ isOpen = true, onClose, isMobile = false }: D
     )}>
       {/* Logo */}
       <div className="p-6 border-b border-sidebar-border">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-sm">SBX</span>
-          </div>
-          <span className="font-semibold text-foreground text-sm">SAVII BANKS FX</span>
-        </div>
+        <img 
+          src={logoTransparent} 
+          alt="Savii Banks FX Group Logo" 
+          className="h-12 w-auto object-contain"
+        />
       </div>
 
       {/* Navigation */}

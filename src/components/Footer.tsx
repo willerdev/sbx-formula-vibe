@@ -1,4 +1,5 @@
 import { Instagram, Youtube, Twitter, Linkedin, MapPin, Mail, Phone } from "lucide-react";
+import logoTransparent from "@/assets/logo-transparent.png";
 
 export const Footer = () => {
   return (
@@ -9,9 +10,11 @@ export const Footer = () => {
           {/* Logo and Social Links */}
           <div className="space-y-6">
             <div>
-              <h3 className="font-poppins font-bold text-2xl">
-                <span className="text-primary">SAVII BANKS</span> <span className="text-muted-foreground">FX GROUP</span>
-              </h3>
+              <img 
+                src={logoTransparent} 
+                alt="Savii Banks FX Group Logo" 
+                className="h-16 w-auto object-contain"
+              />
             </div>
             
             <div className="space-y-4">

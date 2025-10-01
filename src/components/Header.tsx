@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import logoTransparent from "@/assets/logo-transparent.png";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,19 +18,12 @@ export const Header = () => {
           <div className="flex items-center gap-4">
             
             {/* Logo */}
-            <a href="/" className="flex items-center px-2 py-2 gap-3">
+            <a href="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/f5c45cc3-ee68-426b-b25c-762724962b16.png" 
-                alt="SBX Logo" 
-                className="h-[60px] w-auto object-contain lg:h-[60px] md:h-[50px] sm:h-[45px]"
-                style={{
-                  filter: 'drop-shadow(0 2px 8px rgba(255,215,0,0.3))'
-                }}
+                src={logoTransparent} 
+                alt="Savii Banks FX Group Logo" 
+                className="h-14 w-auto object-contain lg:h-16 md:h-14 sm:h-12"
               />
-              <div className="flex flex-col">
-                <span className="text-white font-bold text-sm lg:text-base">SAVII BANKS</span>
-                <span className="text-yellow-400 font-semibold text-xs lg:text-sm text-center">FX GROUP</span>
-              </div>
             </a>
           </div>
 
