@@ -13,7 +13,7 @@ export const Header = () => {
   return (
     <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-smooth">
       <div className="w-full px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24 lg:h-28">
           {/* Left Section - Logo */}
           <div className="flex items-center gap-4">
             
@@ -22,7 +22,7 @@ export const Header = () => {
               <img 
                 src={logoTransparent} 
                 alt="Savii Banks FX Group Logo" 
-                className="h-14 w-auto object-contain lg:h-16 md:h-14 sm:h-12"
+                className="h-20 w-auto object-contain lg:h-24 md:h-20 sm:h-16"
               />
             </a>
           </div>
