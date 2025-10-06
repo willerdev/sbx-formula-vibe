@@ -22,7 +22,7 @@ export const Header = () => {
               <img 
                 src={logoTransparent} 
                 alt="Savii Banks FX Group Logo" 
-                className="h-16 w-auto object-contain lg:h-20"
+                className="h-20 w-auto object-contain"
               />
             </a>
           </div>
