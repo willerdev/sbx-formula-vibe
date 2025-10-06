@@ -76,37 +76,6 @@ export const Subscription = () => {
 
       {/* Main Content */}
       <div className={`flex-1 overflow-y-auto ${isMobile ? 'p-4' : 'p-6'}`}>
-        {/* Current Subscription */}
-        <Card className="gradient-card mb-8">
-          <CardHeader>
-            <CardTitle className="flex items-center">
-              <Crown className="h-5 w-5 mr-2 text-yellow-500" />
-              Current Subscription
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <div className="text-2xl font-bold text-foreground">Premium Signals</div>
-                <div className="text-muted-foreground">$30/month</div>
-              </div>
-              <div>
-                <div className="text-sm text-muted-foreground">Next billing</div>
-                <div className="font-medium flex items-center">
-                  <Calendar className="h-4 w-4 mr-1" />
-                  March 15, 2024
-                </div>
-              </div>
-              <div>
-                <div className="text-sm text-muted-foreground">Payment method</div>
-                <div className="font-medium flex items-center">
-                  <CreditCard className="h-4 w-4 mr-1" />
-                  •••• 4242
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Available Plans */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -163,32 +132,6 @@ export const Subscription = () => {
           ))}
         </div>
 
-        {/* Billing History */}
-        <Card className="gradient-card mt-8">
-          <CardHeader>
-            <CardTitle>Recent Billing History</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {[
-                { date: "Feb 15, 2024", amount: "$30.00", status: "Paid", plan: "Premium Signals" },
-                { date: "Jan 15, 2024", amount: "$30.00", status: "Paid", plan: "Premium Signals" }, 
-                { date: "Dec 15, 2023", amount: "$30.00", status: "Paid", plan: "Premium Signals" }
-              ].map((bill, index) => (
-                <div key={index} className="flex items-center justify-between p-3 border border-border rounded-lg">
-                  <div>
-                    <div className="font-medium">{bill.plan} Plan</div>
-                    <div className="text-sm text-muted-foreground">{bill.date}</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-medium">{bill.amount}</div>
-                    <Badge variant="secondary">{bill.status}</Badge>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
