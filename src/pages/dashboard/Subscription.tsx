@@ -121,7 +121,7 @@ export const Subscription = () => {
               </div>
               
               <Button 
-                className="w-full bg-green-600 hover:bg-green-700 text-white" 
+                className="w-full !bg-green-600 hover:!bg-green-700 !text-white !border-green-600" 
                 size="sm"
                 asChild
               >
