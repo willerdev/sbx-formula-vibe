@@ -13,7 +13,7 @@ export const Footer = () => {
               <img 
                 src={logoTransparent} 
                 alt="Savii Banks FX Group Logo" 
-                className="h-20 w-auto object-contain"
+                className="h-24 w-auto object-contain"
               />
             </div>
             
