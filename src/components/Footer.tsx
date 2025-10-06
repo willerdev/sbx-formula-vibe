@@ -7,15 +7,9 @@ export const Footer = () => {
       <div className="w-full max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
-          {/* Logo and Social Links */}
+          {/* Social Links */}
           <div className="space-y-6">
-            <div>
-              <img 
-                src={logoTransparent} 
-                alt="Savii Banks FX Group Logo" 
-                className="h-24 w-auto object-contain"
-              />
-            </div>
+            <h4 className="font-semibold text-foreground text-lg">Follow Us</h4>
             
             <div className="space-y-4">
               <a href="#" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
