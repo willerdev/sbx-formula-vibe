@@ -121,12 +121,17 @@ export const Subscription = () => {
               </div>
               
               <Button 
-                className="w-full" 
-                variant={plan.current ? "outline" : (plan.popular ? "hero" : "premium")}
-                disabled={plan.current}
+                className="w-full bg-green-600 hover:bg-green-700 text-white" 
                 size="sm"
+                asChild
               >
-                {plan.current ? "Current Plan" : "Get Started"}
+                <a 
+                  href={`https://wa.me/250788974179?text=Hi, I would like to subscribe to the ${plan.name} plan at ${plan.price}/${plan.period}.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Select Plan
+                </a>
               </Button>
             </Card>
           ))}
