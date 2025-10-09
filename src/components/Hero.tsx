@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Shield, Zap, Target } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       {/* Animated Background with Particles */}
@@ -43,11 +45,21 @@ export const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in px-2 sm:px-0" style={{animationDelay: '1s'}}>
-              <Button variant="hero" size="lg" className="group relative overflow-hidden w-full sm:w-auto text-sm sm:text-base">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="group relative overflow-hidden w-full sm:w-auto text-sm sm:text-base"
+                onClick={() => navigate("/auth")}
+              >
                 <span className="relative z-10">Start Trading Now</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
               </Button>
-              <Button variant="premium" size="lg" className="group hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-sm sm:text-base">
+              <Button 
+                variant="premium" 
+                size="lg" 
+                className="group hover:scale-105 transition-transform duration-200 w-full sm:w-auto text-sm sm:text-base"
+                onClick={() => navigate("/auth")}
+              >
                 Discover Our SBX Formula
               </Button>
             </div>

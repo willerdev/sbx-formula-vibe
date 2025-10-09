@@ -11,8 +11,10 @@ import {
   BarChart3,
   LineChart
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const ServicesSection = () => {
+  const navigate = useNavigate();
   const services = [
     {
       icon: <Bell className="w-8 h-8" />,
@@ -92,7 +94,12 @@ export const ServicesSection = () => {
                 <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
                   {service.price}
                 </div>
-                <Button variant={service.popular ? "hero" : "premium"} size="sm" className="text-xs sm:text-sm">
+                <Button 
+                  variant={service.popular ? "hero" : "premium"} 
+                  size="sm" 
+                  className="text-xs sm:text-sm"
+                  onClick={() => navigate("/auth")}
+                >
                   Get Started
                 </Button>
               </div>

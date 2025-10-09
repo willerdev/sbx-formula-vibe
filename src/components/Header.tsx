@@ -42,9 +42,12 @@ export const Header = () => {
               <a href="#faqs" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
                 FAQs
               </a>
-              <a href="#register" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
+              <button 
+                onClick={() => navigate("/auth")} 
+                className="text-foreground hover:text-primary transition-fast font-medium text-sm"
+              >
                 Register
-              </a>
+              </button>
             </div>
           </nav>
 
@@ -113,13 +116,15 @@ export const Header = () => {
               >
                 FAQs
               </a>
-              <a 
-                href="#register" 
-                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg"
-                onClick={() => setIsMenuOpen(false)}
+              <button 
+                onClick={() => {
+                  navigate("/auth");
+                  setIsMenuOpen(false);
+                }}
+                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg text-left w-full"
               >
                 Register
-              </a>
+              </button>
               
               {/* Mobile Dashboard/Login */}
               <div className="px-4 pt-4">
