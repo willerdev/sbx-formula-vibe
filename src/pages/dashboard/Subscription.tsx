@@ -47,7 +47,6 @@ const plans = [
     description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
     features: [
       "Personal mentor",
-      "Market analysis", 
       "Advanced SBX strategies",
       "Risk management",
       "Premium signals access"
