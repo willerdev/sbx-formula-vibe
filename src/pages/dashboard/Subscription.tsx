@@ -80,61 +80,63 @@ export const Subscription = () => {
         {/* Available Plans */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {plans.map((plan, index) => (
-            <Card key={index} className={`relative p-6 sm:p-8 gradient-card border-gradient transition-all duration-300 hover:scale-105 ${
-              plan.popular ? 'ring-2 ring-primary glow-primary' : ''
-            } ${plan.current ? 'ring-2 ring-green-500' : ''}`}>
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="gradient-primary text-primary-foreground px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
-                    Most Popular
-                  </span>
+            <div key={index} className="flex flex-col gap-4">
+              <Card className={`relative p-6 sm:p-8 gradient-card border-gradient transition-all duration-300 ${
+                plan.popular ? 'ring-2 ring-primary glow-primary' : ''
+              } ${plan.current ? 'ring-2 ring-green-500' : ''}`}>
+                {plan.popular && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                    <span className="gradient-primary text-primary-foreground px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
+                      Most Popular
+                    </span>
+                  </div>
+                )}
+                
+                <div className="flex items-center mb-6">
+                  <div className={`p-3 rounded-xl ${plan.popular ? 'gradient-primary text-primary-foreground' : 'bg-accent/10 text-accent'}`}>
+                    {plan.icon}
+                  </div>
                 </div>
-              )}
-              
-              <div className="flex items-center mb-6">
-                <div className={`p-3 rounded-xl ${plan.popular ? 'gradient-primary text-primary-foreground' : 'bg-accent/10 text-accent'}`}>
-                  {plan.icon}
+                
+                <h3 className="font-space-grotesk font-bold text-xl sm:text-2xl mb-4 text-foreground">
+                  {plan.name}
+                </h3>
+                
+                <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
+                  {plan.description}
+                </p>
+                
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
+                      <span className="text-sm sm:text-base text-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="flex items-center justify-between">
+                  <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
+                    {plan.price}/{plan.period}
+                  </div>
                 </div>
-              </div>
-              
-              <h3 className="font-space-grotesk font-bold text-xl sm:text-2xl mb-4 text-foreground">
-                {plan.name}
-              </h3>
-              
-              <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
-                {plan.description}
-              </p>
-              
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
-                    <span className="text-sm sm:text-base text-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="flex items-center justify-between mb-6">
-                <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
-                  {plan.price}/{plan.period}
-                </div>
-              </div>
+              </Card>
               
               <a 
                 href={`https://wa.me/250788974179?text=${encodeURIComponent(`Hi, I would like to subscribe to the ${plan.name} plan at ${plan.price}/${plan.period}.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full block"
+                className="w-full"
               >
                 <Button 
                   variant="success"
-                  className="w-full pointer-events-none" 
-                  size="sm"
+                  className="w-full" 
+                  size="lg"
                 >
                   Select Plan
                 </Button>
               </a>
-            </Card>
+            </div>
           ))}
         </div>
 
