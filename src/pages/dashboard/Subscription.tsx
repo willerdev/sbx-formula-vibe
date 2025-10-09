@@ -120,20 +120,20 @@ export const Subscription = () => {
                 </div>
               </div>
               
-              <a 
-                href={`https://wa.me/250788974179?text=${encodeURIComponent(`Hi, I would like to subscribe to the ${plan.name} plan at ${plan.price}/${plan.period}.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full block"
+              <Button 
+                variant="success"
+                className="w-full" 
+                size="sm"
+                asChild
               >
-                <Button 
-                  variant="success"
-                  className="w-full pointer-events-none" 
-                  size="sm"
+                <a 
+                  href={`https://wa.me/250788974179?text=${encodeURIComponent(`Hi, I would like to subscribe to the ${plan.name} plan at ${plan.price}/${plan.period}.`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Select Plan
-                </Button>
-              </a>
+                </a>
+              </Button>
             </Card>
           ))}
         </div>
