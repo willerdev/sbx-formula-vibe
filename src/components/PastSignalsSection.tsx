@@ -1,6 +1,9 @@
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export const PastSignalsSection = () => {
+  const navigate = useNavigate();
   const screenshots = [
     {
       src: "/lovable-uploads/f0546ae6-3edc-4847-917e-47c180834408.png",
@@ -21,7 +24,7 @@ export const PastSignalsSection = () => {
   ];
 
   return (
-    <section className="w-full py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-gradient-to-br from-background via-secondary/5 to-primary/5">
+    <section id="signals" className="w-full py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-gradient-to-br from-background via-secondary/5 to-primary/5">
       <div className="w-full max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
@@ -53,10 +56,20 @@ export const PastSignalsSection = () => {
           </Carousel>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 space-y-6">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full">
             <span className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse"></span>
             <span className="text-sm font-medium">Live signals available daily</span>
+          </div>
+          
+          <div>
+            <Button 
+              variant="hero" 
+              size="lg"
+              onClick={() => navigate("/auth")}
+            >
+              Join For Live Signals
+            </Button>
           </div>
         </div>
       </div>

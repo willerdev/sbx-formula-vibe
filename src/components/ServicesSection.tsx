@@ -43,7 +43,7 @@ export const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 animate-slide-in-right">
+    <section id="mentorship" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 animate-slide-in-right">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="font-space-grotesk font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">

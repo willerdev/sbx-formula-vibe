@@ -1,6 +1,9 @@
 import { CheckCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export const WhyChooseSection = () => {
+  const navigate = useNavigate();
   const features = [
     {
       title: "Consistent Signals",
@@ -17,7 +20,7 @@ export const WhyChooseSection = () => {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 w-full">
+    <section id="about" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 w-full">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           
@@ -42,6 +45,17 @@ export const WhyChooseSection = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            
+            <div className="mt-8 animate-fade-in" style={{animationDelay: '0.6s'}}>
+              <Button 
+                variant="hero" 
+                size="lg"
+                onClick={() => navigate("/auth")}
+                className="w-full sm:w-auto"
+              >
+                Get Started Today
+              </Button>
             </div>
           </div>
 

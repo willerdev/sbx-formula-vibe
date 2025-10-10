@@ -2,19 +2,20 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MessageCircle, Users } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CommunitySection = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Joining community:", { name, email });
+    navigate("/auth");
   };
 
   return (
-    <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 animate-slide-in-right">
+    <section id="faqs" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 animate-slide-in-right">
       <div className="w-full max-w-4xl mx-auto text-center">
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center justify-center mb-4">
