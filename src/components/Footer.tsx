@@ -1,5 +1,5 @@
-import { Instagram, Youtube, Twitter, Linkedin, MapPin, Mail, Phone } from "lucide-react";
-import logoTransparent from "@/assets/logo-transparent.png";
+import { Instagram, MapPin, Mail, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -12,21 +12,13 @@ export const Footer = () => {
             <h4 className="font-semibold text-foreground text-lg">Follow Us</h4>
             
             <div className="space-y-4">
-              <a href="#" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/savii.banks?igsh=YzBmeDN1Nm1kY3gy&utm_source=qr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
                 <span>Instagram</span>
               </a>
-              <a href="#" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
-                <Youtube className="w-5 h-5" />
-                <span>YouTube</span>
-              </a>
-              <a href="#" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-                <span>Twitter</span>
-              </a>
-              <a href="#" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
-                <span>LinkedIn</span>
+              <a href="https://chat.whatsapp.com/Jt9GTVG3w2nHyyhJGSYuMj?mode=wwc" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp</span>
               </a>
             </div>
           </div>
@@ -35,10 +27,9 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground text-lg mb-6">Quick Link</h4>
             <div className="space-y-4">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">About Us</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">Services</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">Contact Us</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">YouTube</a>
+              <a href="#about" className="block text-muted-foreground hover:text-primary transition-colors">About Us</a>
+              <a href="#mentorship" className="block text-muted-foreground hover:text-primary transition-colors">Services</a>
+              <a href="#contact" className="block text-muted-foreground hover:text-primary transition-colors">Contact Us</a>
             </div>
           </div>
 
@@ -46,15 +37,14 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground text-lg mb-6">Useful Links</h4>
             <div className="space-y-4">
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">Account Management</a>
-              <a href="/signup" className="block text-muted-foreground hover:text-primary transition-colors">Login</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">Register</a>
-              <a href="#" className="block text-muted-foreground hover:text-primary transition-colors">Faq</a>
+              <a href="/dashboard" className="block text-muted-foreground hover:text-primary transition-colors">Account Management</a>
+              <a href="/auth" className="block text-muted-foreground hover:text-primary transition-colors">Login</a>
+              <a href="/auth" className="block text-muted-foreground hover:text-primary transition-colors">Register</a>
             </div>
           </div>
 
           {/* Contact */}
-          <div>
+          <div id="contact">
             <h4 className="font-semibold text-foreground text-lg mb-6">Contact</h4>
             <div className="space-y-4">
               <div className="flex items-start space-x-3">

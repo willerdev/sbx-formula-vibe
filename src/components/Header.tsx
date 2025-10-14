@@ -39,9 +39,6 @@ export const Header = () => {
               <a href="#mentorship" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
                 Mentorship
               </a>
-              <a href="#faqs" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
-                FAQs
-              </a>
               <button 
                 onClick={() => navigate("/auth")} 
                 className="text-foreground hover:text-primary transition-fast font-medium text-sm"
@@ -108,13 +105,6 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Mentorship
-              </a>
-              <a 
-                href="#faqs" 
-                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                FAQs
               </a>
               <button 
                 onClick={() => {

@@ -15,7 +15,7 @@ export const CommunitySection = () => {
   };
 
   return (
-    <section id="faqs" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 animate-slide-in-right">
+    <section className="w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 animate-slide-in-right">
       <div className="w-full max-w-4xl mx-auto text-center">
         <div className="mb-6 sm:mb-8">
           <div className="flex items-center justify-center mb-4">
