@@ -11,116 +11,149 @@ export const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full bg-background/95 backdrop-blur-lg border-b border-border sticky top-0 z-50 transition-smooth">
+    <header className="w-full bg-background/80 backdrop-blur-xl border-b border-border/50 sticky top-0 z-50 shadow-sm">
       <div className="w-full px-4 md:px-6 lg:px-8 xl:px-12">
-        <div className="flex items-center justify-between h-32 lg:h-36">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Left Section - Logo */}
-          <div className="flex items-center gap-4">
-            
-            {/* Logo */}
-            <a href="/" className="flex items-center">
+          <div className="flex items-center">
+            <a href="/" className="flex items-center group">
               <img 
                 src={logoTransparent} 
                 alt="Savii Banks FX Group Logo" 
-                className="h-32 w-auto object-contain"
+                className="h-16 lg:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </a>
           </div>
 
           {/* Navigation - Center */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 mx-8">
-            <div className="flex items-center space-x-8">
-              <a href="#about" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
-                About
+          <nav className="hidden lg:flex items-center justify-center flex-1 mx-12">
+            <div className="flex items-center space-x-10">
+              <a href="#about" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
+                <span className="relative">
+                  About
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
+                </span>
               </a>
-              <a href="#signals" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
-                Signals
+              <a href="#signals" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
+                <span className="relative">
+                  Signals
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
+                </span>
               </a>
-              <a href="#mentorship" className="text-foreground hover:text-primary transition-fast font-medium text-sm">
-                Mentorship
+              <a href="#mentorship" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
+                <span className="relative">
+                  Mentorship
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
+                </span>
               </a>
-              <button 
-                onClick={() => navigate("/auth")} 
-                className="text-foreground hover:text-primary transition-fast font-medium text-sm"
-              >
-                Register
-              </button>
+              <a href="/dashboard" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
+                <span className="relative">
+                  Account Management
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
+                </span>
+              </a>
             </div>
           </nav>
 
-          {/* Right Section - Dashboard/Login */}
-          <div className="hidden lg:flex items-center">
+          {/* Right Section - CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Button 
+              variant="ghost"
+              className="text-foreground/80 hover:text-primary hover:bg-primary/5 font-medium px-5 py-2 transition-all duration-300"
+              onClick={() => navigate("/auth")}
+            >
+              Sign In
+            </Button>
             {user ? (
               <Button 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl"
+                variant="hero"
+                size="lg"
+                className="px-6 shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => navigate("/dashboard")}
               >
                 Dashboard
               </Button>
             ) : (
               <Button 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6 py-2 font-medium transition-fast shadow-lg hover:shadow-xl"
+                variant="hero"
+                size="lg"
+                className="px-6 shadow-lg hover:shadow-xl transition-all duration-300"
                 onClick={() => navigate("/auth")}
               >
-                Login
+                Get Started
               </Button>
             )}
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center gap-2">
-            
+          <div className="lg:hidden flex items-center">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="h-10 w-10 hover:bg-primary/10"
+              className="h-10 w-10 hover:bg-primary/10 transition-colors"
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6 text-foreground" /> 
+              ) : (
+                <Menu className="h-6 w-6 text-foreground" />
+              )}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border animate-in slide-in-from-top-2 duration-200">
-            <nav className="flex flex-col space-y-1">
+          <div className="lg:hidden py-6 border-t border-border/50 animate-fade-in bg-background/95 backdrop-blur-xl">
+            <nav className="flex flex-col space-y-2">
               <a 
                 href="#about" 
-                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg"
+                className="text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium px-6 py-3 rounded-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
               </a>
               <a 
                 href="#signals" 
-                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg"
+                className="text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium px-6 py-3 rounded-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Signals
               </a>
               <a 
                 href="#mentorship" 
-                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg"
+                className="text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium px-6 py-3 rounded-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Mentorship
               </a>
-              <button 
-                onClick={() => {
-                  navigate("/auth");
-                  setIsMenuOpen(false);
-                }}
-                className="text-foreground hover:text-primary hover:bg-muted transition-fast font-medium px-4 py-3 rounded-lg text-left w-full"
+              <a 
+                href="/dashboard" 
+                className="text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium px-6 py-3 rounded-lg"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Register
-              </button>
+                Account Management
+              </a>
               
-              {/* Mobile Dashboard/Login */}
-              <div className="px-4 pt-4">
+              <div className="h-px bg-border/50 my-2"></div>
+              
+              {/* Mobile CTA Buttons */}
+              <div className="px-6 pt-2 space-y-3">
+                <Button 
+                  variant="outline"
+                  className="w-full py-3 font-medium border-border/50 hover:bg-primary/5 hover:border-primary/50 transition-all duration-300"
+                  onClick={() => {
+                    navigate("/auth");
+                    setIsMenuOpen(false);
+                  }}
+                >
+                  Sign In
+                </Button>
                 {user ? (
                   <Button 
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-3 font-medium transition-fast"
+                    variant="hero"
+                    size="lg"
+                    className="w-full py-3 font-medium shadow-lg"
                     onClick={() => {
                       navigate("/dashboard");
                       setIsMenuOpen(false);
@@ -130,13 +163,15 @@ export const Header = () => {
                   </Button>
                 ) : (
                   <Button 
-                    className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full py-3 font-medium transition-fast"
+                    variant="hero"
+                    size="lg"
+                    className="w-full py-3 font-medium shadow-lg"
                     onClick={() => {
                       navigate("/auth");
                       setIsMenuOpen(false);
                     }}
                   >
-                    Login
+                    Get Started
                   </Button>
                 )}
               </div>
