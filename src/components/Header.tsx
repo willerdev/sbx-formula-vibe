@@ -46,12 +46,6 @@ export const Header = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
                 </span>
               </a>
-              <a href="/dashboard" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
-                <span className="relative">
-                  Account Management
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
-                </span>
-              </a>
             </div>
           </nav>
 
@@ -126,13 +120,6 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Mentorship
-              </a>
-              <a 
-                href="/dashboard" 
-                className="text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium px-6 py-3 rounded-lg"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Account Management
               </a>
               
               <div className="h-px bg-border/50 my-2"></div>

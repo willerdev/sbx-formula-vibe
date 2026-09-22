@@ -68,16 +68,18 @@ export const WhyChooseSection = () => {
               <div className="relative">
                  <div className="space-y-4 mb-6">
                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                     I AM
+                     WE ARE
                      <br />
-                     <span className="text-gradient-primary">SAVII BANKS,</span>
+                     <span className="text-gradient-primary">SAVII BANKS</span>
+                     <br />
+                     <span className="text-gradient-primary">FX GROUP,</span>
                    </h3>
                    
                      <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
-                       <span className="text-foreground">I PLAN </span>
-                       <span className="text-gradient-accent">MY TRADES</span>
+                       <span className="text-foreground">WE PLAN </span>
+                       <span className="text-gradient-accent">OUR TRADES</span>
                        <span className="text-foreground"> AND TRADE </span>
-                       <span className="text-gradient-accent">MY PLANS</span>
+                       <span className="text-gradient-accent">OUR PLANS</span>
                        <br />
                        <span className="text-gradient-primary">EVERY TIME</span>
                      </h3>

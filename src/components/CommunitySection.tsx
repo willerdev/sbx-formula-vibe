@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 export const CommunitySection = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,14 +43,6 @@ export const CommunitySection = () => {
             placeholder="Your Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="h-10 sm:h-12 text-sm sm:text-base md:text-lg"
-            required
-          />
-          <Input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             className="h-10 sm:h-12 text-sm sm:text-base md:text-lg"
             required
           />

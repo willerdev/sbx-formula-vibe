@@ -12,12 +12,12 @@ const plans = [
   {
     icon: <Bell className="w-8 h-8" />,
     name: "Premium Signals",
-    price: "$30",
+    price: "$40",
     period: "month",
-    description: "Receive real-time trading signals with 98.99% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
+    description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
     features: [
       "Real-time alerts",
-      "98.99% accuracy", 
+      "78% accuracy", 
       "Risk management",
       "Premium signals access"
     ],
@@ -27,7 +27,7 @@ const plans = [
   {
     icon: <BookOpen className="w-8 h-8" />,
     name: "Online Mentorship",
-    price: "$120",
+    price: "$130",
     period: "month", 
     description: "Learn the SBX Formula in our group mentorship program. Master price action trading for Deriv synthetic indices.",
     features: [
@@ -42,7 +42,7 @@ const plans = [
   {
     icon: <Users className="w-8 h-8" />,
     name: "1-on-1 Mentorship",
-    price: "$240",
+    price: "$350",
     period: "month",
     description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
     features: [

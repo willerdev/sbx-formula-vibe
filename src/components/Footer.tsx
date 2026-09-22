@@ -1,4 +1,4 @@
-import { Instagram, MapPin, Mail, Phone } from "lucide-react";
+import { Instagram, MapPin, Phone } from "lucide-react";
 import { MessageCircle } from "lucide-react";
 
 export const Footer = () => {
@@ -37,7 +37,6 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold text-foreground text-lg mb-6">Useful Links</h4>
             <div className="space-y-4">
-              <a href="/dashboard" className="block text-muted-foreground hover:text-primary transition-colors">Account Management</a>
               <a href="/auth" className="block text-muted-foreground hover:text-primary transition-colors">Login</a>
               <a href="/auth" className="block text-muted-foreground hover:text-primary transition-colors">Register</a>
             </div>
@@ -52,13 +51,6 @@ export const Footer = () => {
                 <div className="text-muted-foreground">
                   <p>Kigali KK 200St</p>
                 </div>
-              </div>
-              
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-primary" />
-                <a href="mailto:support@sbxformula.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  support@sbxformula.com
-                </a>
               </div>
               
               <div className="flex items-center space-x-3">

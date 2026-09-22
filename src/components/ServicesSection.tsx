@@ -19,9 +19,9 @@ export const ServicesSection = () => {
     {
       icon: <Bell className="w-8 h-8" />,
       title: "Premium Signals",
-      description: "Receive real-time trading signals with 98.99% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
-      features: ["Real-time alerts", "98.99% accuracy", "Risk management", "Premium signals access"],
-      price: "$30/month",
+      description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
+      features: ["Real-time alerts", "78% accuracy", "Risk management", "Premium signals access"],
+      price: "$40/month",
       popular: true
     },
     {
@@ -29,7 +29,7 @@ export const ServicesSection = () => {
       title: "Online Mentorship",
       description: "Learn the SBX Formula in our group mentorship program. Master price action trading for Deriv synthetic indices.",
       features: ["Group sessions", "SBX Formula training", "Risk management", "Premium signals access"],
-      price: "$120/month",
+      price: "$130/month",
       popular: false
     },
     {
@@ -37,7 +37,7 @@ export const ServicesSection = () => {
       title: "1-on-1 Mentorship",
       description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
       features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management", "Premium signals access"],
-      price: "$240/month",
+      price: "$350/month",
       popular: false
     }
   ];
