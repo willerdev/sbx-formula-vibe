@@ -26,18 +26,18 @@ export const ServicesSection = () => {
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
-      title: "Online Mentorship",
-      description: "Learn the SBX Formula in our group mentorship program. Master price action trading for Deriv synthetic indices.",
-      features: ["Group sessions", "SBX Formula training", "Risk management", "Premium signals access"],
-      price: "$130/month",
+      title: "1-on-1 Online Mentorship",
+      description: "Learn the SBX Formula in 1-on-1 online mentorship. Master price action trading for Deriv synthetic indices.",
+      features: ["Online sessions", "SBX Formula training", "Risk management", "Premium signals access"],
+      price: "$130/2month",
       popular: false
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "1-on-1 Mentorship",
-      description: "Get personalized trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
+      title: "1-on-1 Physical Mentorship",
+      description: "Get personalized in-person trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
       features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management", "Premium signals access"],
-      price: "$350/month",
+      price: "$350/2month",
       popular: false
     }
   ];
