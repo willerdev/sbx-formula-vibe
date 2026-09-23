@@ -15,7 +15,7 @@ const fallbackPlans: Plan[] = [
     {
       id: "premium-signals",
       slug: "premium-signals",
-      name: "Premium Signals",
+      name: "SBX Formula Trading Bot",
       description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
       features: ["Real-time alerts", "78% accuracy", "Risk management", "Premium signals access"],
       price_amount: 40,

@@ -92,7 +92,7 @@ INSERT INTO public.plans (slug, name, description, price_amount, billing_period,
 VALUES
   (
     'premium-signals',
-    'Premium Signals',
+    'SBX Formula Trading Bot',
     'Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.',
     40,
     'month',

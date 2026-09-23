@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import type { Plan } from "@/lib/siteContent";
+import { defaultIndices, defaultStats, parseIndices, parseStats, type Plan, type SiteStat } from "@/lib/siteContent";
 
 interface OutletContext {
   isMobile?: boolean;
@@ -48,6 +48,8 @@ export const Admin = () => {
   const { toast } = useToast();
   const [plans, setPlans] = useState<PlanDraft[]>([]);
   const [settings, setSettings] = useState<SettingRow[]>([]);
+  const [indices, setIndices] = useState<string[]>(defaultIndices);
+  const [stats, setStats] = useState<SiteStat[]>(defaultStats);
   const [requests, setRequests] = useState<RequestRow[]>([]);
   const [activity, setActivity] = useState<ActivityRow[]>([]);
 
@@ -65,7 +67,13 @@ export const Admin = () => {
         featuresText: (plan.features ?? []).join("\n"),
       })));
     }
-    if (settingResult.data) setSettings(settingResult.data);
+    if (settingResult.data) {
+      const rows = settingResult.data;
+      setSettings(rows.filter((row) => row.key !== "traded_indices" && row.key !== "site_stats"));
+      const stored = Object.fromEntries(rows.map((row) => [row.key, row.value]));
+      setIndices(parseIndices(stored.traded_indices));
+      setStats(parseStats(stored.site_stats));
+    }
     if (requestResult.data) setRequests(requestResult.data);
     if (activityResult.data) setActivity(activityResult.data as ActivityRow[]);
   };
@@ -96,6 +104,23 @@ export const Admin = () => {
     toast(error
       ? { title: "Setting not saved", description: error.message }
       : { title: "Setting saved", description: settingLabels[setting.key] ?? setting.key });
+  };
+
+  const saveIndices = async () => {
+    const value = indices.map((item) => item.trim()).filter(Boolean).join("\n");
+    const { error } = await supabase.from("site_settings").upsert({ key: "traded_indices", value });
+    toast(error
+      ? { title: "Indices not saved", description: error.message }
+      : { title: "Indices saved" });
+    if (!error) setIndices(value.split("\n"));
+  };
+
+  const saveStats = async () => {
+    const value = JSON.stringify(stats.filter((stat) => stat.number.trim() && stat.label.trim()));
+    const { error } = await supabase.from("site_settings").upsert({ key: "site_stats", value });
+    toast(error
+      ? { title: "Stats not saved", description: error.message }
+      : { title: "Stats saved" });
   };
 
   const updateRequestStatus = async (id: string, status: string) => {
@@ -169,6 +194,58 @@ export const Admin = () => {
             <Button onClick={() => savePlan(plan)}>Save plan</Button>
           </Card>
         ))}
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold text-foreground">Indices we trade</h2>
+        <Card className="p-4 space-y-3">
+          {indices.map((indexName, index) => (
+            <div key={index} className="flex gap-2">
+              <Input
+                value={indexName}
+                onChange={(event) => setIndices((rows) => rows.map((row, rowIndex) => rowIndex === index ? event.target.value : row))}
+              />
+              <Button
+                variant="outline"
+                onClick={() => setIndices((rows) => rows.filter((_, rowIndex) => rowIndex !== index))}
+              >
+                Remove
+              </Button>
+            </div>
+          ))}
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => setIndices((rows) => [...rows, ""])}>Add index</Button>
+            <Button onClick={saveIndices}>Save indices</Button>
+          </div>
+        </Card>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold text-foreground">Stats</h2>
+        <Card className="p-4 space-y-3">
+          {stats.map((stat, index) => (
+            <div key={index} className="grid gap-2 md:grid-cols-[160px_1fr_auto]">
+              <Input
+                value={stat.number}
+                onChange={(event) => setStats((rows) => rows.map((row, rowIndex) => rowIndex === index ? { ...row, number: event.target.value } : row))}
+              />
+              <Input
+                value={stat.label}
+                onChange={(event) => setStats((rows) => rows.map((row, rowIndex) => rowIndex === index ? { ...row, label: event.target.value } : row))}
+              />
+              <Button
+                variant="outline"
+                onClick={() => setStats((rows) => rows.filter((_, rowIndex) => rowIndex !== index))}
+              >
+                Remove
+              </Button>
+            </div>
+          ))}
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => setStats((rows) => [...rows, { number: "", label: "" }])}>Add stat</Button>
+            <Button onClick={saveStats}>Save stats</Button>
+          </div>
+        </Card>
       </section>
 
       <section className="space-y-4">

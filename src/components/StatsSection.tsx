@@ -1,22 +1,14 @@
+import { useEffect, useState } from "react";
+import { defaultStats, fetchSiteSettings, parseStats, type SiteStat } from "@/lib/siteContent";
+
 export const StatsSection = () => {
-  const stats = [
-    {
-      number: "2000+",
-      label: "Current Members"
-    },
-    {
-      number: "1200+", 
-      label: "Chat Members"
-    },
-    {
-      number: "1500+",
-      label: "Signals Received"
-    },
-    {
-      number: "1350+",
-      label: "Won Signals"
-    }
-  ];
+  const [stats, setStats] = useState<SiteStat[]>(defaultStats);
+
+  useEffect(() => {
+    fetchSiteSettings().then((settings) => {
+      if (settings) setStats(parseStats(settings.site_stats));
+    });
+  }, []);
 
   return (
     <section className="w-full py-16 px-4 sm:px-6 lg:px-8 xl:px-12 bg-secondary/20">

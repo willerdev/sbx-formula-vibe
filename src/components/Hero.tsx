@@ -1,9 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { TrendingUp, Shield, Zap, Target } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { defaultIndices, fetchSiteSettings, parseIndices } from "@/lib/siteContent";
 
 export const Hero = () => {
   const navigate = useNavigate();
+  const [indices, setIndices] = useState(defaultIndices);
+
+  useEffect(() => {
+    fetchSiteSettings().then((settings) => {
+      if (settings) setIndices(parseIndices(settings.traded_indices));
+    });
+  }, []);
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       {/* Animated Background with Particles */}
@@ -104,10 +112,7 @@ export const Hero = () => {
                 <div className="space-y-2 sm:space-y-3">
                   <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-foreground">Indices We Trade:</h3>
                   <div className="flex flex-wrap gap-1 sm:gap-1.5 text-xs sm:text-sm">
-                    {[
-                      "Vol 25 (1s)", "Vol 50 (1s)", "Vol 75 (1s)", "Vol 150 (1s)",
-                      "Vol 25", "Vol 50", "Vol 75", "Jump 50", "Jump 100"
-                    ].map((index, i) => (
+                    {indices.map((index, i) => (
                       <span key={i} className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-primary/10 text-primary rounded-full hover:bg-primary/20 transition-colors duration-200 cursor-default">
                         {index}
                       </span>
