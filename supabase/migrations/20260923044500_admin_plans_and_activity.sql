@@ -94,9 +94,9 @@ VALUES
     'premium-signals',
     'SBX Formula Trading Bot',
     'Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.',
-    40,
+    50,
     'month',
-    ARRAY['Real-time alerts', '78% accuracy', 'Risk management', 'Premium signals access'],
+    ARRAY['Real-time alerts', '78% accuracy', 'Risk management', 'SBX Formula Trading Bot'],
     true,
     1
   ),
@@ -106,7 +106,7 @@ VALUES
     'Learn the SBX Formula in 1-on-1 online mentorship. Master price action trading for Deriv synthetic indices.',
     130,
     '2month',
-    ARRAY['Online sessions', 'SBX Formula training', 'Risk management', 'Premium signals access'],
+    ARRAY['Online sessions', 'SBX Formula training', 'Risk management', 'SBX Formula Trading Bot'],
     false,
     2
   ),
@@ -116,7 +116,7 @@ VALUES
     'Get personalized in-person trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.',
     350,
     '2month',
-    ARRAY['Personal mentor', 'Market analysis', 'Advanced SBX strategies', 'Risk management', 'Premium signals access'],
+    ARRAY['Personal mentor', 'Market analysis', 'Advanced SBX strategies', 'Risk management', 'SBX Formula Trading Bot'],
     false,
     3
   )
