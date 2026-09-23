@@ -1,46 +1,61 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  TrendingUp, 
-  Users, 
-  BookOpen, 
-  Bell, 
-  Shield, 
-  Zap,
-  Target,
-  BarChart3,
-  LineChart
-} from "lucide-react";
+import { Users, BookOpen, Bell } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchPlans, formatPlanPrice, type Plan } from "@/lib/siteContent";
+
+const planIcons = {
+  "premium-signals": <Bell className="w-8 h-8" />,
+  "online-mentorship": <BookOpen className="w-8 h-8" />,
+  "physical-mentorship": <Users className="w-8 h-8" />,
+};
+
+const fallbackPlans: Plan[] = [
+    {
+      id: "premium-signals",
+      slug: "premium-signals",
+      name: "Premium Signals",
+      description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
+      features: ["Real-time alerts", "78% accuracy", "Risk management", "Premium signals access"],
+      price_amount: 40,
+      billing_period: "month",
+      is_popular: true,
+      sort_order: 1,
+    },
+    {
+      id: "online-mentorship",
+      slug: "online-mentorship",
+      name: "1-on-1 Online Mentorship",
+      description: "Learn the SBX Formula in 1-on-1 online mentorship. Master price action trading for Deriv synthetic indices.",
+      features: ["Online sessions", "SBX Formula training", "Risk management", "Premium signals access"],
+      price_amount: 130,
+      billing_period: "2month",
+      is_popular: false,
+      sort_order: 2,
+    },
+    {
+      id: "physical-mentorship",
+      slug: "physical-mentorship",
+      name: "1-on-1 Physical Mentorship",
+      description: "Get personalized in-person trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
+      features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management", "Premium signals access"],
+      price_amount: 350,
+      billing_period: "2month",
+      is_popular: false,
+      sort_order: 3,
+    },
+  ];
 
 export const ServicesSection = () => {
   const navigate = useNavigate();
-  const services = [
-    {
-      icon: <Bell className="w-8 h-8" />,
-      title: "Premium Signals",
-      description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
-      features: ["Real-time alerts", "78% accuracy", "Risk management", "Premium signals access"],
-      price: "$40/month",
-      popular: true
-    },
-    {
-      icon: <BookOpen className="w-8 h-8" />,
-      title: "1-on-1 Online Mentorship",
-      description: "Learn the SBX Formula in 1-on-1 online mentorship. Master price action trading for Deriv synthetic indices.",
-      features: ["Online sessions", "SBX Formula training", "Risk management", "Premium signals access"],
-      price: "$130/2month",
-      popular: false
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "1-on-1 Physical Mentorship",
-      description: "Get personalized in-person trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
-      features: ["Personal mentor", "Market analysis", "Advanced SBX strategies", "Risk management", "Premium signals access"],
-      price: "$350/2month",
-      popular: false
-    }
-  ];
+  const [services, setServices] = useState<Plan[]>(fallbackPlans);
+
+  useEffect(() => {
+    fetchPlans().then((plans) => {
+      if (plans?.length) setServices(plans);
+    });
+  }, []);
 
   return (
     <section id="mentorship" className="w-full py-12 sm:py-16 md:py-20 lg:py-24 animate-slide-in-right">
@@ -56,10 +71,10 @@ export const ServicesSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
-            <Card key={index} className={`relative p-6 sm:p-8 gradient-card border-gradient transition-all duration-300 hover:scale-105 ${
-              service.popular ? 'ring-2 ring-primary glow-primary' : ''
+            <Card key={service.id} className={`relative p-6 sm:p-8 gradient-card border-gradient transition-all duration-300 hover:scale-105 ${
+              service.is_popular ? 'ring-2 ring-primary glow-primary' : ''
             }`}>
-              {service.popular && (
+              {service.is_popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                   <span className="gradient-primary text-primary-foreground px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
                     Most Popular
@@ -68,13 +83,13 @@ export const ServicesSection = () => {
               )}
               
               <div className="flex items-center mb-6">
-                <div className={`p-3 rounded-xl ${service.popular ? 'gradient-primary text-primary-foreground' : 'bg-accent/10 text-accent'}`}>
-                  {service.icon}
+                <div className={`p-3 rounded-xl ${service.is_popular ? 'gradient-primary text-primary-foreground' : 'bg-accent/10 text-accent'}`}>
+                  {planIcons[service.slug as keyof typeof planIcons] ?? <Bell className="w-8 h-8" />}
                 </div>
               </div>
               
               <h3 className="font-space-grotesk font-bold text-xl sm:text-2xl mb-4 text-foreground">
-                {service.title}
+                {service.name}
               </h3>
               
               <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
@@ -92,10 +107,10 @@ export const ServicesSection = () => {
               
               <div className="flex items-center justify-between">
                 <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
-                  {service.price}
+                  {formatPlanPrice(service.price_amount, service.billing_period)}
                 </div>
                 <Button 
-                  variant={service.popular ? "hero" : "premium"} 
+                  variant={service.is_popular ? "hero" : "premium"} 
                   size="sm" 
                   className="text-xs sm:text-sm"
                   onClick={() => navigate("/auth")}

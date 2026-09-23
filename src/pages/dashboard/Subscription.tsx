@@ -1,144 +1,123 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Crown, Check, Calendar, CreditCard, Bell, BookOpen, Users } from "lucide-react";
+import { Bell, BookOpen, Users } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
+import { fetchPlans, formatPlanPrice, type Plan } from "@/lib/siteContent";
+import { useToast } from "@/hooks/use-toast";
 
 interface OutletContext {
   isMobile?: boolean;
 }
 
-const plans = [
-  {
-    icon: <Bell className="w-8 h-8" />,
-    name: "Premium Signals",
-    price: "$40",
-    period: "month",
-    description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
-    features: [
-      "Real-time alerts",
-      "78% accuracy", 
-      "Risk management",
-      "Premium signals access"
-    ],
-    current: true,
-    popular: true
-  },
-  {
-    icon: <BookOpen className="w-8 h-8" />,
-    name: "1-on-1 Online Mentorship",
-    price: "$130",
-    period: "2month", 
-    description: "Learn the SBX Formula in 1-on-1 online mentorship. Master price action trading for Deriv synthetic indices.",
-    features: [
-      "Online sessions",
-      "SBX Formula training",
-      "Risk management",
-      "Premium signals access"
-    ],
-    current: false,
-    popular: false
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    name: "1-on-1 Physical Mentorship",
-    price: "$350",
-    period: "2month",
-    description: "Get personalized in-person trading guidance from Savii Banks. Master advanced SBX strategies with direct mentorship.",
-    features: [
-      "Personal mentor",
-      "Advanced SBX strategies",
-      "Risk management",
-      "Premium signals access"
-    ],
-    current: false,
-    popular: false
-  }
-];
+const planIcons = {
+  "premium-signals": <Bell className="w-8 h-8" />,
+  "online-mentorship": <BookOpen className="w-8 h-8" />,
+  "physical-mentorship": <Users className="w-8 h-8" />,
+};
 
 export const Subscription = () => {
   const { isMobile = false } = useOutletContext<OutletContext>();
+  const { user } = useAuth();
+  const { toast } = useToast();
+  const [plans, setPlans] = useState<Plan[]>([]);
+
+  useEffect(() => {
+    fetchPlans().then((rows) => {
+      if (rows) setPlans(rows);
+    });
+  }, []);
+
+  const selectPlan = async (plan: Plan) => {
+    const price = formatPlanPrice(plan.price_amount, plan.billing_period);
+    const { error } = await supabase.from("plan_requests").insert({
+      user_id: user?.id,
+      plan_id: plan.id,
+      plan_name: plan.name,
+      email: user?.email,
+    });
+
+    if (error) {
+      toast({ title: "Could not save request", description: error.message });
+      return;
+    }
+
+    window.open(
+      `https://wa.me/250788974179?text=${encodeURIComponent(`Hi, I would like to subscribe to the ${plan.name} plan at ${price}.`)}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
-      {/* Header - Mobile responsive */}
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
-        <div className={isMobile ? 'p-4' : 'p-6'}>
-          <h1 className={`font-bold text-foreground ${isMobile ? 'text-xl' : 'text-3xl'}`}>
+        <div className={isMobile ? "p-4" : "p-6"}>
+          <h1 className={`font-bold text-foreground ${isMobile ? "text-xl" : "text-3xl"}`}>
             My Subscription
           </h1>
-          <p className={`text-muted-foreground ${isMobile ? 'mt-1 text-sm' : 'mt-2'}`}>
+          <p className={`text-muted-foreground ${isMobile ? "mt-1 text-sm" : "mt-2"}`}>
             Manage your subscription and upgrade your plan
           </p>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className={`flex-1 overflow-y-auto ${isMobile ? 'p-4' : 'p-6'}`}>
-
-        {/* Available Plans */}
+      <div className={`flex-1 overflow-y-auto ${isMobile ? "p-4" : "p-6"}`}>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {plans.map((plan, index) => (
-            <div key={index} className="flex flex-col gap-4">
+          {plans.map((plan) => (
+            <div key={plan.id} className="flex flex-col gap-4">
               <Card className={`relative p-6 sm:p-8 gradient-card border-gradient transition-all duration-300 ${
-                plan.popular ? 'ring-2 ring-primary glow-primary' : ''
-              } ${plan.current ? 'ring-2 ring-green-500' : ''}`}>
-                {plan.popular && (
+                plan.is_popular ? "ring-2 ring-primary glow-primary" : ""
+              }`}>
+                {plan.is_popular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <span className="gradient-primary text-primary-foreground px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
                       Most Popular
                     </span>
                   </div>
                 )}
-                
+
                 <div className="flex items-center mb-6">
-                  <div className={`p-3 rounded-xl ${plan.popular ? 'gradient-primary text-primary-foreground' : 'bg-accent/10 text-accent'}`}>
-                    {plan.icon}
+                  <div className={`p-3 rounded-xl ${plan.is_popular ? "gradient-primary text-primary-foreground" : "bg-accent/10 text-accent"}`}>
+                    {planIcons[plan.slug as keyof typeof planIcons] ?? <Bell className="w-8 h-8" />}
                   </div>
                 </div>
-                
+
                 <h3 className="font-space-grotesk font-bold text-xl sm:text-2xl mb-4 text-foreground">
                   {plan.name}
                 </h3>
-                
+
                 <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
                   {plan.description}
                 </p>
-                
+
                 <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3">
+                  {plan.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-accent rounded-full flex-shrink-0" />
                       <span className="text-sm sm:text-base text-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
-                
-                <div className="flex items-center justify-between">
-                  <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
-                    {plan.price}/{plan.period}
-                  </div>
+
+                <div className="text-2xl sm:text-3xl font-bold text-gradient-primary">
+                  {formatPlanPrice(plan.price_amount, plan.billing_period)}
                 </div>
               </Card>
-              
-              <a 
-                href={`https://wa.me/250788974179?text=${encodeURIComponent(`Hi, I would like to subscribe to the ${plan.name} plan at ${plan.price}/${plan.period}.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
+
+              <Button
+                variant="success"
                 className="w-full"
+                size="lg"
+                onClick={() => selectPlan(plan)}
               >
-                <Button 
-                  variant="success"
-                  className="w-full" 
-                  size="lg"
-                >
-                  Select Plan
-                </Button>
-              </a>
+                Select Plan
+              </Button>
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

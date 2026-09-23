@@ -22,6 +22,7 @@ export type Database = {
           display_name: string | null
           id: string
           phone: string | null
+          role: string
           updated_at: string
           user_id: string
         }
@@ -32,6 +33,7 @@ export type Database = {
           display_name?: string | null
           id?: string
           phone?: string | null
+          role?: string
           updated_at?: string
           user_id: string
         }
@@ -42,8 +44,138 @@ export type Database = {
           display_name?: string | null
           id?: string
           phone?: string | null
+          role?: string
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      plans: {
+        Row: {
+          billing_period: string
+          created_at: string
+          currency: string
+          description: string
+          features: string[]
+          id: string
+          is_active: boolean
+          is_popular: boolean
+          name: string
+          price_amount: number
+          slug: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          billing_period: string
+          created_at?: string
+          currency?: string
+          description?: string
+          features?: string[]
+          id?: string
+          is_active?: boolean
+          is_popular?: boolean
+          name: string
+          price_amount: number
+          slug: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          billing_period?: string
+          created_at?: string
+          currency?: string
+          description?: string
+          features?: string[]
+          id?: string
+          is_active?: boolean
+          is_popular?: boolean
+          name?: string
+          price_amount?: number
+          slug?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          updated_at: string
+          value: string
+        }
+        Insert: {
+          key: string
+          updated_at?: string
+          value: string
+        }
+        Update: {
+          key?: string
+          updated_at?: string
+          value?: string
+        }
+        Relationships: []
+      }
+      plan_requests: {
+        Row: {
+          contact_name: string | null
+          created_at: string
+          email: string | null
+          id: string
+          message: string | null
+          phone: string | null
+          plan_id: string | null
+          plan_name: string
+          status: string
+          user_id: string | null
+        }
+        Insert: {
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          phone?: string | null
+          plan_id?: string | null
+          plan_name: string
+          status?: string
+          user_id?: string | null
+        }
+        Update: {
+          contact_name?: string | null
+          created_at?: string
+          email?: string | null
+          id?: string
+          message?: string | null
+          phone?: string | null
+          plan_id?: string | null
+          plan_name?: string
+          status?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      activity_log: {
+        Row: {
+          action: string
+          created_at: string
+          details: Json
+          id: string
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          details?: Json
+          id?: string
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          details?: Json
+          id?: string
+          user_id?: string | null
         }
         Relationships: []
       }

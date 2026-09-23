@@ -1,7 +1,28 @@
 import { Instagram, MapPin, Phone } from "lucide-react";
 import { MessageCircle } from "lucide-react";
+import { useEffect, useState } from "react";
+import { fetchSiteSettings } from "@/lib/siteContent";
 
 export const Footer = () => {
+  const [settings, setSettings] = useState({
+    contact_address: "Kigali KK 200St",
+    contact_phone: "+250 788 974 179",
+    whatsapp_url: "https://chat.whatsapp.com/Jt9GTVG3w2nHyyhJGSYuMj?mode=wwc",
+    instagram_url: "https://www.instagram.com/savii.banks?igsh=YzBmeDN1Nm1kY3gy&utm_source=qr",
+  });
+
+  useEffect(() => {
+    fetchSiteSettings().then((rows) => {
+      if (!rows) return;
+      setSettings((current) => ({
+        contact_address: rows.contact_address || current.contact_address,
+        contact_phone: rows.contact_phone || current.contact_phone,
+        whatsapp_url: rows.whatsapp_url || current.whatsapp_url,
+        instagram_url: rows.instagram_url || current.instagram_url,
+      }));
+    });
+  }, []);
+
   return (
     <footer className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-primary/20 animate-fade-in bg-transparent">
       <div className="w-full max-w-7xl mx-auto">
@@ -12,11 +33,11 @@ export const Footer = () => {
             <h4 className="font-semibold text-foreground text-lg">Follow Us</h4>
             
             <div className="space-y-4">
-              <a href="https://www.instagram.com/savii.banks?igsh=YzBmeDN1Nm1kY3gy&utm_source=qr" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
                 <Instagram className="w-5 h-5" />
                 <span>Instagram</span>
               </a>
-              <a href="https://chat.whatsapp.com/Jt9GTVG3w2nHyyhJGSYuMj?mode=wwc" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
+              <a href={settings.whatsapp_url} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors">
                 <MessageCircle className="w-5 h-5" />
                 <span>WhatsApp</span>
               </a>
@@ -49,14 +70,14 @@ export const Footer = () => {
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                 <div className="text-muted-foreground">
-                  <p>Kigali KK 200St</p>
+                  <p>{settings.contact_address}</p>
                 </div>
               </div>
               
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-primary" />
-                <a href="tel:+250788974179" className="text-muted-foreground hover:text-primary transition-colors">
-                  +250 788 974 179
+                <a href={`tel:${settings.contact_phone.replace(/\s/g, "")}`} className="text-muted-foreground hover:text-primary transition-colors">
+                  {settings.contact_phone}
                 </a>
               </div>
             </div>

@@ -12,6 +12,7 @@ import { DashboardHome } from "./pages/dashboard/DashboardHome";
 import { TradingSignals } from "./pages/dashboard/TradingSignals";
 import { Subscription } from "./pages/dashboard/Subscription";
 import { ProfileSettings } from "./pages/dashboard/ProfileSettings";
+import { Admin } from "./pages/dashboard/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="signals" element={<TradingSignals />} />
               <Route path="subscription" element={<Subscription />} />
               <Route path="profile" element={<ProfileSettings />} />
+              <Route path="admin" element={<Admin />} />
             </Route>
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

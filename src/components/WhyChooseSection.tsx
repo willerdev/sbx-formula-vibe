@@ -1,9 +1,26 @@
 import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchSiteSettings } from "@/lib/siteContent";
+
+const defaultQuoteTitle = "WE ARE SAVII BANKS FX GROUP";
+const defaultQuoteBody = "WE PLAN OUR TRADES AND TRADE OUR PLANS EVERY TIME";
 
 export const WhyChooseSection = () => {
   const navigate = useNavigate();
+  const [quoteTitle, setQuoteTitle] = useState(defaultQuoteTitle);
+  const [quoteBody, setQuoteBody] = useState(defaultQuoteBody);
+
+  useEffect(() => {
+    fetchSiteSettings().then((settings) => {
+      if (!settings) return;
+      if (settings.quote_title) setQuoteTitle(settings.quote_title);
+      if (settings.quote_body) setQuoteBody(settings.quote_body);
+    });
+  }, []);
+
+  const quoteIsDefault = quoteTitle === defaultQuoteTitle && quoteBody === defaultQuoteBody;
   const features = [
     {
       title: "Consistent Signals",
@@ -67,22 +84,34 @@ export const WhyChooseSection = () => {
               
               <div className="relative">
                  <div className="space-y-4 mb-6">
-                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
-                     WE ARE
-                     <br />
-                     <span className="text-gradient-primary">SAVII BANKS</span>
-                     <br />
-                     <span className="text-gradient-primary">FX GROUP,</span>
-                   </h3>
-                   
-                     <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
-                       <span className="text-foreground">WE PLAN </span>
-                       <span className="text-gradient-accent">OUR TRADES</span>
-                       <span className="text-foreground"> AND TRADE </span>
-                       <span className="text-gradient-accent">OUR PLANS</span>
-                       <br />
-                       <span className="text-gradient-primary">EVERY TIME</span>
-                     </h3>
+                   {quoteIsDefault ? (
+                     <>
+                       <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight">
+                         WE ARE
+                         <br />
+                         <span className="text-gradient-primary">SAVII BANKS</span>
+                         <br />
+                         <span className="text-gradient-primary">FX GROUP,</span>
+                       </h3>
+                       <h3 className="text-lg md:text-xl lg:text-2xl font-bold leading-tight">
+                         <span className="text-foreground">WE PLAN </span>
+                         <span className="text-gradient-accent">OUR TRADES</span>
+                         <span className="text-foreground"> AND TRADE </span>
+                         <span className="text-gradient-accent">OUR PLANS</span>
+                         <br />
+                         <span className="text-gradient-primary">EVERY TIME</span>
+                       </h3>
+                     </>
+                   ) : (
+                     <>
+                       <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-gradient-primary leading-tight whitespace-pre-line">
+                         {quoteTitle}
+                       </h3>
+                       <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground leading-tight whitespace-pre-line">
+                         {quoteBody}
+                       </h3>
+                     </>
+                   )}
                  </div>
 
                  <div className="pt-4 border-t border-primary/20">

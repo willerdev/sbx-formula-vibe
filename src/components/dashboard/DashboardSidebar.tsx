@@ -5,8 +5,10 @@ import {
   Users, 
   TrendingUp,
   Mail,
-  Phone
+  Phone,
+  Shield
 } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { NavLink, useLocation } from "react-router-dom";
@@ -62,6 +64,19 @@ const menuItems = [
 
 export const DashboardSidebar = ({ isOpen = true, onClose, isMobile = false }: DashboardSidebarProps) => {
   const location = useLocation();
+  const { isAdmin } = useAuth();
+  const sections = isAdmin
+    ? [
+        menuItems[0],
+        menuItems[1],
+        {
+          title: "ADMIN",
+          items: [{ icon: Shield, label: "Admin", path: "/dashboard/admin" }],
+        },
+        menuItems[2],
+        menuItems[3],
+      ]
+    : menuItems;
 
   const handleNavClick = () => {
     if (isMobile && onClose) {
@@ -90,7 +105,7 @@ export const DashboardSidebar = ({ isOpen = true, onClose, isMobile = false }: D
 
       {/* Navigation */}
       <div className="flex-1 overflow-y-auto p-4 space-y-6">
-        {menuItems.map((section, index) => (
+        {sections.map((section, index) => (
           <div key={index}>
             <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
               {section.title}
