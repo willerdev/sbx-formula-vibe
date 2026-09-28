@@ -179,6 +179,57 @@ export type Database = {
         }
         Relationships: []
       }
+      support_chats: {
+        Row: {
+          access_token: string
+          created_at: string
+          id: string
+          updated_at: string
+          visitor_email: string
+          visitor_name: string
+        }
+        Insert: {
+          access_token: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          visitor_email: string
+          visitor_name: string
+        }
+        Update: {
+          access_token?: string
+          created_at?: string
+          id?: string
+          updated_at?: string
+          visitor_email?: string
+          visitor_name?: string
+        }
+        Relationships: []
+      }
+      support_messages: {
+        Row: {
+          body: string
+          chat_id: string
+          created_at: string
+          id: string
+          sender: string
+        }
+        Insert: {
+          body: string
+          chat_id: string
+          created_at?: string
+          id?: string
+          sender: string
+        }
+        Update: {
+          body?: string
+          chat_id?: string
+          created_at?: string
+          id?: string
+          sender?: string
+        }
+        Relationships: []
+      }
       activity_log: {
         Row: {
           action: string
@@ -208,7 +259,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      start_support_chat: {
+        Args: { p_name: string; p_email: string }
+        Returns: { id: string; access_token: string }[]
+      }
+      visitor_support_messages: {
+        Args: { p_chat_id: string; p_token: string }
+        Returns: { id: string; sender: string; body: string; created_at: string }[]
+      }
+      visitor_send_support_message: {
+        Args: { p_chat_id: string; p_token: string; p_body: string }
+        Returns: { id: string; sender: string; body: string; created_at: string }[]
+      }
     }
     Enums: {
       [_ in never]: never

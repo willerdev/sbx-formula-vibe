@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { defaultIndices, defaultStats, parseIndices, parseStats, pastSignalUrl, type PastSignal, type Plan, type SiteStat } from "@/lib/siteContent";
+import { SupportInbox } from "@/components/dashboard/SupportInbox";
 
 interface OutletContext {
   isMobile?: boolean;
@@ -183,6 +184,8 @@ export const Admin = () => {
         <h1 className={`font-bold text-foreground ${isMobile ? "text-xl" : "text-3xl"}`}>Admin</h1>
         <p className="text-muted-foreground mt-2">Change prices and site text, and review what people requested.</p>
       </div>
+
+      <SupportInbox />
 
       <section className="space-y-4">
         <h2 className="text-xl font-semibold text-foreground">Plans</h2>
