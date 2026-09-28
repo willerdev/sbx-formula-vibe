@@ -23,8 +23,8 @@ export const WhyChooseSection = () => {
   const quoteIsDefault = quoteTitle === defaultQuoteTitle && quoteBody === defaultQuoteBody;
   const features = [
     {
-      title: "Consistent Signals",
-      description: "Signals sent to the signal group is consistent."
+      title: "Consistent SBX Formula Trading Bot",
+      description: "SBX Formula Trading Bot updates sent to the group are consistent."
     },
     {
       title: "Mentorship Package", 

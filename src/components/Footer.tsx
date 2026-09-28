@@ -3,10 +3,13 @@ import { MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { fetchSiteSettings } from "@/lib/siteContent";
 
+const emailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i;
+
 export const Footer = () => {
   const [settings, setSettings] = useState({
     contact_address: "Kigali KK 200St",
     contact_phone: "+250 788 974 179",
+    contact_email: "",
     whatsapp_url: "https://chat.whatsapp.com/Jt9GTVG3w2nHyyhJGSYuMj?mode=wwc",
     instagram_url: "https://www.instagram.com/savii.banks?igsh=YzBmeDN1Nm1kY3gy&utm_source=qr",
   });
@@ -17,11 +20,16 @@ export const Footer = () => {
       setSettings((current) => ({
         contact_address: rows.contact_address || current.contact_address,
         contact_phone: rows.contact_phone || current.contact_phone,
+        contact_email: rows.contact_email || "",
         whatsapp_url: rows.whatsapp_url || current.whatsapp_url,
         instagram_url: rows.instagram_url || current.instagram_url,
       }));
     });
   }, []);
+
+  const emailInPhone = settings.contact_phone.match(emailPattern)?.[0] ?? "";
+  const phone = settings.contact_phone.replace(emailInPhone, "").replace(/\s+/g, " ").trim();
+  const email = emailInPhone || settings.contact_email;
 
   return (
     <footer className="w-full py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 xl:px-12 border-t border-primary/20 animate-fade-in bg-transparent">
@@ -74,11 +82,18 @@ export const Footer = () => {
                 </div>
               </div>
               
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-primary" />
-                <a href={`tel:${settings.contact_phone.replace(/\s/g, "")}`} className="text-muted-foreground hover:text-primary transition-colors">
-                  {settings.contact_phone}
-                </a>
+              <div className="flex items-start space-x-3">
+                <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                <div className="space-y-1">
+                  <a href={`tel:${phone.replace(/\s/g, "")}`} className="block text-muted-foreground hover:text-primary transition-colors">
+                    {phone}
+                  </a>
+                  {email && (
+                    <a href={`mailto:${email}`} className="block text-muted-foreground hover:text-primary transition-colors">
+                      {email}
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>

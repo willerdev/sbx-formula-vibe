@@ -18,7 +18,7 @@ export const DashboardHome = ({ user, isMobile = false }: DashboardHomeProps) =>
             Welcome, {displayName}
           </h1>
           <p className={`text-muted-foreground ${isMobile ? 'mt-1 text-sm' : 'mt-2'}`}>
-            Manage your trading signals and account settings from your dashboard
+            Manage your SBX Formula Trading Bot and account settings from your dashboard
           </p>
         </div>
       </div>

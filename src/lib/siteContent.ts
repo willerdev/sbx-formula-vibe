@@ -34,8 +34,8 @@ export const defaultIndices = [
 export const defaultStats: SiteStat[] = [
   { number: "2000+", label: "Current Members" },
   { number: "1200+", label: "Chat Members" },
-  { number: "1500+", label: "Signals Received" },
-  { number: "1350+", label: "Won Signals" },
+  { number: "1500+", label: "SBX Formula Trading Bot Received" },
+  { number: "1350+", label: "Won SBX Formula Trading Bot" },
 ];
 
 export const parseIndices = (value?: string) => {
@@ -69,6 +69,25 @@ export const fetchPlans = async () => {
 
   if (error || !data) return null;
   return data as Plan[];
+};
+
+export type PastSignal = {
+  id: string;
+  image_path: string;
+  caption: string | null;
+};
+
+export const pastSignalUrl = (path: string) =>
+  supabase.storage.from("past-signals").getPublicUrl(path).data.publicUrl;
+
+export const fetchPastSignals = async () => {
+  const { data, error } = await supabase
+    .from("past_signals")
+    .select("id, image_path, caption")
+    .order("created_at", { ascending: false });
+
+  if (error || !data) return null;
+  return data as PastSignal[];
 };
 
 export const fetchSiteSettings = async () => {

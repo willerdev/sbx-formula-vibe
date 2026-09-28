@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, TrendingDown, Clock, Target } from "lucide-react";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 
 interface OutletContext {
   isMobile?: boolean;
@@ -46,6 +46,7 @@ const signals = [
 
 export const TradingSignals = () => {
   const { isMobile = false } = useOutletContext<OutletContext>();
+  const navigate = useNavigate();
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
@@ -53,10 +54,10 @@ export const TradingSignals = () => {
       <div className="border-b border-border bg-card/50 backdrop-blur-sm">
         <div className={isMobile ? 'p-4' : 'p-6'}>
           <h1 className={`font-bold text-foreground ${isMobile ? 'text-xl' : 'text-3xl'}`}>
-            Trading Signals
+            SBX Formula Trading Bot
           </h1>
           <p className={`text-muted-foreground ${isMobile ? 'mt-1 text-sm' : 'mt-2'}`}>
-            Real-time forex trading signals and analysis
+            Real-time SBX Formula Trading Bot updates and analysis
           </p>
         </div>
       </div>
@@ -66,7 +67,7 @@ export const TradingSignals = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
           <Card className="gradient-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Signals</CardTitle>
+              <CardTitle className="text-sm font-medium">Active SBX Formula Trading Bot</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -100,7 +101,7 @@ export const TradingSignals = () => {
 
         <Card className="gradient-card">
           <CardHeader>
-            <CardTitle>Recent Signals</CardTitle>
+            <CardTitle>Recent SBX Formula Trading Bot</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -149,7 +150,9 @@ export const TradingSignals = () => {
             </div>
             
             <div className="mt-6 text-center">
-              <Button>View All Signals</Button>
+              <Button type="button" onClick={() => navigate("/dashboard/subscription")}>
+                View SBX Formula Trading Bot
+              </Button>
             </div>
           </CardContent>
         </Card>

@@ -155,6 +155,30 @@ export type Database = {
         }
         Relationships: []
       }
+      past_signals: {
+        Row: {
+          caption: string | null
+          created_at: string
+          id: string
+          image_path: string
+          sort_order: number
+        }
+        Insert: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          image_path: string
+          sort_order?: number
+        }
+        Update: {
+          caption?: string | null
+          created_at?: string
+          id?: string
+          image_path?: string
+          sort_order?: number
+        }
+        Relationships: []
+      }
       activity_log: {
         Row: {
           action: string

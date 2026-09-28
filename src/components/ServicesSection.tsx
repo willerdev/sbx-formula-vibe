@@ -16,7 +16,7 @@ const fallbackPlans: Plan[] = [
       id: "premium-signals",
       slug: "premium-signals",
       name: "SBX Formula Trading Bot",
-      description: "Receive real-time trading signals with 78% accuracy using our SBX Formula. Pure price action signals for synthetic indices.",
+      description: "Receive the SBX Formula Trading Bot in real time with 78% accuracy. Pure price action for synthetic indices.",
       features: ["Real-time alerts", "78% accuracy", "Risk management", "SBX Formula Trading Bot"],
       price_amount: 50,
       billing_period: "month",
@@ -93,7 +93,9 @@ export const ServicesSection = () => {
               </h3>
               
               <p className="text-sm sm:text-base text-muted-foreground mb-6 leading-relaxed">
-                {service.description}
+                {service.description
+                  .replace(/trading signals/gi, "SBX Formula Trading Bot")
+                  .replace(/price action signals/gi, "price action")}
               </p>
               
               <ul className="space-y-3 mb-8">
@@ -110,6 +112,7 @@ export const ServicesSection = () => {
                   {formatPlanPrice(service.price_amount, service.billing_period)}
                 </div>
                 <Button 
+                  type="button"
                   variant={service.is_popular ? "hero" : "premium"} 
                   size="sm" 
                   className="text-xs sm:text-sm"

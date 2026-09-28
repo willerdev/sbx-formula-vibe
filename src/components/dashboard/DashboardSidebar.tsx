@@ -25,7 +25,7 @@ const menuItems = [
     title: "MENU",
     items: [
       { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-      { icon: TrendingUp, label: "Trading Signals", path: "/dashboard/signals" },
+      { icon: TrendingUp, label: "SBX Formula Trading Bot", path: "/dashboard/signals" },
       { icon: CreditCard, label: "My Subscription", path: "/dashboard/subscription" }
     ]
   },

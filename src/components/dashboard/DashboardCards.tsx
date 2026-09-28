@@ -13,9 +13,9 @@ import {
 const dashboardCards = [
   {
     icon: TrendingUp,
-    title: "Trading Signals",
-    description: "Access real-time forex trading signals and market analysis from our expert team.",
-    buttonText: "View Signals",
+    title: "SBX Formula Trading Bot",
+    description: "Access the SBX Formula Trading Bot and market analysis from our expert team.",
+    buttonText: "View SBX Formula Trading Bot",
     iconBg: "bg-emerald-500/10",
     iconColor: "text-emerald-500",
     link: "/dashboard/signals"

@@ -5,7 +5,7 @@ export const TestimonialsSection = () => {
   const testimonials = [
     {
       name: "Manzi Johnson",
-      text: "Great signals on Volatility 75(1s)! The accuracy is incredible and I've been consistently profitable since joining SBX Formula.",
+      text: "The SBX Formula Trading Bot on Volatility 75(1s) is incredible and I've been consistently profitable since joining SBX Formula.",
       rating: 5,
       profit: "+2,450%"
     },

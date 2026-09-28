@@ -34,9 +34,9 @@ export const Header = () => {
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
                 </span>
               </a>
-              <a href="#signals" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
+              <a href="#deriv-account" className="text-foreground/80 hover:text-primary transition-all duration-300 font-medium text-base tracking-wide relative group">
                 <span className="relative">
-                  Signals
+                  SBX Formula Trading Bot
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full"></span>
                 </span>
               </a>
@@ -108,11 +108,11 @@ export const Header = () => {
                 About
               </a>
               <a 
-                href="#signals" 
+                href="#deriv-account" 
                 className="text-foreground/80 hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium px-6 py-3 rounded-lg"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Signals
+                SBX Formula Trading Bot
               </a>
               <a 
                 href="#mentorship" 

@@ -20,7 +20,9 @@ export const StatsSection = () => {
                 {stat.number}
               </div>
               <div className="text-lg md:text-xl text-foreground font-medium">
-                {stat.label}
+                {stat.label
+                  .replace(/Signals Received/g, "SBX Formula Trading Bot Received")
+                  .replace(/Won Signals/g, "Won SBX Formula Trading Bot")}
               </div>
             </div>
           ))}

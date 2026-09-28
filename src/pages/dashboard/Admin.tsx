@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { defaultIndices, defaultStats, parseIndices, parseStats, type Plan, type SiteStat } from "@/lib/siteContent";
+import { defaultIndices, defaultStats, parseIndices, parseStats, pastSignalUrl, type PastSignal, type Plan, type SiteStat } from "@/lib/siteContent";
 
 interface OutletContext {
   isMobile?: boolean;
@@ -33,7 +33,7 @@ type ActivityRow = {
 type SettingRow = { key: string; value: string };
 
 const settingLabels: Record<string, string> = {
-  signals_accuracy: "Signals accuracy",
+  signals_accuracy: "SBX Formula Trading Bot accuracy",
   contact_address: "Address",
   contact_phone: "Phone",
   whatsapp_url: "WhatsApp link",
@@ -48,17 +48,20 @@ export const Admin = () => {
   const { toast } = useToast();
   const [plans, setPlans] = useState<PlanDraft[]>([]);
   const [settings, setSettings] = useState<SettingRow[]>([]);
+  const [shots, setShots] = useState<PastSignal[]>([]);
+  const [uploading, setUploading] = useState(false);
   const [indices, setIndices] = useState<string[]>(defaultIndices);
   const [stats, setStats] = useState<SiteStat[]>(defaultStats);
   const [requests, setRequests] = useState<RequestRow[]>([]);
   const [activity, setActivity] = useState<ActivityRow[]>([]);
 
   const load = async () => {
-    const [planResult, settingResult, requestResult, activityResult] = await Promise.all([
+    const [planResult, settingResult, requestResult, activityResult, shotResult] = await Promise.all([
       supabase.from("plans").select("*").order("sort_order"),
       supabase.from("site_settings").select("key, value").order("key"),
       supabase.from("plan_requests").select("id, plan_name, email, contact_name, phone, status, created_at").order("created_at", { ascending: false }),
       supabase.from("activity_log").select("id, action, details, created_at").order("created_at", { ascending: false }).limit(50),
+      supabase.from("past_signals").select("id, image_path, caption").order("created_at", { ascending: false }),
     ]);
 
     if (planResult.data) {
@@ -76,6 +79,7 @@ export const Admin = () => {
     }
     if (requestResult.data) setRequests(requestResult.data);
     if (activityResult.data) setActivity(activityResult.data as ActivityRow[]);
+    if (shotResult.data) setShots(shotResult.data);
   };
 
   useEffect(() => {
@@ -104,6 +108,36 @@ export const Admin = () => {
     toast(error
       ? { title: "Setting not saved", description: error.message }
       : { title: "Setting saved", description: settingLabels[setting.key] ?? setting.key });
+  };
+
+  const uploadShots = async (files: FileList | null) => {
+    if (!files?.length) return;
+    setUploading(true);
+    for (const file of Array.from(files)) {
+      const extension = file.name.split(".").pop()?.toLowerCase() || "png";
+      const path = `${crypto.randomUUID()}.${extension}`;
+      const { error: uploadError } = await supabase.storage.from("past-signals").upload(path, file, {
+        contentType: file.type,
+      });
+      if (uploadError) {
+        toast({ title: "Upload failed", description: uploadError.message });
+        continue;
+      }
+      const { error } = await supabase.from("past_signals").insert({ image_path: path });
+      if (error) toast({ title: "Could not save screenshot", description: error.message });
+    }
+    setUploading(false);
+    await load();
+  };
+
+  const removeShot = async (shot: PastSignal) => {
+    const { error: storageError } = await supabase.storage.from("past-signals").remove([shot.image_path]);
+    const { error } = await supabase.from("past_signals").delete().eq("id", shot.id);
+    if (storageError || error) {
+      toast({ title: "Could not remove screenshot", description: storageError?.message || error?.message });
+      return;
+    }
+    setShots((rows) => rows.filter((row) => row.id !== shot.id));
   };
 
   const saveIndices = async () => {
@@ -194,6 +228,39 @@ export const Admin = () => {
             <Button onClick={() => savePlan(plan)}>Save plan</Button>
           </Card>
         ))}
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-xl font-semibold text-foreground">Uploaded images</h2>
+        <Card className="p-4 space-y-4">
+          <div>
+            <Label htmlFor="past-signal-upload">Upload images</Label>
+            <Input
+              id="past-signal-upload"
+              type="file"
+              accept="image/*"
+              multiple
+              disabled={uploading}
+              onChange={(event) => {
+                uploadShots(event.target.files);
+                event.target.value = "";
+              }}
+            />
+          </div>
+          {shots.length === 0 && <p className="text-sm text-muted-foreground">No screenshots yet.</p>}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {shots.map((shot) => (
+              <div key={shot.id} className="space-y-2">
+                <img
+                  src={pastSignalUrl(shot.image_path)}
+                  alt={shot.caption || "Uploaded image"}
+                  className="w-full rounded-md border border-border object-cover"
+                />
+                <Button variant="outline" onClick={() => removeShot(shot)}>Remove</Button>
+              </div>
+            ))}
+          </div>
+        </Card>
       </section>
 
       <section className="space-y-4">
