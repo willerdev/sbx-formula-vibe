@@ -1,4 +1,4 @@
-import { Instagram, MapPin, Phone } from "lucide-react";
+import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { fetchSiteSettings } from "@/lib/siteContent";
@@ -84,17 +84,19 @@ export const Footer = () => {
               
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
-                <div className="space-y-1">
-                  <a href={`tel:${phone.replace(/\s/g, "")}`} className="block text-muted-foreground hover:text-primary transition-colors">
-                    {phone}
-                  </a>
-                  {email && (
-                    <a href={`mailto:${email}`} className="block text-muted-foreground hover:text-primary transition-colors">
-                      {email}
-                    </a>
-                  )}
-                </div>
+                <a href={`tel:${phone.replace(/\s/g, "")}`} className="text-muted-foreground hover:text-primary transition-colors">
+                  {phone}
+                </a>
               </div>
+
+              {email && (
+                <div className="flex items-start space-x-3">
+                  <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
+                  <a href={`mailto:${email}`} className="text-muted-foreground hover:text-primary transition-colors break-all">
+                    {email}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
