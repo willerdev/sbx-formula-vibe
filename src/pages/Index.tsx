@@ -6,6 +6,7 @@ import { WhyChooseSection } from "@/components/WhyChooseSection";
 import { PastSignalsSection } from "@/components/PastSignalsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { StatsSection } from "@/components/StatsSection";
+import saviiQuote from "@/assets/savii-quote.jpg";
 import { CommunitySection } from "@/components/CommunitySection";
 import { Footer } from "@/components/Footer";
 import HelpChat from "@/components/HelpChat";
@@ -41,6 +42,16 @@ const Index = () => {
         
         <section className="w-full animate-fade-in">
           <StatsSection />
+        </section>
+
+        <section className="w-full px-4 pb-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="mx-auto w-full max-w-5xl">
+            <img
+              src={saviiQuote}
+              alt="Savii Banks"
+              className="w-full rounded-2xl object-cover"
+            />
+          </div>
         </section>
         
         <section className="w-full bg-gradient-to-t from-primary/10 to-background animate-slide-in-right">

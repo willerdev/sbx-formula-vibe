@@ -31,17 +31,6 @@ export const profileUpdateSchema = z.object({
     .refine((val) => !val || /^[\d\s\-\+\(\)]+$/.test(val), {
       message: "Invalid phone number format"
     }),
-  website: z
-    .string()
-    .max(200, "Website URL must be less than 200 characters")
-    .optional()
-    .refine((val) => !val || /^https?:\/\/.+/.test(val) || val === '', {
-      message: "Website must be a valid URL starting with http:// or https://"
-    }),
-  location: z
-    .string()
-    .max(100, "Location must be less than 100 characters")
-    .optional()
 });
 
 export type ProfileUpdateData = z.infer<typeof profileUpdateSchema>;
