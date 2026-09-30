@@ -12,13 +12,16 @@ const apiBase = () => (process.env.NOWPAYMENTS_API_URL || "https://api.nowpaymen
 
 const config = () => {
   const apiKey = process.env.NOWPAYMENTS_API_KEY || "";
-  const ipnSecret = process.env.NOWPAYMENTS_IPN_SECRET || process.env.NOWPAYMENTS_API_SECRET || "";
+  const ipnSecret = process.env.NOWPAYMENTS_IPN_SECRET
+    || process.env.NOWPAYMENTS_API_SECRET
+    || "";
   return {
     apiKey,
     apiSecret: process.env.NOWPAYMENTS_API_SECRET || "",
     ipnSecret,
+    publicKey: process.env.NOWPAYMENTS_PUBLIC_KEY || "",
     payoutEmail: process.env.NOWPAYMENTS_PAYOUT_EMAIL || "",
-    payoutPassword: process.env.NOWPAYMENTS_PASSWORD || "",
+    payoutPassword: process.env.NOWPAYMENTS_PAYOUT_PASSWORD || process.env.NOWPAYMENTS_PASSWORD || "",
     serviceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || "",
   };
 };
@@ -120,9 +123,9 @@ const markRequest = async (orderId, paymentStatus, paymentId) => {
 };
 
 const createInvoice = async (req, res) => {
-  const { apiKey, ipnSecret } = config();
-  if (!apiKey || !ipnSecret) {
-    sendJson(res, 503, { error: "NOWPayments is not configured yet." });
+  const { apiKey } = config();
+  if (!apiKey) {
+    sendJson(res, 503, { error: "NOWPayments API key is missing on the server." });
     return;
   }
 

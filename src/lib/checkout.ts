@@ -15,9 +15,15 @@ export const startPlanCheckout = async (planSlug: string) => {
     },
     body: JSON.stringify({ planSlug }),
   });
-  const payload = await response.json().catch(() => ({}));
+  const raw = await response.text();
+  let payload: { error?: string; invoiceUrl?: string } = {};
+  try {
+    payload = raw ? JSON.parse(raw) : {};
+  } catch {
+    payload = {};
+  }
   if (!response.ok || !payload.invoiceUrl) {
-    throw new Error(payload.error || "Payment could not be started.");
+    throw new Error(payload.error || `Payment could not be started (${response.status}).`);
   }
   window.location.assign(payload.invoiceUrl);
 };

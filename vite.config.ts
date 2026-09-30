@@ -4,26 +4,37 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { handleNowPayments } from "./server/payments.mjs";
 
+const loadServerEnv = (mode: string) => {
+  const env = loadEnv(mode, process.cwd(), "");
+  for (const [key, value] of Object.entries(env)) {
+    if (process.env[key] === undefined) process.env[key] = value;
+  }
+};
+
+const attachNowPayments = (middlewares: { use: (handler: (req: import("http").IncomingMessage, res: import("http").ServerResponse, next: () => void) => void) => void }, mode: string) => {
+  loadServerEnv(mode);
+  middlewares.use(async (req, res, next) => {
+    if (!req.url?.startsWith("/api/nowpayments")) return next();
+    try {
+      await handleNowPayments(req, res);
+    } catch (error) {
+      console.error(error);
+      if (!res.headersSent) {
+        res.statusCode = 500;
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({ error: "Payment server error" }));
+      }
+    }
+  });
+};
+
 const nowPaymentsDevPlugin = (): Plugin => ({
   name: "nowpayments-dev",
   configureServer(server) {
-    const env = loadEnv(server.config.mode, process.cwd(), "");
-    for (const [key, value] of Object.entries(env)) {
-      if (process.env[key] === undefined) process.env[key] = value;
-    }
-    server.middlewares.use(async (req, res, next) => {
-      if (!req.url?.startsWith("/api/nowpayments")) return next();
-      try {
-        await handleNowPayments(req, res);
-      } catch (error) {
-        console.error(error);
-        if (!res.headersSent) {
-          res.statusCode = 500;
-          res.setHeader("Content-Type", "application/json");
-          res.end(JSON.stringify({ error: "Payment server error" }));
-        }
-      }
-    });
+    attachNowPayments(server.middlewares, server.config.mode);
+  },
+  configurePreviewServer(server) {
+    attachNowPayments(server.middlewares, server.config.mode);
   },
 });
 
