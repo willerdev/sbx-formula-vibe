@@ -121,13 +121,13 @@ export const Subscription = () => {
               </Card>
 
               <Button
-                variant="success"
+                variant="default"
                 className="w-full"
                 size="lg"
                 disabled={payingSlug === plan.slug}
                 onClick={() => selectPlan(plan)}
               >
-                {payingSlug === plan.slug ? "Redirecting..." : "Pay with NOWPayments"}
+                {payingSlug === plan.slug ? "Redirecting..." : "Subscribe"}
               </Button>
             </div>
           ))}

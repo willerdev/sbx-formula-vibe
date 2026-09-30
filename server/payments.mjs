@@ -250,6 +250,65 @@ const receiveIpn = async (req, res) => {
   sendJson(res, 200, { ok: true });
 };
 
+const requireAdmin = async (req) => {
+  const header = req.headers.authorization || "";
+  const token = header.startsWith("Bearer ") ? header.slice(7) : "";
+  if (!token) return null;
+  const client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    auth: { persistSession: false, autoRefreshToken: false },
+    global: { headers: { Authorization: `Bearer ${token}` } },
+  });
+  const { data, error } = await client.auth.getUser(token);
+  if (error || !data.user) return null;
+  const { data: profile } = await client
+    .from("profiles")
+    .select("role")
+    .eq("user_id", data.user.id)
+    .maybeSingle();
+  return profile?.role === "admin" ? data.user : null;
+};
+
+const normalizeBalances = (data) => {
+  if (!data || typeof data !== "object" || data.message) return [];
+  return Object.entries(data).flatMap(([currency, value]) => {
+    if (!value || typeof value !== "object" || Array.isArray(value)) return [];
+    const amount = Number(value.amount ?? value.balance ?? 0);
+    const pending = Number(value.pendingAmount ?? value.pending ?? 0);
+    if (!Number.isFinite(amount) && !Number.isFinite(pending)) return [];
+    return [{ currency: currency.toUpperCase(), amount: amount || 0, pending: pending || 0 }];
+  });
+};
+
+const accountBalance = async (req, res) => {
+  const admin = await requireAdmin(req);
+  if (!admin) {
+    sendJson(res, 403, { error: "Only an admin can view the balance." });
+    return;
+  }
+  const { apiKey, payoutEmail, payoutPassword } = config();
+  if (!apiKey || !payoutEmail || !payoutPassword) {
+    sendJson(res, 503, { error: "NOWPayments payout email and password are not set on the server." });
+    return;
+  }
+  const token = await payoutToken();
+  if (!token) {
+    sendJson(res, 502, { error: "NOWPayments did not accept the payout login." });
+    return;
+  }
+  const response = await fetch(`${apiBase()}/balance`, {
+    headers: {
+      "x-api-key": apiKey,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    sendJson(res, 502, { error: data.message || "NOWPayments balance could not be loaded." });
+    return;
+  }
+  sendJson(res, 200, { balances: normalizeBalances(data) });
+};
+
 export const handleNowPayments = async (req, res) => {
   const url = new URL(req.url || "/", "http://localhost");
   if (req.method === "POST" && url.pathname === "/api/nowpayments/invoice") {
@@ -258,6 +317,10 @@ export const handleNowPayments = async (req, res) => {
   }
   if (req.method === "POST" && url.pathname === "/api/nowpayments/ipn") {
     await receiveIpn(req, res);
+    return;
+  }
+  if (req.method === "GET" && url.pathname === "/api/nowpayments/balance") {
+    await accountBalance(req, res);
     return;
   }
   sendJson(res, 404, { error: "Not found" });

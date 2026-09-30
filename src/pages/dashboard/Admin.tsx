@@ -18,6 +18,7 @@ interface OutletContext {
 type PlanDraft = Plan & { featuresText: string };
 type RequestRow = {
   id: string;
+  plan_id: string | null;
   plan_name: string;
   email: string | null;
   contact_name: string | null;
@@ -25,6 +26,7 @@ type RequestRow = {
   status: string;
   created_at: string;
 };
+type BalanceRow = { currency: string; amount: number; pending: number };
 type ActivityRow = {
   id: string;
   action: string;
@@ -43,6 +45,74 @@ const settingLabels: Record<string, string> = {
   quote_body: "Quote body",
 };
 
+const money = (amount: number) => `$${amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+const Earnings = ({
+  plans,
+  requests,
+  balances,
+  balanceNote,
+}: {
+  plans: PlanDraft[];
+  requests: RequestRow[];
+  balances: BalanceRow[];
+  balanceNote: string;
+}) => {
+  const priceFor = (planId: string | null) => {
+    const plan = plans.find((item) => item.id === planId);
+    return plan ? Number(plan.price_amount) || 0 : 0;
+  };
+  const earned = requests
+    .filter((row) => row.status === "paid")
+    .reduce((sum, row) => sum + priceFor(row.plan_id), 0);
+  const waiting = requests
+    .filter((row) => row.status === "pending")
+    .reduce((sum, row) => sum + priceFor(row.plan_id), 0);
+  const traced = requests.filter((row) => row.status === "paid" || row.status === "pending");
+
+  return (
+    <section className="space-y-4">
+      <h2 className="text-xl font-semibold text-foreground">Earnings</h2>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Card className="p-4">
+          <p className="text-sm text-muted-foreground">Earned</p>
+          <p className="mt-1 text-3xl font-bold text-gradient-primary">{money(earned)}</p>
+          <p className="mt-2 text-sm text-muted-foreground">Paid subscriptions</p>
+        </Card>
+        <Card className="p-4">
+          <p className="text-sm text-muted-foreground">On hand</p>
+          {balances.length === 0 && <p className="mt-2 text-sm text-muted-foreground">{balanceNote || "No NOWPayments balance yet."}</p>}
+          <div className="mt-2 space-y-2">
+            {balances.map((balance) => (
+              <div key={balance.currency}>
+                <p className="text-2xl font-bold text-foreground">{balance.amount} {balance.currency}</p>
+                {balance.pending > 0 && (
+                  <p className="text-sm text-muted-foreground">{balance.pending} {balance.currency} pending</p>
+                )}
+              </div>
+            ))}
+          </div>
+          <p className="mt-2 text-sm text-muted-foreground">{money(waiting)} waiting on subscriptions</p>
+        </Card>
+      </div>
+      <Card className="p-4 space-y-3">
+        {traced.length === 0 && <p className="text-sm text-muted-foreground">No paid or pending subscriptions yet.</p>}
+        {traced.map((request) => (
+          <div key={request.id} className="flex flex-col gap-1 border-b border-border pb-3 last:border-0 last:pb-0 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-medium text-foreground">{request.plan_name}</p>
+              <p className="text-sm text-muted-foreground">
+                {request.email || request.contact_name || "No contact"} · {new Date(request.created_at).toLocaleString()}
+              </p>
+            </div>
+            <p className="font-semibold text-foreground">{money(priceFor(request.plan_id))} · {request.status}</p>
+          </div>
+        ))}
+      </Card>
+    </section>
+  );
+};
+
 export const Admin = () => {
   const { isMobile = false } = useOutletContext<OutletContext>();
   const { user, isAdmin } = useAuth();
@@ -55,12 +125,14 @@ export const Admin = () => {
   const [stats, setStats] = useState<SiteStat[]>(defaultStats);
   const [requests, setRequests] = useState<RequestRow[]>([]);
   const [activity, setActivity] = useState<ActivityRow[]>([]);
+  const [balances, setBalances] = useState<BalanceRow[]>([]);
+  const [balanceNote, setBalanceNote] = useState("");
 
   const load = async () => {
     const [planResult, settingResult, requestResult, activityResult, shotResult] = await Promise.all([
       supabase.from("plans").select("*").order("sort_order"),
       supabase.from("site_settings").select("key, value").order("key"),
-      supabase.from("plan_requests").select("id, plan_name, email, contact_name, phone, status, created_at").order("created_at", { ascending: false }),
+      supabase.from("plan_requests").select("id, plan_id, plan_name, email, contact_name, phone, status, created_at").order("created_at", { ascending: false }),
       supabase.from("activity_log").select("id, action, details, created_at").order("created_at", { ascending: false }).limit(50),
       supabase.from("past_signals").select("id, image_path, caption").order("created_at", { ascending: false }),
     ]);
@@ -81,6 +153,21 @@ export const Admin = () => {
     if (requestResult.data) setRequests(requestResult.data);
     if (activityResult.data) setActivity(activityResult.data as ActivityRow[]);
     if (shotResult.data) setShots(shotResult.data);
+
+    const { data: sessionData } = await supabase.auth.getSession();
+    const token = sessionData.session?.access_token;
+    if (!token) return;
+    const balanceResponse = await fetch("/api/nowpayments/balance", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const balancePayload = await balanceResponse.json().catch(() => ({}));
+    if (balanceResponse.ok) {
+      setBalances(balancePayload.balances ?? []);
+      setBalanceNote("");
+    } else {
+      setBalances([]);
+      setBalanceNote(balancePayload.error || "Balance could not be loaded.");
+    }
   };
 
   useEffect(() => {
@@ -184,6 +271,13 @@ export const Admin = () => {
         <h1 className={`font-bold text-foreground ${isMobile ? "text-xl" : "text-3xl"}`}>Admin</h1>
         <p className="text-muted-foreground mt-2">Change prices and site text, and review what people requested.</p>
       </div>
+
+      <Earnings
+        plans={plans}
+        requests={requests}
+        balances={balances}
+        balanceNote={balanceNote}
+      />
 
       <SupportInbox />
 
