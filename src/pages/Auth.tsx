@@ -9,6 +9,11 @@ import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Session } from "@supabase/supabase-js";
 
+const destinationAfterAuth = () => {
+  const plan = new URLSearchParams(window.location.search).get("plan");
+  return plan ? `/dashboard/subscription?plan=${encodeURIComponent(plan)}` : "/dashboard";
+};
+
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +28,7 @@ const Auth = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       if (session) {
-        navigate("/dashboard");
+        navigate(destinationAfterAuth());
       }
     });
 
@@ -32,7 +37,7 @@ const Auth = () => {
       (event, session) => {
         setSession(session);
         if (session) {
-          navigate("/dashboard");
+          navigate(destinationAfterAuth());
         }
       }
     );

@@ -45,7 +45,7 @@ const Index = () => {
         </section>
 
         <section className="w-full px-4 pb-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="mx-auto w-full max-w-5xl">
+          <div className="mx-auto w-[68%] max-w-md sm:w-full">
             <img
               src={saviiQuote}
               alt="Savii Banks"

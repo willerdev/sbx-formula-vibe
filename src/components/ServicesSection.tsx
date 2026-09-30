@@ -1,9 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Users, BookOpen, Bell } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchPlans, formatPlanPrice, type Plan } from "@/lib/siteContent";
+import { startPlanCheckout } from "@/lib/checkout";
+import { toast } from "sonner";
 
 const planIcons = {
   "premium-signals": <Bell className="w-8 h-8" />,
@@ -48,8 +49,8 @@ const fallbackPlans: Plan[] = [
   ];
 
 export const ServicesSection = () => {
-  const navigate = useNavigate();
   const [services, setServices] = useState<Plan[]>(fallbackPlans);
+  const [payingSlug, setPayingSlug] = useState<string | null>(null);
 
   useEffect(() => {
     fetchPlans().then((plans) => {
@@ -116,9 +117,18 @@ export const ServicesSection = () => {
                   variant={service.is_popular ? "hero" : "premium"} 
                   size="sm" 
                   className="text-xs sm:text-sm"
-                  onClick={() => navigate("/auth")}
+                  disabled={payingSlug === service.slug}
+                  onClick={async () => {
+                    setPayingSlug(service.slug);
+                    try {
+                      await startPlanCheckout(service.slug);
+                    } catch (error) {
+                      toast.error(error instanceof Error ? error.message : "Payment could not be started.");
+                      setPayingSlug(null);
+                    }
+                  }}
                 >
-                  Get Started
+                  {payingSlug === service.slug ? "Redirecting..." : "Get Started"}
                 </Button>
               </div>
             </Card>

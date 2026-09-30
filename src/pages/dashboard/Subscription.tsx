@@ -1,11 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bell, BookOpen, Users } from "lucide-react";
-import { useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/integrations/supabase/client";
+import { useOutletContext, useSearchParams } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { fetchPlans, formatPlanPrice, type Plan } from "@/lib/siteContent";
+import { startPlanCheckout } from "@/lib/checkout";
 import { useToast } from "@/hooks/use-toast";
 
 interface OutletContext {
@@ -20,9 +19,11 @@ const planIcons = {
 
 export const Subscription = () => {
   const { isMobile = false } = useOutletContext<OutletContext>();
-  const { user } = useAuth();
   const { toast } = useToast();
+  const [params] = useSearchParams();
   const [plans, setPlans] = useState<Plan[]>([]);
+  const [payingSlug, setPayingSlug] = useState<string | null>(null);
+  const autoStarted = useRef(false);
 
   useEffect(() => {
     fetchPlans().then((rows) => {
@@ -31,25 +32,37 @@ export const Subscription = () => {
   }, []);
 
   const selectPlan = async (plan: Plan) => {
-    const price = formatPlanPrice(plan.price_amount, plan.billing_period);
-    const { error } = await supabase.from("plan_requests").insert({
-      user_id: user?.id,
-      plan_id: plan.id,
-      plan_name: plan.name,
-      email: user?.email,
-    });
-
-    if (error) {
-      toast({ title: "Could not save request", description: error.message });
-      return;
+    setPayingSlug(plan.slug);
+    try {
+      await startPlanCheckout(plan.slug);
+    } catch (error) {
+      toast({
+        title: "Payment could not start",
+        description: error instanceof Error ? error.message : "Try again in a moment.",
+        variant: "destructive",
+      });
+      setPayingSlug(null);
     }
-
-    window.open(
-      `https://wa.me/250788974179?text=${encodeURIComponent(`Hi, I would like to subscribe to the ${plan.name} plan at ${price}.`)}`,
-      "_blank",
-      "noopener,noreferrer"
-    );
   };
+
+  useEffect(() => {
+    const payment = params.get("payment");
+    if (payment === "success") {
+      toast({ title: "Payment received", description: "NOWPayments is confirming it. Your plan updates when the payment is finished." });
+    }
+    if (payment === "cancelled") {
+      toast({ title: "Payment cancelled", description: "You can choose a plan again when you are ready." });
+    }
+  }, [params, toast]);
+
+  useEffect(() => {
+    const slug = params.get("plan");
+    if (!slug || !plans.length || autoStarted.current) return;
+    const plan = plans.find((item) => item.slug === slug);
+    if (!plan) return;
+    autoStarted.current = true;
+    selectPlan(plan);
+  }, [params, plans]);
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
@@ -111,9 +124,10 @@ export const Subscription = () => {
                 variant="success"
                 className="w-full"
                 size="lg"
+                disabled={payingSlug === plan.slug}
                 onClick={() => selectPlan(plan)}
               >
-                Select Plan
+                {payingSlug === plan.slug ? "Redirecting..." : "Pay with NOWPayments"}
               </Button>
             </div>
           ))}

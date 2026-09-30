@@ -346,6 +346,9 @@ export const Admin = () => {
               onChange={(event) => updateRequestStatus(request.id, event.target.value)}
             >
               <option value="new">new</option>
+              <option value="pending">pending</option>
+              <option value="paid">paid</option>
+              <option value="failed">failed</option>
               <option value="contacted">contacted</option>
               <option value="closed">closed</option>
             </select>
